@@ -1,0 +1,119 @@
+/*
+ Theme Name:   Twenty Sixteen Child
+ Theme URI:    http://cuecountapp.com/blog/wp-content/themes/twentysixteen-child/style.css
+ Description:  Twenty Sixteen Child Theme
+ Author:       Jimmy Mocko
+ Author URI:   http://cuecountapp.com
+ Template:     twentysixteen
+ Version:      1.0.0
+ License:      GNU General Public License v2 or later
+ License URI:  http://www.gnu.org/licenses/gpl-2.0.html
+ Tags:         light, dark, two-columns, right-sidebar, responsive-layout, accessibility-ready
+ Text Domain:  twentysixteen-child
+*/
+
+
+
+/* = = = = = = = = = = = = SITE HEADER = = = = = = = = = = = */
+
+html {width:100%;position:relative;padding:0;margin:0;background:#FFF;}
+
+h1,
+h2,
+h3,
+p
+{
+	font-family: 'Muli', sans-serif;
+	}
+/* = = = = = = = = = = = = BACKGOUNRD COLOR CORRECTION = = = = = = = = = = = */
+.pagination:before,
+.pagination:after {
+	background-color: #FFF;}
+.pagination a:hover,
+.pagination a:focus {
+	color: #1a1a1a;}
+.menu-toggle.toggled-on,
+.menu-toggle.toggled-on:hover,
+.menu-toggle.toggled-on:focus {
+	background-color: #1a1a1a;}
+body {
+	background: #FFF!important;
+	width:100%;position:relative;padding:0;margin:0;
+	/* Fallback for when there is no custom background color defined. */
+}
+.site-main {
+    background-color: #FFF;
+}
+@media screen and (min-width: 61.5625em)
+.entry-title {
+    font-size: inherit;
+    font-size: inherit;
+    line-height: inherit; 
+    margin-bottom:inherit; 
+}
+
+	
+/* = = = = = = = = = = = = BACKGOUNRD COLOR CORRECTION = = = = = = = = = = = */
+
+.whitebackground {
+	width:100%;
+	overflow:hidden;
+	background:#FFF;
+	}
+
+h1 {
+	font-size:46px;
+	font-weight:300;
+	}
+
+h2 {
+	font-size:28px;
+	font-weight:300!important;
+	}
+
+.header-container {
+	border-bottom:2px solid #000;
+	width:96%;
+	padding:30px 0 0;
+	margin:0 auto;
+	text-align:center;
+	background:#FFF;
+	}
+	
+.header-container h1{
+	width:auto;
+	display:block;
+	margin-bottom:30px;
+	}
+	
+.header-container .mainLogo	{
+	width:200px;
+	display:block;
+	margin:0 auto 50px;
+	}
+	
+.main-container {
+	width:750px;
+	margin:40px auto 10px;	
+	}
+
+article {
+	
+	
+	}
+	
+section {
+	width:100%;
+	overflow:hidden;
+	padding:20px 5%;
+	margin-bottom:30px;
+	}
+	
+
+.entry-header {
+	text-align:center;
+	}	
+	
+.entry-footer {
+	text-align:right;
+	}

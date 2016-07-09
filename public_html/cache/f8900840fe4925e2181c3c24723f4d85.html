@@ -1,0 +1,467 @@
+<div class="grid">
+	<div class="grid-sizer"></div>
+	<header class="item">
+		<img src="assets/mainLogo.png" class="company_logo" alt="Cue Count App"/>
+    	<h1>Choice is a beautiful thing</h1>
+        <p>Share your daily decisions<br> and vote on others. <a href="http://cuecountapp.com/about" target="_blank">Learn more</a></p> 
+        <a href="feed.php"><p class="cc_button" style="float:left;">Vote</p></a>
+        <div class="prof_email">jamesemocko@gmail.com</div>
+        <a href="logout.php"><p class="cc_button">Logout</p></a>
+	</header>
+    <article class="item">
+    	<div class="upload_choice" id="upload_choice">
+            <h3>Upload a Current Decision:</h3>
+            <p class="cc_button" onClick="form_show('yn_upload','upload_choice')">Yes/No (Single Image)</p>
+            <br>
+            <p class="cc_button" onClick="form_show('c_upload','upload_choice')">Choice (Double Image)</p>
+        </div>
+        <form action="home.php" method="post" enctype="multipart/form-data">
+		    <input type="hidden" name="post_type" value="post_YN"/><!-- = = = = POST TYPE = = = = -->
+	        <input type="hidden" name="post_fname" value="James"/><!-- = = = = FIRST NAME = = = = -->	
+	        <input type="hidden" name="post_email" value="jamesemocko@gmail.com"/><!-- = = = = ACCOUNT EMAIL = = = = -->	
+	        <input type="hidden" name="post_answerR" value="Yes"/><!-- = = = = "YES" = = = = -->	
+	        <input type="hidden" name="post_answerL" value="No"/><!-- = = = = "NO" = = = = -->	
+	        <input type="hidden" name="post_answer1" value="1"/><!-- = = = = "1" = = = = -->	
+	        <input type="hidden" name="post_answer2" value="1"/><!-- = = = = "1" = = = = -->	
+	        <input type="hidden" name="post_answer3" value="1"/><!-- = = = = "1" = = = = -->
+            <div id="yn_upload">
+	            <section class="upload_question">
+                	<!-- = = = = 
+                      QUESTION
+                      = = = = -->
+	            	<p><textarea name="post_content" class="question_textarea" maxlength="70" placeholder="Ask away, don't be bland, be weird :)" required></textarea></p>
+	            </section>
+	            <div class="yn_image">
+	            	<!-- = = = = 
+                       PICTURE 
+                      = = = = -->
+				      <input type="file" name="post_imageO" id="imgInp" accept="image/*" class="upload_img_btn" onchange="loadFile(event);"/>
+				      <img class="preview" id="preview" alt=""/>
+                </div>
+				<p class="upload_back" onClick="form_show('upload_choice','yn_upload')">Back</p> 
+				<input type="submit" class="cc_sumbit" name="submit_yn" value="Submit"/>        
+	        </div>
+    	</form>
+        <form action="home.php" method="post" enctype="multipart/form-data">
+        	<input type="hidden" name="post_type" value="post_C"/><!-- = = = = POST TYPE = = = = -->
+	        <input type="hidden" name="post_fname" value="James"/><!-- = = = = FIRST NAME = = = = -->	
+	        <input type="hidden" name="post_email" value="jamesemocko@gmail.com"/><!-- = = = = ACCOUNT EMAIL = = = = -->	
+	        <input type="hidden" name="post_answerR" value="Right"/><!-- = = = = "Right" = = = = -->	
+	        <input type="hidden" name="post_answerL" value="Left"/><!-- = = = = "Left" = = = = -->	
+	        <input type="hidden" name="post_answer1" value="1"/><!-- = = = = "1" = = = = -->	
+	        <input type="hidden" name="post_answer2" value="1"/><!-- = = = = "1" = = = = -->	
+	        <input type="hidden" name="post_answer3" value="1"/><!-- = = = = "1" = = = = -->
+	    	<div id="c_upload">
+	        	<section class="upload_question">
+                	<!-- = = = = 
+                      QUESTION
+                      = = = = -->
+	            	<p><textarea name="post_content" class="question_textarea" maxlength="70" placeholder="Ask away, don't be bland, be weird :)" required></textarea></p>
+	            </section>
+	            <div class="c_image">
+	            	<!-- = = = = 
+                       PICTURE 
+                      = = = = -->
+				      <input type="file" name="post_imageL" id="imgInp_L" class="upload_img_btn" onchange="loadFile_L(event);"/>
+				      <img class="preview_L" id="preview_L" alt=""/>
+                </div>
+
+                <div class="c_image">
+	            	<!-- = = = = 
+                       PICTURE 
+                      = = = = -->
+				      <input type="file" name="post_imageR" id="imgInp_R" class="upload_img_btn" onchange="loadFile_R(event);"/>
+				      <img class="preview_R" id="preview_R" alt=""/>
+                </div>
+                <div class="c_button_wrap">
+					<p class="upload_back" onClick="form_show('upload_choice','c_upload')">Back</p>
+					<input type="submit" class="cc_sumbit" name="submit_c" value="Submit"/>  
+				</div>      
+	        </div>
+    	</form>
+        
+    </article>
+
+		<article class="item">
+			<div class="post_question">
+				<div class='post_content'>which artwork do you like more?</div>					<div class="endpost">
+						<form action="" method="post">
+							<input type="hidden" id="" value=" 48 " name="endpost_id"/>
+							<input type="submit" name="post_endpost" class="delete_btn_home" value="End Voting"/>
+						</form>
+						<a class="twitter"
+						href="https://twitter.com/intent/tweet?text=which%20artwork%20do%20you%20like%20more%3F%20http%3A%2F%2Fcuecountapp.com%2Ffeed.php%3Fid%3D48" 
+						target="_blank">	
+							<p>Share your choice: <img src="assets/social_tweet.png" alt="Tweet This" class="twitter_icon"/></p>
+						</a>
+					</div>
+								</div>
+
+			<div class="post_imageO">
+				<object data= type='image/jpg'></object>				<object data=uploads/IMG_20160524_182549.jpg class='feed_img_L' type='image/jpg'></object>				<object data=uploads/IMG_20160524_155126.jpg class='feed_img_R' type='image/jpg'></object>				<div id="vote_result_animation" class="fade-in one">
+					<div id="doughnutChart" class="chart"></div>
+				</div>
+			</div>
+			<p class="current_resultShow" onclick="results_show(event)">Current Results</p>
+			<div class="vote_result_1">50%</div>
+			<div class="vote_result_2">25%</div>
+			<div class="vote_result_3">25%</div>
+			<input type="hidden" name="post_answer_text1" value="2"/> <!--L-->
+			<input type="hidden" name="post_answer_text2" value="1"/> <!--O-->
+			<input type="hidden" name="post_answer_text3" value="1"/> <!--R--> 	
+		</article>		<article class="item">
+			<div class="post_question">
+				<div class='post_content'>Which Street art do you like more?</div>					<div class="endpost">
+						<form action="" method="post">
+							<input type="hidden" id="" value=" 47 " name="endpost_id"/>
+							<input type="submit" name="post_endpost" class="delete_btn_home" value="End Voting"/>
+						</form>
+						<a class="twitter"
+						href="https://twitter.com/intent/tweet?text=Which%20Street%20art%20do%20you%20like%20more%3F%20http%3A%2F%2Fcuecountapp.com%2Ffeed.php%3Fid%3D47" 
+						target="_blank">	
+							<p>Share your choice: <img src="assets/social_tweet.png" alt="Tweet This" class="twitter_icon"/></p>
+						</a>
+					</div>
+								</div>
+
+			<div class="post_imageO">
+				<object data= type='image/jpg'></object>				<object data=uploads/IMG_20160522_211639.jpg class='feed_img_L' type='image/jpg'></object>				<object data=uploads/IMG_20160522_211842.jpg class='feed_img_R' type='image/jpg'></object>				<div id="vote_result_animation" class="fade-in one">
+					<div id="doughnutChart" class="chart"></div>
+				</div>
+			</div>
+			<p class="current_resultShow" onclick="results_show(event)">Current Results</p>
+			<div class="vote_result_1">25%</div>
+			<div class="vote_result_2">25%</div>
+			<div class="vote_result_3">50%</div>
+			<input type="hidden" name="post_answer_text1" value="1"/> <!--L-->
+			<input type="hidden" name="post_answer_text2" value="1"/> <!--O-->
+			<input type="hidden" name="post_answer_text3" value="2"/> <!--R--> 	
+		</article>		<article class="item">
+			<div class="post_question">
+				<div class='post_content'>What architecture style for a cabin do you like more?</div>					<div class="endpost">
+						<form action="" method="post">
+							<input type="hidden" id="" value=" 46 " name="endpost_id"/>
+							<input type="submit" name="post_endpost" class="delete_btn_home" value="End Voting"/>
+						</form>
+						<a class="twitter"
+						href="https://twitter.com/intent/tweet?text=What%20architecture%20style%20for%20a%20cabin%20do%20you%20like%20more%3F%20http%3A%2F%2Fcuecountapp.com%2Ffeed.php%3Fid%3D46" 
+						target="_blank">	
+							<p>Share your choice: <img src="assets/social_tweet.png" alt="Tweet This" class="twitter_icon"/></p>
+						</a>
+					</div>
+								</div>
+
+			<div class="post_imageO">
+				<object data= type='image/jpg'></object>				<object data=uploads/IMG_20160522_141020~2.jpg class='feed_img_L' type='image/jpg'></object>				<object data=uploads/IMG_20160522_163018.jpg class='feed_img_R' type='image/jpg'></object>				<div id="vote_result_animation" class="fade-in one">
+					<div id="doughnutChart" class="chart"></div>
+				</div>
+			</div>
+			<p class="current_resultShow" onclick="results_show(event)">Current Results</p>
+			<div class="vote_result_1">25%</div>
+			<div class="vote_result_2">50%</div>
+			<div class="vote_result_3">25%</div>
+			<input type="hidden" name="post_answer_text1" value="1"/> <!--L-->
+			<input type="hidden" name="post_answer_text2" value="2"/> <!--O-->
+			<input type="hidden" name="post_answer_text3" value="1"/> <!--R--> 	
+		</article>		<article class="item">
+			<div class="post_question">
+				<div class='post_content'>Which dress is better for spring?</div>					<div class="endpost">
+						<form action="" method="post">
+							<input type="hidden" id="" value=" 45 " name="endpost_id"/>
+							<input type="submit" name="post_endpost" class="delete_btn_home" value="End Voting"/>
+						</form>
+						<a class="twitter"
+						href="https://twitter.com/intent/tweet?text=Which%20dress%20is%20better%20for%20spring%3F%20http%3A%2F%2Fcuecountapp.com%2Ffeed.php%3Fid%3D45" 
+						target="_blank">	
+							<p>Share your choice: <img src="assets/social_tweet.png" alt="Tweet This" class="twitter_icon"/></p>
+						</a>
+					</div>
+								</div>
+
+			<div class="post_imageO">
+				<object data= type='image/jpg'></object>				<object data=uploads/IMG_20160521_211818.jpg class='feed_img_L' type='image/jpg'></object>				<object data=uploads/IMG_20160521_211708.jpg class='feed_img_R' type='image/jpg'></object>				<div id="vote_result_animation" class="fade-in one">
+					<div id="doughnutChart" class="chart"></div>
+				</div>
+			</div>
+			<p class="current_resultShow" onclick="results_show(event)">Current Results</p>
+			<div class="vote_result_1">25%</div>
+			<div class="vote_result_2">25%</div>
+			<div class="vote_result_3">50%</div>
+			<input type="hidden" name="post_answer_text1" value="1"/> <!--L-->
+			<input type="hidden" name="post_answer_text2" value="1"/> <!--O-->
+			<input type="hidden" name="post_answer_text3" value="2"/> <!--R--> 	
+		</article>		<article class="item">
+			<div class="post_question">
+				<div class='post_content'>Where would you rather be? :)</div>					<div class="endpost">
+						<form action="" method="post">
+							<input type="hidden" id="" value=" 44 " name="endpost_id"/>
+							<input type="submit" name="post_endpost" class="delete_btn_home" value="End Voting"/>
+						</form>
+						<a class="twitter"
+						href="https://twitter.com/intent/tweet?text=Where%20would%20you%20rather%20be%3F%20%3A%29%20http%3A%2F%2Fcuecountapp.com%2Ffeed.php%3Fid%3D44" 
+						target="_blank">	
+							<p>Share your choice: <img src="assets/social_tweet.png" alt="Tweet This" class="twitter_icon"/></p>
+						</a>
+					</div>
+								</div>
+
+			<div class="post_imageO">
+				<object data= type='image/jpg'></object>				<object data=uploads/IMG_20160520_230148.jpg class='feed_img_L' type='image/jpg'></object>				<object data=uploads/IMG_20160514_185341.jpg class='feed_img_R' type='image/jpg'></object>				<div id="vote_result_animation" class="fade-in one">
+					<div id="doughnutChart" class="chart"></div>
+				</div>
+			</div>
+			<p class="current_resultShow" onclick="results_show(event)">Current Results</p>
+			<div class="vote_result_1">25%</div>
+			<div class="vote_result_2">13%</div>
+			<div class="vote_result_3">63%</div>
+			<input type="hidden" name="post_answer_text1" value="2"/> <!--L-->
+			<input type="hidden" name="post_answer_text2" value="1"/> <!--O-->
+			<input type="hidden" name="post_answer_text3" value="5"/> <!--R--> 	
+		</article>		<article class="item">
+			<div class="post_question">
+				<div class='post_content'>What do you think of these gradients?</div>					<div class="endpost">
+						<form action="" method="post">
+							<input type="hidden" id="" value=" 43 " name="endpost_id"/>
+							<input type="submit" name="post_endpost" class="delete_btn_home" value="End Voting"/>
+						</form>
+						<a class="twitter"
+						href="https://twitter.com/intent/tweet?text=What%20do%20you%20think%20of%20these%20gradients%3F%20http%3A%2F%2Fcuecountapp.com%2Ffeed.php%3Fid%3D43" 
+						target="_blank">	
+							<p>Share your choice: <img src="assets/social_tweet.png" alt="Tweet This" class="twitter_icon"/></p>
+						</a>
+					</div>
+								</div>
+
+			<div class="post_imageO">
+				<object data=uploads/snake_1x.png type='image/jpg'></object>				<object data= class='feed_img_L' type='image/jpg'></object>				<object data= class='feed_img_R' type='image/jpg'></object>				<div id="vote_result_animation" class="fade-in one">
+					<div id="doughnutChart" class="chart"></div>
+				</div>
+			</div>
+			<p class="current_resultShow" onclick="results_show(event)">Current Results</p>
+			<div class="vote_result_1">20%</div>
+			<div class="vote_result_2">40%</div>
+			<div class="vote_result_3">40%</div>
+			<input type="hidden" name="post_answer_text1" value="1"/> <!--L-->
+			<input type="hidden" name="post_answer_text2" value="2"/> <!--O-->
+			<input type="hidden" name="post_answer_text3" value="2"/> <!--R--> 	
+		</article>		<article class="item">
+			<div class="post_question">
+				<div class='post_content'>Do you like this cover design?</div>					<div class="endpost">
+						<form action="" method="post">
+							<input type="hidden" id="" value=" 42 " name="endpost_id"/>
+							<input type="submit" name="post_endpost" class="delete_btn_home" value="End Voting"/>
+						</form>
+						<a class="twitter"
+						href="https://twitter.com/intent/tweet?text=Do%20you%20like%20this%20cover%20design%3F%20http%3A%2F%2Fcuecountapp.com%2Ffeed.php%3Fid%3D42" 
+						target="_blank">	
+							<p>Share your choice: <img src="assets/social_tweet.png" alt="Tweet This" class="twitter_icon"/></p>
+						</a>
+					</div>
+								</div>
+
+			<div class="post_imageO">
+				<object data=uploads/ellieskull_1x.png type='image/jpg'></object>				<object data= class='feed_img_L' type='image/jpg'></object>				<object data= class='feed_img_R' type='image/jpg'></object>				<div id="vote_result_animation" class="fade-in one">
+					<div id="doughnutChart" class="chart"></div>
+				</div>
+			</div>
+			<p class="current_resultShow" onclick="results_show(event)">Current Results</p>
+			<div class="vote_result_1">20%</div>
+			<div class="vote_result_2">20%</div>
+			<div class="vote_result_3">60%</div>
+			<input type="hidden" name="post_answer_text1" value="1"/> <!--L-->
+			<input type="hidden" name="post_answer_text2" value="1"/> <!--O-->
+			<input type="hidden" name="post_answer_text3" value="3"/> <!--R--> 	
+		</article>		<article class="item">
+			<div class="post_question">
+				<div class='post_content'>Which typography do you like more?</div>					<div class="endpost">
+						<form action="" method="post">
+							<input type="hidden" id="" value=" 41 " name="endpost_id"/>
+							<input type="submit" name="post_endpost" class="delete_btn_home" value="End Voting"/>
+						</form>
+						<a class="twitter"
+						href="https://twitter.com/intent/tweet?text=Which%20typography%20do%20you%20like%20more%3F%20http%3A%2F%2Fcuecountapp.com%2Ffeed.php%3Fid%3D41" 
+						target="_blank">	
+							<p>Share your choice: <img src="assets/social_tweet.png" alt="Tweet This" class="twitter_icon"/></p>
+						</a>
+					</div>
+								</div>
+
+			<div class="post_imageO">
+				<object data= type='image/jpg'></object>				<object data=uploads/pretty-01.jpg class='feed_img_L' type='image/jpg'></object>				<object data=uploads/dribbble.jpg class='feed_img_R' type='image/jpg'></object>				<div id="vote_result_animation" class="fade-in one">
+					<div id="doughnutChart" class="chart"></div>
+				</div>
+			</div>
+			<p class="current_resultShow" onclick="results_show(event)">Current Results</p>
+			<div class="vote_result_1">13%</div>
+			<div class="vote_result_2">13%</div>
+			<div class="vote_result_3">75%</div>
+			<input type="hidden" name="post_answer_text1" value="1"/> <!--L-->
+			<input type="hidden" name="post_answer_text2" value="1"/> <!--O-->
+			<input type="hidden" name="post_answer_text3" value="6"/> <!--R--> 	
+		</article>		<article class="item">
+			<div class="post_question">
+				<div class='post_content'>This is another test of the feed?</div> 
+					<div class="endpost">
+						<div class="post_ended">Vote Ended</div>
+						<a class="twitter"
+						href="https://twitter.com/intent/tweet?text=This%20is%20another%20test%20of%20the%20feed%3F%20http%3A%2F%2Fcuecountapp.com%2Ffeed.php%3Fid%3D40" 
+						target="_blank">	
+							<p>Share the results: <img src="assets/social_tweet.png" alt="Tweet This" class="twitter_icon"/></p>
+						</a>
+					</div>
+							</div>
+
+			<div class="post_imageO">
+				<object data=uploads/download-3.jpg type='image/jpg'></object>				<object data= class='feed_img_L' type='image/jpg'></object>				<object data= class='feed_img_R' type='image/jpg'></object>				<div id="vote_result_animation" class="fade-in one">
+					<div id="doughnutChart" class="chart"></div>
+				</div>
+			</div>
+			<p class="current_resultShow" onclick="results_show(event)">Current Results</p>
+			<div class="vote_result_1">18%</div>
+			<div class="vote_result_2">29%</div>
+			<div class="vote_result_3">53%</div>
+			<input type="hidden" name="post_answer_text1" value="3"/> <!--L-->
+			<input type="hidden" name="post_answer_text2" value="5"/> <!--O-->
+			<input type="hidden" name="post_answer_text3" value="9"/> <!--R--> 	
+		</article>		<article class="item">
+			<div class="post_question">
+				<div class='post_content'>This is the fifth question test!?</div> 
+					<div class="endpost">
+						<div class="post_ended">Vote Ended</div>
+						<a class="twitter"
+						href="https://twitter.com/intent/tweet?text=This%20is%20the%20fifth%20question%20test%21%3F%20http%3A%2F%2Fcuecountapp.com%2Ffeed.php%3Fid%3D39" 
+						target="_blank">	
+							<p>Share the results: <img src="assets/social_tweet.png" alt="Tweet This" class="twitter_icon"/></p>
+						</a>
+					</div>
+							</div>
+
+			<div class="post_imageO">
+				<object data=uploads/download.jpg type='image/jpg'></object>				<object data= class='feed_img_L' type='image/jpg'></object>				<object data= class='feed_img_R' type='image/jpg'></object>				<div id="vote_result_animation" class="fade-in one">
+					<div id="doughnutChart" class="chart"></div>
+				</div>
+			</div>
+			<p class="current_resultShow" onclick="results_show(event)">Current Results</p>
+			<div class="vote_result_1">10%</div>
+			<div class="vote_result_2">50%</div>
+			<div class="vote_result_3">40%</div>
+			<input type="hidden" name="post_answer_text1" value="1"/> <!--L-->
+			<input type="hidden" name="post_answer_text2" value="5"/> <!--O-->
+			<input type="hidden" name="post_answer_text3" value="4"/> <!--R--> 	
+		</article>		<article class="item">
+			<div class="post_question">
+				<div class='post_content'>Sharp as a tack! This is a test.</div> 
+					<div class="endpost">
+						<div class="post_ended">Vote Ended</div>
+						<a class="twitter"
+						href="https://twitter.com/intent/tweet?text=Sharp%20as%20a%20tack%21%20This%20is%20a%20test.%20http%3A%2F%2Fcuecountapp.com%2Ffeed.php%3Fid%3D38" 
+						target="_blank">	
+							<p>Share the results: <img src="assets/social_tweet.png" alt="Tweet This" class="twitter_icon"/></p>
+						</a>
+					</div>
+							</div>
+
+			<div class="post_imageO">
+				<object data=uploads/pen_.jpg type='image/jpg'></object>				<object data= class='feed_img_L' type='image/jpg'></object>				<object data= class='feed_img_R' type='image/jpg'></object>				<div id="vote_result_animation" class="fade-in one">
+					<div id="doughnutChart" class="chart"></div>
+				</div>
+			</div>
+			<p class="current_resultShow" onclick="results_show(event)">Current Results</p>
+			<div class="vote_result_1">9%</div>
+			<div class="vote_result_2">18%</div>
+			<div class="vote_result_3">73%</div>
+			<input type="hidden" name="post_answer_text1" value="1"/> <!--L-->
+			<input type="hidden" name="post_answer_text2" value="2"/> <!--O-->
+			<input type="hidden" name="post_answer_text3" value="8"/> <!--R--> 	
+		</article>		<article class="item">
+			<div class="post_question">
+				<div class='post_content'>This is a new test image to se if cropping works!</div> 
+					<div class="endpost">
+						<div class="post_ended">Vote Ended</div>
+						<a class="twitter"
+						href="https://twitter.com/intent/tweet?text=This%20is%20a%20new%20test%20image%20to%20se%20if%20cropping%20works%21%20http%3A%2F%2Fcuecountapp.com%2Ffeed.php%3Fid%3D37" 
+						target="_blank">	
+							<p>Share the results: <img src="assets/social_tweet.png" alt="Tweet This" class="twitter_icon"/></p>
+						</a>
+					</div>
+							</div>
+
+			<div class="post_imageO">
+				<object data=uploads/rkwj3DK.jpg type='image/jpg'></object>				<object data= class='feed_img_L' type='image/jpg'></object>				<object data= class='feed_img_R' type='image/jpg'></object>				<div id="vote_result_animation" class="fade-in one">
+					<div id="doughnutChart" class="chart"></div>
+				</div>
+			</div>
+			<p class="current_resultShow" onclick="results_show(event)">Current Results</p>
+			<div class="vote_result_1">9%</div>
+			<div class="vote_result_2">9%</div>
+			<div class="vote_result_3">82%</div>
+			<input type="hidden" name="post_answer_text1" value="1"/> <!--L-->
+			<input type="hidden" name="post_answer_text2" value="1"/> <!--O-->
+			<input type="hidden" name="post_answer_text3" value="9"/> <!--R--> 	
+		</article>		<article class="item">
+			<div class="post_question">
+				<div class='post_content'>Which painting do you like more?</div>					<div class="endpost">
+						<form action="" method="post">
+							<input type="hidden" id="" value=" 36 " name="endpost_id"/>
+							<input type="submit" name="post_endpost" class="delete_btn_home" value="End Voting"/>
+						</form>
+						<a class="twitter"
+						href="https://twitter.com/intent/tweet?text=Which%20painting%20do%20you%20like%20more%3F%20http%3A%2F%2Fcuecountapp.com%2Ffeed.php%3Fid%3D36" 
+						target="_blank">	
+							<p>Share your choice: <img src="assets/social_tweet.png" alt="Tweet This" class="twitter_icon"/></p>
+						</a>
+					</div>
+								</div>
+
+			<div class="post_imageO">
+				<object data= type='image/jpg'></object>				<object data=uploads/9kieHIz.jpg class='feed_img_L' type='image/jpg'></object>				<object data=uploads/912.jpg class='feed_img_R' type='image/jpg'></object>				<div id="vote_result_animation" class="fade-in one">
+					<div id="doughnutChart" class="chart"></div>
+				</div>
+			</div>
+			<p class="current_resultShow" onclick="results_show(event)">Current Results</p>
+			<div class="vote_result_1">29%</div>
+			<div class="vote_result_2">38%</div>
+			<div class="vote_result_3">33%</div>
+			<input type="hidden" name="post_answer_text1" value="7"/> <!--L-->
+			<input type="hidden" name="post_answer_text2" value="9"/> <!--O-->
+			<input type="hidden" name="post_answer_text3" value="8"/> <!--R--> 	
+		</article>		<article class="item">
+			<div class="post_question">
+				<div class='post_content'>I went on a walk today, how do you like this photo I took?</div>					<div class="endpost">
+						<form action="" method="post">
+							<input type="hidden" id="" value=" 35 " name="endpost_id"/>
+							<input type="submit" name="post_endpost" class="delete_btn_home" value="End Voting"/>
+						</form>
+						<a class="twitter"
+						href="https://twitter.com/intent/tweet?text=I%20went%20on%20a%20walk%20today%2C%20how%20do%20you%20like%20this%20photo%20I%20took%3F%20http%3A%2F%2Fcuecountapp.com%2Ffeed.php%3Fid%3D35" 
+						target="_blank">	
+							<p>Share your choice: <img src="assets/social_tweet.png" alt="Tweet This" class="twitter_icon"/></p>
+						</a>
+					</div>
+								</div>
+
+			<div class="post_imageO">
+				<object data=uploads/photo-1445964047600-cdbdb873673d.jpg type='image/jpg'></object>				<object data= class='feed_img_L' type='image/jpg'></object>				<object data= class='feed_img_R' type='image/jpg'></object>				<div id="vote_result_animation" class="fade-in one">
+					<div id="doughnutChart" class="chart"></div>
+				</div>
+			</div>
+			<p class="current_resultShow" onclick="results_show(event)">Current Results</p>
+			<div class="vote_result_1">29%</div>
+			<div class="vote_result_2">32%</div>
+			<div class="vote_result_3">39%</div>
+			<input type="hidden" name="post_answer_text1" value="12"/> <!--L-->
+			<input type="hidden" name="post_answer_text2" value="13"/> <!--O-->
+			<input type="hidden" name="post_answer_text3" value="16"/> <!--R--> 	
+		</article></div> <!-- = = END OF GRID = = -->
+<!--<footer>
+		<h4>This is the bottom footer</h4>
+	</footer>--> 
+<script type="text/javascript">
+	$(window).load(function() {
+		$('.grid').masonry({
+		itemSelector: '.item',
+		isAnimated: true,
+		isFitWidth: true
+		});
+	});
+</script> 

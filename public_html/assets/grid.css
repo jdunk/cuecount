@@ -1,0 +1,24 @@
+/*IMAGE VIEW*/
+.grid, .grid-sizer, .item {}
+/* ---- grid ---- */
+.grid {
+	width:100%;
+}/* clear fix */
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}/* ---- .grid-item ---- */
+.grid-sizer,
+.item {
+}.item {
+  float: left;
+}
+@media only screen and (min-width: 880px) {
+
+.grid {
+	width:840px;
+	margin:0 auto;
+	}
+
+}

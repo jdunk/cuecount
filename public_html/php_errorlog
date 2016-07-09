@@ -1,0 +1,12 @@
+[09-Feb-2016 17:32:20 CST6CDT] PHP Fatal error:  require(): Failed opening required 'public_html/blog/wp-blog-header.php' (include_path='.:/usr/local/php56/pear') in /home/cuecount/public_html/blog.php on line 5
+[21-Feb-2016 10:54:34 CST6CDT] PHP Fatal error:  require(): Failed opening required '/blog/wp-blog-header.php' (include_path='.:/usr/local/php56/pear') in /home/cuecount/public_html/index.php on line 85
+[26-Apr-2016 16:12:28 CST6CDT] PHP Fatal error:  require_once(): Failed opening required 'class.user.php' (include_path='.:/usr/local/php56/pear') in /home/cuecount/public_html/index.php on line 3
+[26-Apr-2016 16:14:07 CST6CDT] PHP Fatal error:  require_once(): Failed opening required '/home/cuecount/public_html/class.user.php' (include_path='.:/usr/local/php56/pear') in /home/cuecount/public_html/index.php on line 3
+[26-Apr-2016 16:14:36 CST6CDT] PHP Fatal error:  require_once(): Failed opening required 'http://cuecountapp.com/class.user.php' (include_path='.:/usr/local/php56/pear') in /home/cuecount/public_html/index.php on line 3
+[27-Apr-2016 05:42:33 UTC] PHP Warning:  mysqli_real_connect(): (28000/1045): Access denied for user 'cuecount_wp653'@'localhost' (using password: YES) in /home/cuecount/public_html/blog/wp-includes/wp-db.php on line 1489
+[27-Apr-2016 05:42:33 UTC] PHP Warning:  mysql_connect(): Access denied for user 'cuecount_wp653'@'localhost' (using password: YES) in /home/cuecount/public_html/blog/wp-includes/wp-db.php on line 1515
+[28-Jun-2016 21:29:53 CST6CDT] PHP Fatal error:  require_once(): Failed opening required 'mailer/class.phpmailer.php' (include_path='.:/usr/local/php56/pear') in /home/cuecount/public_html/class.user.php on line 112
+[07-Jul-2016 23:27:00 CST6CDT] PHP Fatal error:  Cannot redeclare jdlog() (previously declared in /home/cuecount/public_html/db_conn3.php:2) in /home/cuecount/public_html/db_conn3.php on line 4
+[07-Jul-2016 23:28:25 CST6CDT] PHP Fatal error:  Cannot redeclare jdlog() (previously declared in /home/cuecount/public_html/db_conn3.php:2) in /home/cuecount/public_html/db_conn3.php on line 4
+[07-Jul-2016 23:29:35 CST6CDT] PHP Fatal error:  Cannot redeclare asdf() (previously declared in /home/cuecount/public_html/db_conn3.php:5) in /home/cuecount/public_html/db_conn3.php on line 5
+[08-Jul-2016 00:09:17 CST6CDT] PHP Fatal error:  Call to undefined function jdlog() in /home/cuecount/public_html/feed.php on line 4
