@@ -31,17 +31,18 @@ class feeds {
             </a>
           </div>
                   <div class="post_imageO">
-                    <?php 
-if (!empty($row['post_imageO_path'])) 
-	echo "<object data=" . $row['post_imageO_path'] . " type='image/jpg'></object>";
-
-if (!empty($row['post_imageL_path'])) 
-	echo "<object data=" . $row['post_imageL_path'] . " class='feed_img_L' type='image/jpg'></object>";
-
-if (!empty($row['post_imageR_path'])) 
-	echo "<object data=" . $row['post_imageR_path'] . " class='feed_img_R' type='image/jpg'></object>";
-?>
+                    <?php echo  "<object data=" . $row['post_imageO_path'] . " type='image/jpg'></object>";?>
+                    <?php echo  "<object data=" . $row['post_imageL_path'] . " class='feed_img_L' type='image/jpg'></object>";?>
+                    <?php echo  "<object data=" . $row['post_imageR_path'] . " class='feed_img_R' type='image/jpg'></object>";?>
                     <div id="vote_result_animation" class="fade-in one">
+                    <a class="twitter"
+                      href="https://twitter.com/intent/tweet?text=<?php echo rawurlencode($row['post_content']);?>%20http%3A%2F%2Fcuecountapp.com%2Ffeed.php%3Fid%3D<?php echo $row['id']; ?>" 
+                      target="_blank"> 
+                      <div class="call-to-action">
+                          Share this choice
+                          <img src="assets/social_tweet.png" alt="Tweet This" class="twitter_icon"/>
+                      </div>
+                    </a>
                       <div id="doughnutChart" class="chart"></div>
                     </div>
                   </div>
@@ -111,5 +112,5 @@ if (!empty($row['post_imageR_path']))
 }	// FEEDS
 
 $obj = new Feeds();
-$data = $obj->main(); 
+$data = $obj->main();
 ?>

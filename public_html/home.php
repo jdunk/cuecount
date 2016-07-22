@@ -42,9 +42,15 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
     <article class="item">
     	<div class="upload_choice" id="upload_choice">
             <h3>Upload a Current Decision:</h3>
-            <p class="cc_button" onClick="form_show('yn_upload','upload_choice')">Yes/No (Single Image)</p>
+            <p class="cc_button" onClick="form_show('yn_upload','upload_choice')">Yes/No <br>(Single Image)
+            	<br>
+            	<img src="assets/single_upload.png" alt=""/>
+            </p>
             <br>
-            <p class="cc_button" onClick="form_show('c_upload','upload_choice')">Choice (Double Image)</p>
+            <p class="cc_button" onClick="form_show('c_upload','upload_choice')">Choose Either <br>(Double Image)
+            	<br>
+            	<img src="assets/double_upload.png" alt=""/>
+            </p>
         </div>
         <form action="home.php" method="post" enctype="multipart/form-data">
 		    <input type="hidden" name="post_type" value="post_YN"/><!-- = = = = POST TYPE = = = = -->
@@ -326,7 +332,8 @@ if ($image_size_L == FALSE && $image_size_R == FALSE)
 /* = = = = = = = = = = = = = =  
 	ECHO OUT UPLOADES HERE 
 = = = = = = = = = = = = = = = */
-$result = mysqli_query($conn3, "SELECT * FROM decision_post WHERE post_email='".$row['userEmail']."' ORDER BY id DESC");
+$sql="SELECT * FROM decision_post WHERE post_email='".$row['userEmail']."' ORDER BY id DESC";
+$result=mysqli_query($conn3, $sql);
 while($row=mysqli_fetch_assoc($result)) {	
 	foreach ($result as $row) {
 		$count = $row['post_answer1']+$row['post_answer2']+$row['post_answer3']; 
@@ -361,7 +368,7 @@ while($row=mysqli_fetch_assoc($result)) {
 				<?php } ?>
 			</div>
 
-			<div class="post_imageO jared-home">
+			<div class="post_imageO">
 				<?php echo "<object data=" . $row['post_imageO_path'] . " type='image/jpg'></object>";?>
 				<?php echo "<object data=" . $row['post_imageL_path'] . " class='feed_img_L' type='image/jpg'></object>";?>
 				<?php echo "<object data=" . $row['post_imageR_path'] . " class='feed_img_R' type='image/jpg'></object>";?>
@@ -381,6 +388,9 @@ while($row=mysqli_fetch_assoc($result)) {
 }  
 ?>
 </div> <!-- = = END OF GRID = = -->
+<!--<footer>
+		<h4>This is the bottom footer</h4>
+	</footer>--> 
 <script type="text/javascript">
 	$(window).load(function() {
 		$('.grid').masonry({

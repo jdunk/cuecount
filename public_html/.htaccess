@@ -115,6 +115,3 @@ order allow,deny
 allow from all
 </Files>
 
-deny from 24.47.142.110
-deny from 5.178.78.78
-deny from 168.1.92.52

@@ -10,3 +10,11 @@
 [07-Jul-2016 23:28:25 CST6CDT] PHP Fatal error:  Cannot redeclare jdlog() (previously declared in /home/cuecount/public_html/db_conn3.php:2) in /home/cuecount/public_html/db_conn3.php on line 4
 [07-Jul-2016 23:29:35 CST6CDT] PHP Fatal error:  Cannot redeclare asdf() (previously declared in /home/cuecount/public_html/db_conn3.php:5) in /home/cuecount/public_html/db_conn3.php on line 5
 [08-Jul-2016 00:09:17 CST6CDT] PHP Fatal error:  Call to undefined function jdlog() in /home/cuecount/public_html/feed.php on line 4
+[09-Jul-2016 19:29:16 CST6CDT] PHP Fatal error:  require_once(): Failed opening required 'mailer/class.phpmailer.php' (include_path='.:/usr/local/php56/pear') in /home/cuecount/public_html/class.user.php on line 112
+[10-Jul-2016 00:47:59 UTC] PHP Warning:  mysqli_real_connect(): (28000/1045): Access denied for user 'cuecount_wp653'@'localhost' (using password: YES) in /home/cuecount/public_html/blog/wp-includes/wp-db.php on line 1489
+[10-Jul-2016 00:47:59 UTC] PHP Warning:  mysql_connect(): Access denied for user 'cuecount_wp653'@'localhost' (using password: YES) in /home/cuecount/public_html/blog/wp-includes/wp-db.php on line 1515
+[10-Jul-2016 00:55:48 UTC] PHP Warning:  mysqli_real_connect(): (28000/1045): Access denied for user 'cuecount_wp653'@'localhost' (using password: YES) in /home/cuecount/public_html/blog/wp-includes/wp-db.php on line 1489
+[10-Jul-2016 00:55:48 UTC] PHP Warning:  mysql_connect(): Access denied for user 'cuecount_wp653'@'localhost' (using password: YES) in /home/cuecount/public_html/blog/wp-includes/wp-db.php on line 1515
+[10-Jul-2016 22:30:52 UTC] PHP Warning:  mysqli_real_connect(): (28000/1045): Access denied for user 'cuecount_wp653'@'localhost' (using password: YES) in /home/cuecount/public_html/blog/wp-includes/wp-db.php on line 1489
+[10-Jul-2016 22:30:52 UTC] PHP Warning:  mysql_connect(): Access denied for user 'cuecount_wp653'@'localhost' (using password: YES) in /home/cuecount/public_html/blog/wp-includes/wp-db.php on line 1515
+[10-Jul-2016 21:34:21 CST6CDT] PHP Fatal error:  require_once(): Failed opening required 'mailer/class.phpmailer.php' (include_path='.:/usr/local/php56/pear') in /home/cuecount/public_html/class.user.php on line 112

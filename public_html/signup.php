@@ -44,7 +44,7 @@ if(isset($_POST['btn-signup']))
 						Welcome to Cue Count!<br/>
 						To complete your registration please just click following link<br/>
 						<br /><br />
-						<a href='http://localhost/x/verify.php?id=$id&code=$code'>Click HERE to Activate :)</a>
+						<a href='http://cuecountapp.com/verify.php?id=$id&code=$code'>Click HERE to Activate :)</a>
 						<br /><br />
 						Thanks,";
 						
@@ -73,7 +73,7 @@ if(isset($_POST['btn-signup']))
     <link href='https://fonts.googleapis.com/css?family=Muli:300,300italic' rel='stylesheet' type='text/css'>
 	<link href="assets/styles.css" rel="stylesheet" media="screen">
 	<link href="assets/animation.css" rel="stylesheet" media="screen">
-	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; minimum-scale=1.0; user-scalable=no; target-densityDpi=device-dpi">
+	<meta name="viewport" content="width=device-width">
 	<script src="assets/jquery-1.11.3-jquery.min.js"></script>
 	<script src="assets/styles.js"></script>
 	<script src="assets/scripts.js"></script>
@@ -85,8 +85,19 @@ if(isset($_POST['btn-signup']))
     <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
   </head>
   <body id="login" class="login_bk">
+  
+  	<!-- Google Tag Manager -->
+	<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-KNRP9X"
+	height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+	new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+	j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+	'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+	})(window,document,'script','dataLayer','GTM-KNRP9X');</script>
+	<!-- End Google Tag Manager -->
+	
     <div class="">
-				<?php if(isset($msg)) echo $msg;  ?>
+		<?php if(isset($msg)) echo $msg;  ?>
       <form class="form-signin" method="post">
         <h2 class="form-signin-heading">Sign Up</h2><hr />
         <input type="text" class="input-block-level" placeholder="First Name" name="txtuname" required />

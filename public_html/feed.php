@@ -44,12 +44,24 @@ jdlog('?id is NOT set');
             content="http://cuecountapp.com/<?php echo $row_1_post_image_path;?>"/>
 	</head>
 <body class="fade-in one">
+<?php include_once("analyticstracking.php") ?>
+
+<!-- Google Tag Manager -->
+<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-KNRP9X"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KNRP9X');</script>
+<!-- End Google Tag Manager -->
+
 <div class="grid" id="load_data_table">
 	<div class="grid-sizer"></div>
 	<header class="item">
 		<img src="assets/mainLogo.png" class="company_logo" alt="Cue Count App"/>
 	    <h1>Choice is a beautiful thing</h1>
-	    <p>Share your daily decisions<br> and vote on others. <a href="http://cuecountapp.com" target="_blank">Learn more</a></p> 
+	    <p>Share your daily decisions<br> and vote on others. <a href="http://cuecountapp.com/about.php" target="_blank">Learn more</a></p> 
 	    <a href="home.php"><p class="cc_button" style="float:left;margin-right:20px;">Upload</p></a>
 	    <a href="index.php"><p class="cc_button" style="float:left;">Login</p></a>   
     </header>
@@ -87,6 +99,14 @@ if (isset($_GET['id'])) {
                     <?php echo  "<object data=" . $row_1['post_imageL_path'] . " class='feed_img_L' type='image/jpg'></object>";?>
                     <?php echo  "<object data=" . $row_1['post_imageR_path'] . " class='feed_img_R' type='image/jpg'></object>";?>
                     <div id="vote_result_animation" class="fade-in one">
+                    <a class="twitter"
+                      href="https://twitter.com/intent/tweet?text=<?php echo rawurlencode($row['post_content']);?>%20http%3A%2F%2Fcuecountapp.com%2Ffeed.php%3Fid%3D<?php echo $row_1['id']; ?>" 
+                      target="_blank"> 
+                      <div class="call-to-action">
+                          Share this choice
+                          <img src="assets/social_tweet.png" alt="Tweet This" class="twitter_icon"/>
+                      </div>
+                    </a>
                       <div id="doughnutChart" class="chart"></div>
                     </div>
                   </div>
@@ -244,7 +264,8 @@ function vote_3(e) {
         cache: false,
         success: function(){}
     });
-}   
+}  
+
 </script>
 <?php // require_once 'cache_footer.php'; ?>
 </body>

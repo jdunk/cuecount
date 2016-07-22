@@ -1,8 +1,3 @@
-<?php 
-/* Short and sweet */
-define('WP_USE_THEMES', false);
-require('blog/wp-blog-header.php');
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,16 +11,16 @@ require('blog/wp-blog-header.php');
     <title>Cue Count; Choice is beautiful</title>
 
     <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="assets/bootstrap.min.css" type="text/css">
 
     <!-- Custom Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Muli:300,400,600,700' rel='stylesheet' type='text/css'>
     
     <!-- Plugin CSS -->
-    <link rel="stylesheet" href="css/animate.min.css" type="text/css">
+    <link rel="stylesheet" href="assets/animate.min.css" type="text/css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/creative.css" type="text/css">
+    <link rel="stylesheet" href="assets/creative.css" type="text/css">
 </head>
 
 <body>
@@ -110,54 +105,16 @@ require('blog/wp-blog-header.php');
 
     <section class="bg-thirdly" id="subscribe">
         <div class="container">
-            <h2 class="section-heading">The Online Place to be a Human Being. Cue Count's Free & launching This Year!</h2>
+            <h2 class="section-heading">The Online Place to be a Human Being.</h2>
             
             <a href="#subscribe"></a>
             
-            <p class="text-faded">We are launching our first version this year;<br> you should be one of the first to experience it!
-                                
-            </p>
-                                
-            <div class="subscribe">
-            	<?php include 'subscribe_widget.php' ?>
-            </div>
+            <a href="http://cuecountapp.com/feed.php" class="btn btn-thirdly"><p>Use the App Now!</p></a>
                                 
         </div>
     </section>
     
     <!-- = = = = = = = = BLOG WIDGET = = = = = = = = = -->
-    
-    <div class="blogInset">
-    	<h3>Our Choices: Latest Thoughts</h3>
-        <br>
-		<hr class="light">
-        <br>
-        <div class="sliderNEWS">
-            <ul>
-				<?php
-                // Get the last 3 posts.
-                global $post;
-                $args = array( 'posts_per_page' => 3 );
-                $myposts = get_posts( $args );
-                foreach( $myposts as $post ) :	setup_postdata($post); 
-				?>
-            	<li class="IMAGE">
-           			<p> 
-						<?php 
-						the_title();
-						the_excerpt( sprintf(
-							__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'twentysixteen' ),
-							get_the_title()
-						) ); 
-						?> 
-                    </p>
-            	</li>
-          	    <?php endforeach; ?>
-            </ul>
-            <button class="prev"><p class="sliderNEWSp">&#8249;</p></button>
-            <button class="next"><p class="sliderNEWSp">&#8250;</p></button>
-    	</div>
-    </div>
     
     <footer>
 		<p class="footerLp">Cue Count site created using Bootstrap</p>

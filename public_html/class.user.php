@@ -119,9 +119,9 @@ class USER
 		$mail->Port       = 465;             
 		$mail->AddAddress($email);
 		$mail->Username="jamesemocko@gmail.com";  
-		$mail->Password="nfr18723";            
-		$mail->SetFrom('jamesemocko@gmail.com','Coding Cage');
-		$mail->AddReplyTo("jamesemocko@gmail.com","Coding Cage");
+		$mail->Password="mgtbde18723";            
+		$mail->SetFrom('jamesemocko@gmail.com','Cue Count');
+		$mail->AddReplyTo("jamesemocko@gmail.com","Cue Count");
 		$mail->Subject    = $subject;
 		$mail->MsgHTML($message);
 		$mail->Send();
