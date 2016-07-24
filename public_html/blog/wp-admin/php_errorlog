@@ -1,7 +1,0 @@
-[10-Feb-2016 21:12:14 UTC] PHP Fatal error:  Cannot redeclare theme_enqueue_styles() (previously declared in /home/cuecount/public_html/blog/wp-content/themes/twentysixteen-child/functions.php:4) in /home/cuecount/public_html/blog/wp-content/themes/twentysixteen-child/functions.php on line 20
-[01-Jul-2016 22:10:07 UTC] PHP Warning:  mysqli_real_connect(): (28000/1045): Access denied for user 'cuecount_wp653'@'localhost' (using password: YES) in /home/cuecount/public_html/blog/wp-includes/wp-db.php on line 1489
-[01-Jul-2016 22:10:07 UTC] PHP Warning:  mysql_connect(): Access denied for user 'cuecount_wp653'@'localhost' (using password: YES) in /home/cuecount/public_html/blog/wp-includes/wp-db.php on line 1515
-[01-Jul-2016 22:10:10 UTC] PHP Warning:  mysqli_real_connect(): (28000/1045): Access denied for user 'cuecount_wp653'@'localhost' (using password: YES) in /home/cuecount/public_html/blog/wp-includes/wp-db.php on line 1489
-[01-Jul-2016 22:10:10 UTC] PHP Warning:  mysql_connect(): Access denied for user 'cuecount_wp653'@'localhost' (using password: YES) in /home/cuecount/public_html/blog/wp-includes/wp-db.php on line 1515
-[01-Jul-2016 22:13:12 UTC] PHP Warning:  mysqli_real_connect(): (28000/1045): Access denied for user 'cuecount_wp653'@'localhost' (using password: YES) in /home/cuecount/public_html/blog/wp-includes/wp-db.php on line 1489
-[01-Jul-2016 22:13:12 UTC] PHP Warning:  mysql_connect(): Access denied for user 'cuecount_wp653'@'localhost' (using password: YES) in /home/cuecount/public_html/blog/wp-includes/wp-db.php on line 1515
