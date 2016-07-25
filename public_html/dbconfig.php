@@ -5,7 +5,7 @@ class Database
      
     private $host = "localhost";
     private $db_name = "cuecount_proto";
-    private $username = "cuecount_wp653";
+    private $username = "cuecount_db_user";
     private $password = "cuecount123$";
     public $conn;
      
@@ -26,4 +26,3 @@ class Database
         return $this->conn;
     }
 }
-?>

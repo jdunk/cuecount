@@ -1,5 +1,6 @@
 <?php
-	$conn3 = mysqli_connect("localhost","cuecount_wp653","cuecount123$","cuecount_proto") or die('error');
+//	$conn3 = mysqli_connect("localhost","cuecount_wp653","cuecount123$","cuecount_proto") or die('error');
+    require('db_conn3.php');
 	$result = mysqli_query($conn3,"SELECT id FROM decision_post ORDER BY id DESC LIMIT 1");
     while($row=mysqli_fetch_assoc($result)) {	
 		foreach ($result as $row) {

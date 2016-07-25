@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 0);
+ini_set('log_errors', 1);
+ini_set('error_reporting', -1);
 if (!function_exists('jdlog')) {
 function jdlog($str) {
 	if (!is_string($str)) {
@@ -10,7 +13,7 @@ function jdlog($str) {
 }
 }
 if (empty($GLOBALS['conn3'])) {
-	$GLOBALS['conn3'] = mysqli_connect("localhost","cuecount_wp653","cuecount123$","cuecount_proto") or die ('error with database');
+	$GLOBALS['conn3'] = mysqli_connect("localhost","cuecount_db_user","cuecount123$","cuecount_proto") or die('error connecting to database');
 }
 
 $conn3 = $GLOBALS['conn3'];
