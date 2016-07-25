@@ -95,9 +95,19 @@ if (isset($_GET['id'])) {
 <?php jdlog([
 'row_1' => $row_1
 ]); ?>
-                    <?php echo  "<object data=" . $row_1['post_imageO_path'] . " type='image/jpg'></object>";?>
-                    <?php echo  "<object data=" . $row_1['post_imageL_path'] . " class='feed_img_L' type='image/jpg'></object>";?>
-                    <?php echo  "<object data=" . $row_1['post_imageR_path'] . " class='feed_img_R' type='image/jpg'></object>";?>
+                    <?php
+
+                    if (!empty($row_1['post_imageO_path'])) {
+                        echo  "<object data=" . $row_1['post_imageO_path'] . " type='image/jpg'></object>";
+                    }
+                    else {
+                        if (!empty($row_1['post_imageL_path']))
+                            echo  "<object data=" . $row_1['post_imageL_path'] . " class='feed_img_L' type='image/jpg'></object>";
+                        if (!empty($row_1['post_imageR_path']))
+                            echo  "<object data=" . $row_1['post_imageR_path'] . " class='feed_img_R' type='image/jpg'></object>";
+                    }
+
+                    ?>
                     <div id="vote_result_animation" class="fade-in one">
                     <a class="twitter"
                       href="https://twitter.com/intent/tweet?text=<?php echo rawurlencode($row['post_content']);?>%20http%3A%2F%2Fcuecountapp.com%2Ffeed.php%3Fid%3D<?php echo $row_1['id']; ?>" 
