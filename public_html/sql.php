@@ -31,9 +31,14 @@ class feeds {
             </a>
           </div>
                   <div class="post_imageO">
-                    <?php echo  "<object data=" . $row['post_imageO_path'] . " type='image/jpg'></object>";?>
-                    <?php echo  "<object data=" . $row['post_imageL_path'] . " class='feed_img_L' type='image/jpg'></object>";?>
-                    <?php echo  "<object data=" . $row['post_imageR_path'] . " class='feed_img_R' type='image/jpg'></object>";?>
+                  <?php
+                    if (!empty($row['post_imageO_path']))
+                        echo  "<object data=" . $row['post_imageO_path'] . " type='image/jpg'></object>";
+                    else {
+                        echo  "<object data=" . $row['post_imageL_path'] . " class='feed_img_L' type='image/jpg'></object>";
+                        echo  "<object data=" . $row['post_imageR_path'] . " class='feed_img_R' type='image/jpg'></object>";
+                    }
+                    ?>
                     <div id="vote_result_animation" class="fade-in one">
                     <a class="twitter"
                       href="https://twitter.com/intent/tweet?text=<?php echo rawurlencode($row['post_content']);?>%20http%3A%2F%2Fcuecountapp.com%2Ffeed.php%3Fid%3D<?php echo $row['id']; ?>" 
