@@ -33,10 +33,10 @@ class feeds {
                   <div class="post_imageO">
                   <?php
                     if (!empty($row['post_imageO_path']))
-                        echo  "<object data=" . $row['post_imageO_path'] . " type='image/jpg'></object>";
+                        echo  "<object data='" . $row['post_imageO_path'] . "' type='image/jpg'></object>";
                     else {
-                        echo  "<object data=" . $row['post_imageL_path'] . " class='feed_img_L' type='image/jpg'></object>";
-                        echo  "<object data=" . $row['post_imageR_path'] . " class='feed_img_R' type='image/jpg'></object>";
+                        echo  "<object data='" . $row['post_imageL_path'] . "' class='feed_img_L' type='image/jpg'></object>";
+                        echo  "<object data='" . $row['post_imageR_path'] . "' class='feed_img_R' type='image/jpg'></object>";
                     }
                     ?>
                     <div id="vote_result_animation" class="fade-in one">
