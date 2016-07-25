@@ -119,7 +119,7 @@ class USER
 		$mail->Port       = 465;             
 		$mail->AddAddress($email);
 		$mail->Username="jamesemocko@gmail.com";  
-		$mail->Password="mgtbde18723";            
+		$mail->Password="mgtnfr187230-";
 		$mail->SetFrom('jamesemocko@gmail.com','Cue Count');
 		$mail->AddReplyTo("jamesemocko@gmail.com","Cue Count");
 		$mail->Subject    = $subject;
