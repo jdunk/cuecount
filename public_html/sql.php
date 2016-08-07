@@ -43,9 +43,13 @@ class feeds {
                     <a class="twitter"
                       href="https://twitter.com/intent/tweet?text=<?php echo rawurlencode($row['post_content']);?>%20http%3A%2F%2Fcuecountapp.com%2Ffeed.php%3Fid%3D<?php echo $row['id']; ?>" 
                       target="_blank"> 
-                      <div class="call-to-action">
-                          Share this choice
+                      <div class="call-to-action">Share this Choice
                           <img src="assets/social_tweet.png" alt="Tweet This" class="twitter_icon"/>
+                      </div>
+                    </a>
+                    <a class="twitter" href="#next_post"> 
+                      <div class="next-button">Next
+                          <img src="assets/arrow-down.png" alt="Tweet This" class="twitter_icon"/>
                       </div>
                     </a>
                       <div id="doughnutChart" class="chart"></div>

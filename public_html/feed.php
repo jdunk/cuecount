@@ -90,6 +90,11 @@ if (isset($_GET['id'])) {
                     target="_blank"> 
                     <img src="assets/social_tweet.png" alt="Tweet This" class="twitter_icon"/>
                 </a>
+                <a class="twitter" href="#next_post"> 
+                    <div class="next-button">Next
+                        <img src="assets/arrow-down.png" alt="Tweet This" class="twitter_icon"/>
+                    </div>
+                </a>
           </div>
                   <div class="post_imageO jared">
 <?php jdlog([
