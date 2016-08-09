@@ -2,7 +2,7 @@
 class feeds {
 	public function query($to,$from) {
     require 'db_conn3.php'; 
-		$query = "SELECT * from decision_post where id<$from and id>$to and post_endpost='' ORDER BY id DESC";
+		$query = "SELECT * FROM decision_post WHERE id<$from AND post_endpost='' ORDER BY id DESC LIMIT 5";
 		$result = mysqli_query($conn3,$query);
 		$count = mysqli_num_rows($result);
 		$data = '';
@@ -105,6 +105,7 @@ class feeds {
 	{
 		if(isset($_POST['to']))
 		{
+			// "to" is really *from*
 			$from=$_POST['to'];
       $to = $from-5;
       $data = $this->query($to,$from);
