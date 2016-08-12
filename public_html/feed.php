@@ -207,6 +207,7 @@ $( function() {
 });
 function vote_1(e) {
     e.preventDefault();
+    $($('#object', $(e.currentTarget).closest("article"))).addClass("expandUp");
     // == == == SHOW RESULTS
     $(e.currentTarget).parents('form.vote_form').css("display","none");
     $($('#vote_result_animation', $(e.currentTarget).closest("article"))).css("display","block");
@@ -232,6 +233,7 @@ function vote_1(e) {
 }
 function vote_2(e) {
     e.preventDefault();
+    $($('#object', $(e.currentTarget).closest("article"))).addClass("expandUp");
     // == == == SHOW RESULTS
     $(e.currentTarget).parents('form.vote_form').css("display","none");
     $($('#vote_result_animation', $(e.currentTarget).closest("article"))).css("display","block");
@@ -257,6 +259,7 @@ function vote_2(e) {
 }
 function vote_3(e) {
     e.preventDefault();
+    $($('#object', $(e.currentTarget).closest("article"))).addClass("expandUp");
     // == == == SHOW RESULTS
     $(e.currentTarget).parents('form.vote_form').css("display","none");
     $($('#vote_result_animation', $(e.currentTarget).closest("article"))).css("display","block");
@@ -280,7 +283,6 @@ function vote_3(e) {
         success: function(){}
     });
 }  
-
 </script>
 <?php // require_once 'cache_footer.php'; ?>
 </body>
