@@ -30,6 +30,7 @@ jdlog('?id is NOT set');
 		<link href="assets/styles.css" rel="stylesheet" media="screen">
 		<script src="scripts.js"></script>
 		<script src="assets/animation.js"></script>
+
 		<script src="assets/masonry.pkgd.min.js"></script>
 		<script src="assets/imagesloaded.pkgd.min.js"></script>
 		<script src="cookies.js"></script>
@@ -284,6 +285,9 @@ function vote_3(e) {
     });
 }  
 </script>
+<!-- /container 
+        <script src="assests/mo.min.js"></script>
+        <script src="assests/demo.js"></script>-->
 <?php // require_once 'cache_footer.php'; ?>
 </body>
 </html>

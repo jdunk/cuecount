@@ -52,7 +52,7 @@ class feeds {
 	                      </div>
 	                    </a>
 
-	                    <a class="twitter" href="#<?php echo $row['id']+1; ?>"> 
+	                    <a class="twitter" href="#<?php echo $row['id']-1; ?>"> 
 	                      <div class="next-button">Next
 	                          <img src="assets/arrow-down.png" alt="Tweet This" class="twitter_icon"/>
 	                      </div>

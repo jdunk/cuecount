@@ -698,8 +698,8 @@ expandUp
 .expandUp{
 	animation-name: expandUp;
 	-webkit-animation-name: expandUp;	
-	animation-duration: 2.0s;	
-	-webkit-animation-duration: 2.0s;
+	animation-duration: 4.0s;	
+	-webkit-animation-duration: 4.0s;
 	animation-timing-function: ease;	
 	-webkit-animation-timing-function: ease;		
 	visibility: visible !important;	
@@ -717,6 +717,7 @@ expandUp
 	top:20%;
 	z-index: 110;
 	color:#000;
+	opacity: 0;
 }
 
 @keyframes expandUp {
