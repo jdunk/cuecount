@@ -71,7 +71,7 @@ class feeds {
                               onclick="vote_2(event);
                                       ani(event);
                                       SetCookie('<?php echo $row['id']; ?>','true',60);"
-                             class="answer_O icobutton" id="<?php echo $row['id']; ?> expandUpBtn" value="I don't care"/>
+                             class="answer_O icobutton" id="<?php echo $row['id']; ?> expandUpBtn" value="&#8767;"/>
 
                         <input type="submit" name="post_answer3" 
                               onclick="vote_3(event);

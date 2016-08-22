@@ -176,9 +176,9 @@ echo $data;
 require_once 'voting.php';
 ?>	
 </div> <!-- = = END OF GRID = = -->
-<div class="section_loadmore">
-<button class="loadmore" >Loadmore</button> <!--ITEM LOADMORE-->
-</div>
+    <button class="section_loadmore loadmore">
+        <p>Loadmore</p> <!--ITEM LOADMORE-->
+    </button>
 <script type="text/javascript">
 $(window).load(function() {
 	$('.grid').masonry({
@@ -224,7 +224,7 @@ function vote_1(e) {
     e.preventDefault();
     $($('#object', $(e.currentTarget).closest("article"))).addClass("expandUp");
     // == == == SHOW RESULTS
-    $(e.currentTarget).parents('form.vote_form').css("display","none");
+    $(e.currentTarget).parents('.vote_wrap').css("display","none");
     $($('#vote_result_animation', $(e.currentTarget).closest("article"))).css("display","block");
     // == == == PUT INDIVIDUAL RESULTS IN BOTTOM
     $($('.vote_result_1', $(e.currentTarget).closest("div.vote_wrap"))).text($(e.currentTarget).siblings("input[name='post_answer_L']").val());
@@ -252,7 +252,7 @@ function vote_2(e) {
     e.preventDefault();
     $($('#object', $(e.currentTarget).closest("article"))).addClass("expandUp");
     // == == == SHOW RESULTS
-    $(e.currentTarget).parents('form.vote_form').css("display","none");
+    $(e.currentTarget).parents('.vote_wrap').css("display","none");
     $($('#vote_result_animation', $(e.currentTarget).closest("article"))).css("display","block");
     // == == == PUT INDIVIDUAL RESULTS IN BOTTOM
     $($('.vote_result_1', $(e.currentTarget).closest("div.vote_wrap"))).text($(e.currentTarget).siblings("input[name='post_answer_L']").val());
@@ -280,7 +280,7 @@ function vote_3(e) {
     e.preventDefault();
     $($('#object', $(e.currentTarget).closest("article"))).addClass("expandUp");
     // == == == SHOW RESULTS
-    $(e.currentTarget).parents('form.vote_form').css("display","none");
+    $(e.currentTarget).parents('.vote_wrap').css("display","none");
     $($('#vote_result_animation', $(e.currentTarget).closest("article"))).css("display","block");
     // == == == PUT INDIVIDUAL RESULTS IN BOTTOM
     $($('.vote_result_1', $(e.currentTarget).closest("div.vote_wrap"))).text($(e.currentTarget).siblings("input[name='post_answer_L']").val());

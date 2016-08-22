@@ -56,8 +56,8 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 		    <input type="hidden" name="post_type" value="post_YN"/><!-- = = = = POST TYPE = = = = -->
 	        <input type="hidden" name="post_fname" value="<?php echo $row['userName']; ?>"/><!-- = = = = FIRST NAME = = = = -->	
 	        <input type="hidden" name="post_email" value="<?php echo $row['userEmail']; ?>"/><!-- = = = = ACCOUNT EMAIL = = = = -->	
-	        <input type="hidden" name="post_answerR" value="Yes"/><!-- = = = = "YES" = = = = -->	
-	        <input type="hidden" name="post_answerL" value="No"/><!-- = = = = "NO" = = = = -->	
+	        <input type="hidden" name="post_answerR" value="&#10003;"/><!-- = = = = "YES" = = = = -->	
+	        <input type="hidden" name="post_answerL" value="&#215;"/><!-- = = = = "NO" = = = = -->	
 	        <input type="hidden" name="post_answer1" value="1"/><!-- = = = = "1" = = = = -->	
 	        <input type="hidden" name="post_answer2" value="1"/><!-- = = = = "1" = = = = -->	
 	        <input type="hidden" name="post_answer3" value="1"/><!-- = = = = "1" = = = = -->
@@ -83,8 +83,8 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
         	<input type="hidden" name="post_type" value="post_C"/><!-- = = = = POST TYPE = = = = -->
 	        <input type="hidden" name="post_fname" value="<?php echo $row['userName']; ?>"/><!-- = = = = FIRST NAME = = = = -->	
 	        <input type="hidden" name="post_email" value="<?php echo $row['userEmail']; ?>"/><!-- = = = = ACCOUNT EMAIL = = = = -->	
-	        <input type="hidden" name="post_answerR" value="Right"/><!-- = = = = "Right" = = = = -->	
-	        <input type="hidden" name="post_answerL" value="Left"/><!-- = = = = "Left" = = = = -->	
+	        <input type="hidden" name="post_answerR" value="&#10003;"/><!-- = = = = "Right" = = = = -->	
+	        <input type="hidden" name="post_answerL" value="&#10003;"/><!-- = = = = "Left" = = = = -->	
 	        <input type="hidden" name="post_answer1" value="1"/><!-- = = = = "1" = = = = -->	
 	        <input type="hidden" name="post_answer2" value="1"/><!-- = = = = "1" = = = = -->	
 	        <input type="hidden" name="post_answer3" value="1"/><!-- = = = = "1" = = = = -->

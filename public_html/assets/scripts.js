@@ -35,7 +35,7 @@ var loadFile_R = function(event) {
 function show_vote_results(e,submit_id) {
     e.preventDefault();
     // == == == SHOW RESULTS
-    $(e.currentTarget).parents('form.vote_form').css("display","none");
+    $(e.currentTarget).parents('.vote_wrap').css("display","none");
     $($('#vote_result_animation', $(e.currentTarget).closest("article"))).css("display","block");
     // == == == PUT INDIVIDUAL RESULTS IN BOTTOM
     $($('.vote_result_1', $(e.currentTarget).closest("div.vote_wrap"))).text($(e.currentTarget).siblings("input[name='post_answer_L']").val());
