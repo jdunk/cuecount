@@ -17,19 +17,21 @@ class feeds {
 			  $id = $row['id'];
 			  $data = $data
 	      ?> 
-				<article class="item">
-          <?php echo  "<a name='".$row['id']."'></a>";?>
-          <div class="post_question">
-            <?php echo  "<div class='post_content'>" . $row['post_content'] . "</div>";?>
-            <div class="post_fname">
-              <?php echo  "<div>-" . $row['post_fname'] . "</div>";?>
-            </div>
-            <a class="twitter"
-                href="https://twitter.com/intent/tweet?text=<?php echo rawurlencode($row['post_content']);?>%20http%3A%2F%2Fcuecountapp.com%2Ffeed.php%3Fid%3D<?php echo $row['id']; ?>" 
-                target="_blank"> 
+				<div class="item" id="item">
+          <a class="twitter"
+              href="https://twitter.com/intent/tweet?text=<?php echo rawurlencode($row['post_content']);?>%20http%3A%2F%2Fcuecountapp.com%2Ffeed.php%3Fid%3D<?php echo $row['id']; ?>" 
+              target="_blank"> 
               <img src="assets/social_tweet.png" alt="Tweet This" class="twitter_icon"/>
-            </a>
-          </div>
+          </a>
+
+        <article>
+
+          <?php echo  "<a name='".$row['id']."'></a>";?>
+
+            <div class="post_question">
+              <?php echo  "<div class='post_content'>" . $row['post_content'] . " <div class='post_fname'>-" . $row['post_fname'] . "</div></div>";?>
+            </div>
+
                   <div class="post_imageO">
                   <?php
                     if (!empty($row['post_imageO_path']))
@@ -39,64 +41,83 @@ class feeds {
                         echo  "<object data='" . $row['post_imageR_path'] . "' class='feed_img_R' type='image/jpg'></object>";
                     }
                     ?>
+
+                    <div class="vote_wrap">
+                      <?php $cookie_name = $row['id']; $cookie_value = 'true';
+                      if (isset($_COOKIE[$row['id']])) { ?>
+                          <p class="current_resultShow" onclick="results_show(event)" id="expandUpBtn">Current Results</p>
+
+                          <input type="hidden" name="post_answer_text1" value="<?php echo $row['post_answer1']; ?>"/> <!--L-->
+                          <input type="hidden" name="post_answer_text2" value="<?php echo $row['post_answer2']; ?>"/> <!--O-->
+                          <input type="hidden" name="post_answer_text3" value="<?php echo $row['post_answer3']; ?>"/> <!--R--> 
+                        
+                      <?php } else { ?>
+                      <form action="feed.php" method="post" class="vote_form">
+                        <input type="hidden" name="input_id" class="input_id" value="<?php echo $row['id']; ?>"/> <!--ID-->
+                        <input type="hidden" name="post_answer_L" value="<?php echo $vote_1_percent; ?>"/> <!--L-->
+                        <input type="hidden" name="post_answer_O" value="<?php echo $vote_2_percent; ?>"/> <!--O-->
+                        <input type="hidden" name="post_answer_R" value="<?php echo $vote_3_percent; ?>"/> <!--R--> 
+                        <input type="hidden" name="post_answer_text1" value="<?php echo $row['post_answer1']; ?>"/> <!--L-->
+                        <input type="hidden" name="post_answer_text2" value="<?php echo $row['post_answer2']; ?>"/> <!--O-->
+                        <input type="hidden" name="post_answer_text3" value="<?php echo $row['post_answer3']; ?>"/> <!--R--> 
+                          
+                        <input type="submit" name="post_answer1" 
+                              onclick="vote_1(event);
+                                      ani(event);
+                                      SetCookie('<?php echo $row['id']; ?>','true',60);"
+                              class="answer_L icobutton" id="<?php echo $row['id']; ?> expandUpBtn" value="<?php echo $row['post_answerL']; ?>"/>
+
+                        <input type="submit" name="post_answer2" 
+                              onclick="vote_2(event);
+                                      ani(event);
+                                      SetCookie('<?php echo $row['id']; ?>','true',60);"
+                             class="answer_O icobutton" id="<?php echo $row['id']; ?> expandUpBtn" value="I don't care"/>
+
+                        <input type="submit" name="post_answer3" 
+                              onclick="vote_3(event);
+                                      ani(event);
+                                      SetCookie('<?php echo $row['id']; ?>','true',60);"
+                             class="answer_R icobutton" id="<?php echo $row['id']; ?> expandUpBtn" value=" <?php echo $row['post_answerR']; ?> "/>
+                      </form>
+                      <?php } ?>
+                        
+                    </div>
+
                     <div id="vote_result_animation" class="fade-in one">
-	                    <div id="object" class="">
-	                    	The Masses Agree with You!
-	                    </div>
 
-	                    <a class="twitter"
-	                      href="https://twitter.com/intent/tweet?text=<?php echo rawurlencode($row['post_content']);?>%20http%3A%2F%2Fcuecountapp.com%2Ffeed.php%3Fid%3D<?php echo $row['id']; ?>" 
-	                      target="_blank"> 
-	                      <div class="call-to-action">Share this Choice
-	                          <img src="assets/social_tweet.png" alt="Tweet This" class="twitter_icon"/>
-	                      </div>
-	                    </a>
+                      <div id="object" class="results_message">The Masses Agree with You!</div>
 
-	                    <a class="twitter" href="#<?php echo $row['id']-1; ?>"> 
-	                      <div class="next-button">Next
-	                          <img src="assets/arrow-down.png" alt="Tweet This" class="twitter_icon"/>
-	                      </div>
-	                    </a>
+                      <div id="doughnutChart" class="chart"></div>
 
-                        <div id="doughnutChart" class="chart"></div>
+                      <div id="chart">
+                        <ul id="numbers">
+                          <li><span>NO</span></li>
+                          <li><span>NUTRAL</span></li>
+                          <li><span>YES</span>
+                        </ul>
+                      </div>
+
+                      <a href="#" class="show_data" onclick="show_extended_data(event);">
+                        <img src="assets/chart.png" alt="Tweet This" class="twitter_icon"/>
+                      </a>
+
+                      <a class="" href="#<?php echo $row['id']-1; ?>"> 
+                        <div class="next-button">
+                          <img src="assets/arrow-down.png" alt="Tweet This" class="twitter_icon"/>
+                        </div>
+                      </a>
+                        
+                      <div id="" class="" style="display:none;">
+                        <div class="vote_result_1"><?php echo $vote_1_percent;?></div>
+                        <div class="vote_result_2"><?php echo $vote_2_percent;?></div>
+                        <div class="vote_result_3"><?php echo $vote_3_percent;?></div>
+                      </div>
+
                     </div>
                   </div>
-                  <div class="vote_wrap">
-                    <?php $cookie_name = $row['id']; $cookie_value = 'true';
-                    if (isset($_COOKIE[$row['id']])) { ?>
-                    <p class="current_resultShow" onclick="results_show(event)" id="expandUpBtn">Current Results</p>
-                    <div class="vote_result_1"><?php echo $vote_1_percent;?></div>
-                    <div class="vote_result_2"><?php echo $vote_2_percent;?></div>
-                    <div class="vote_result_3"><?php echo $vote_3_percent;?></div>
-                    <input type="hidden" name="post_answer_text1" value="<?php echo $row['post_answer1']; ?>"/> <!--L-->
-                    <input type="hidden" name="post_answer_text2" value="<?php echo $row['post_answer2']; ?>"/> <!--O-->
-                    <input type="hidden" name="post_answer_text3" value="<?php echo $row['post_answer3']; ?>"/> <!--R--> 
-                    <?php } else { ?>
-                    <form action="feed.php" method="post" class="vote_form">
-                      <input type="hidden" name="input_id" class="input_id" value="<?php echo $row['id']; ?>"/> <!--ID-->
-                      <input type="hidden" name="post_answer_L" value="<?php echo $vote_1_percent; ?>"/> <!--L-->
-                      <input type="hidden" name="post_answer_O" value="<?php echo $vote_2_percent; ?>"/> <!--O-->
-                      <input type="hidden" name="post_answer_R" value="<?php echo $vote_3_percent; ?>"/> <!--R--> 
-
-                      <input type="hidden" name="post_answer_text1" value="<?php echo $row['post_answer1']; ?>"/> <!--L-->
-                      <input type="hidden" name="post_answer_text2" value="<?php echo $row['post_answer2']; ?>"/> <!--O-->
-                      <input type="hidden" name="post_answer_text3" value="<?php echo $row['post_answer3']; ?>"/> <!--R--> 
-                        
-                      <input type="submit" name="post_answer1" onclick="vote_1(event);SetCookie('<?php echo $row['id']; ?>','true',60);"
-                           class="answer_L" id="<?php echo $row['id']; ?> expandUpBtn" value="<?php echo $row['post_answerL']; ?>"/>
-
-                      <input type="submit" name="post_answer2" onclick="vote_2(event);SetCookie('<?php echo $row['id']; ?>','true',60);"
-                           class="answer_O" id="<?php echo $row['id']; ?> expandUpBtn" value="I don't care"/>
-
-                      <input type="submit" name="post_answer3" onclick="vote_3(event);SetCookie('<?php echo $row['id']; ?>','true',60);"
-                           class="answer_R" id="<?php echo $row['id']; ?> expandUpBtn" value=" <?php echo $row['post_answerR']; ?> "/>
-                    </form>
-                    <?php } ?>
-                    <div class="vote_result_1"></div>
-                    <div class="vote_result_2"></div>
-                    <div class="vote_result_3"></div>   
-                  </div>
+                  
                 </article>
+              </div>
 				<?php ;
 			}
 			$data=$data.'<div class="final" val="'.$id.'" ></div>';

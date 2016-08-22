@@ -27,14 +27,20 @@ jdlog('?id is NOT set');
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title>Cue Count: Feed</title>
 		<script src="assets/jquery-1.11.3-jquery.min.js"></script>
+
 		<link href="assets/styles.css" rel="stylesheet" media="screen">
+        <link rel="stylesheet" type="text/css" href="assets/chart.css">
+
+
 		<script src="scripts.js"></script>
 		<script src="assets/animation.js"></script>
-
 		<script src="assets/masonry.pkgd.min.js"></script>
 		<script src="assets/imagesloaded.pkgd.min.js"></script>
 		<script src="cookies.js"></script>
+        <script src="assets/demo.js"></script>
+        <script src="assets/mo.min.js"></script>
         <link rel="canonical" href="http://cuecountapp.com/feed.php?id=<?php echo $row_1_id;?>">
+
 		<meta name="viewport" content="width=device-width">
 		<meta name="twitter:card" content="summary_large_image">
 		<meta name="twitter:title" content="Place your vote!">
@@ -206,6 +212,14 @@ $( function() {
 	});	
 });
 });
+
+function show_extended_data(e){
+    e.preventDefault();
+    $(e.currentTarget).siblings(".chart").css("display","none");
+    $(e.currentTarget).siblings(".results_message").css("display","none");
+    $(e.currentTarget).siblings("#chart").css("display","block");
+}
+
 function vote_1(e) {
     e.preventDefault();
     $($('#object', $(e.currentTarget).closest("article"))).addClass("expandUp");
@@ -222,6 +236,8 @@ function vote_1(e) {
         { title: "", value: Number($(e.currentTarget).siblings("input[name='post_answer_text2']").val()), color: "#EADAE5" },
         { title: "", value: Number($(e.currentTarget).siblings("input[name='post_answer_text3']").val()), color: "#FF4D4D" }
     ]);
+    // == == == VOTE ANIMATION - BOUNCE
+    $(e.currentTarget).closest("div.item").addClass('animation-target');
     var input_id = $(e.currentTarget).attr('id');
     var post_answer1 = $("input[name='post_answer1']").val();
     jQuery.ajax({
@@ -248,6 +264,8 @@ function vote_2(e) {
         { title: "", value: Number($(e.currentTarget).siblings("input[name='post_answer_text2']").val()), color: "#EADAE5" },
         { title: "", value: Number($(e.currentTarget).siblings("input[name='post_answer_text3']").val()), color: "#FF4D4D" }
     ]);
+    // == == == VOTE ANIMATION - BOUNCE
+    $(e.currentTarget).closest("div.item").addClass('animation-target');
     var input_id = $(e.currentTarget).attr('id');
     var post_answer2 = $("input[name='post_answer2']").val();
     jQuery.ajax({
@@ -274,6 +292,8 @@ function vote_3(e) {
         { title: "", value: Number($(e.currentTarget).siblings("input[name='post_answer_text2']").val()), color: "#EADAE5" },
         { title: "", value: Number($(e.currentTarget).siblings("input[name='post_answer_text3']").val()), color: "#FF4D4D" }
     ]);
+    // == == == VOTE ANIMATION - BOUNCE
+    $(e.currentTarget).closest("div.item").addClass('animation-target');
     var input_id = $(e.currentTarget).attr('id');
     var post_answer3 = $("input[name='post_answer3']").val();
     jQuery.ajax({
