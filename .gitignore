@@ -54,3 +54,12 @@ logs/
 mail/
 public_ftp/
 tmp/
+
+# from default laravel project .gitignore
+/node_modules
+/public/storage
+/vendor
+/.idea
+Homestead.json
+Homestead.yaml
+.env
