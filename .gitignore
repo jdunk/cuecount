@@ -33,6 +33,7 @@ Thumbs.db
 .mysql_history
 .softaculous/
 .ssh/
+.vagrant/
 .vim
 .viminfo
 .vimrc
