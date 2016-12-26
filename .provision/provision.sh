@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # set up bash
+cd /home/vagrant
 git clone https://github.com/jdunk/dotfiles 2>/dev/null
 echo 'cd /vagrant/
 SUPER_BASHRC="$HOME/dotfiles/.bashrc"
@@ -9,6 +10,7 @@ ln -nfs dotfiles/.gitconfig .gitconfig
 ln -nfs dotfiles/.vim .vim
 ln -nfs dotfiles/.vimrc .vimrc
 ln -nfs dotfiles/.screenrc .screenrc
+cd -
 
 # gnu screen
 apt-get install screen
@@ -29,4 +31,3 @@ ln -s /vagrant /var/www/cuecountapp.com
 
 # set up MySQL
 echo 'GRANT ALL ON *.* TO cuecount_db_user@`%` IDENTIFIED BY '\''cuecount123$'\''; FLUSH PRIVILEGES; CREATE DATABASE cuecount;' |mysql -uroot -psecret 2>/dev/null
-
