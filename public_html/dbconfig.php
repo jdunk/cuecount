@@ -4,7 +4,7 @@ class Database
 {
      
     private $host = "localhost";
-    private $db_name = "cuecount_proto";
+    private $db_name = "cuecount";
     private $username = "cuecount_db_user";
     private $password = "cuecount123$";
     public $conn;

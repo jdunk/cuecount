@@ -3,7 +3,7 @@ require_once 'class.user.php';
 
 // Create connection
 		$server   = "localhost";
-		$database = "cuecount_proto";
+		$database = "cuecount";
 		$username = "root";
 		$password = "root";
 	

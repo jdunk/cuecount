@@ -3,7 +3,7 @@
 if ( ! empty( $_POST ) ) {
   
   // Connect to MySQL
-  $mysqli = new mysqli( 'localhost', 'root', 'root', 'cuecount_proto' );
+  $mysqli = new mysqli( 'localhost', 'root', 'root', 'cuecount' );
   
   // Check our connection
   if ( $mysqli->connect_error ) {
