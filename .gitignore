@@ -53,6 +53,8 @@ less/
 logs/
 mail/
 public_ftp/
+public_html/uploads/*.jpg
+public_html/uploads/*.png
 tmp/
 
 # from default laravel project .gitignore
