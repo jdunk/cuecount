@@ -2,7 +2,6 @@
 
 class Database
 {
-     
     private $host = "localhost";
     private $db_name = "cuecount";
     private $username = "cuecount_db_user";

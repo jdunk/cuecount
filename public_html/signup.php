@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 require_once 'class.user.php';
 
@@ -8,7 +9,6 @@ if($reg_user->is_logged_in()!="")
 {
 	$reg_user->redirect('home.php');
 }
-
 
 if(isset($_POST['btn-signup']))
 {
@@ -26,7 +26,7 @@ if(isset($_POST['btn-signup']))
 		$msg = "
 		      <div class='alert alert-error'>
 				<button class='close' data-dismiss='alert'>&times;</button>
-					<strong>Sorry !</strong>  email allready exists , Please Try another one
+					<strong>Sorry!</strong> Email already exists. Please try another one.
 			  </div>
 			  ";
 	}
@@ -34,7 +34,7 @@ if(isset($_POST['btn-signup']))
 	{
 		if($reg_user->register($uname,$email,$upass,$code))
 		{			
-			$id = $reg_user->lasdID();		
+			$id = $reg_user->lastID();
 			$key = base64_encode($id);
 			$id = $key;
 			
@@ -54,14 +54,14 @@ if(isset($_POST['btn-signup']))
 			$msg = "
 					<div class='alert alert-success'>
 						<button class='close' data-dismiss='alert'>&times;</button>
-						<strong>Success!</strong>  We've sent an email to $email.
+						<strong>Success!</strong> We've sent an email to $email.
                     Please click on the confirmation link in the email to create your account. 
 			  		</div>
 					";
 		}
 		else
 		{
-			echo "sorry , Query could no execute...";
+			echo "sorry, we had a database error...";
 		}		
 	}
 }
