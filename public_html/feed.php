@@ -1,6 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <?php
-require 'db_conn3.php'; 
+require 'db_conn3.php';
 jdlog('here');
 if (isset($_GET['id'])) {
 jdlog('?id is set to ' . $_GET['id']);
@@ -9,10 +8,10 @@ jdlog('?id is set to ' . $_GET['id']);
     $result_userpost = mysqli_query($conn3,$userquery) or die ('error with query');
     while($row_1 =mysqli_fetch_assoc($result_userpost)) {
         $row_1_id .= $row_1['id'];
-        if (empty($row_1['post_imageR_path'])) {  
-                $row_1_post_image_path .= $row_1['post_imageO_path']; 
+        if (empty($row_1['post_imageR_path'])) {
+                $row_1_post_image_path .= $row_1['post_imageO_path'];
             } else {
-                $row_1_post_image_path .= $row_1['post_imageR_path']; 
+                $row_1_post_image_path .= $row_1['post_imageR_path'];
             }
         $row_1_post_image_path = trim($row_1_post_image_path);
         break;
@@ -22,6 +21,7 @@ else {
 jdlog('?id is NOT set');
 }
 ?>
+<!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
