@@ -23,33 +23,33 @@ jdlog('?id is NOT set');
 }
 ?>
 <html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-		<title>Cue Count: Feed</title>
-		<script src="assets/jquery-1.11.3-jquery.min.js"></script>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Cue Count: Feed</title>
+        <script src="assets/jquery-1.11.3-jquery.min.js"></script>
 
-		<link href="assets/styles.css" rel="stylesheet" media="screen">
+        <link href="assets/styles.css" rel="stylesheet" media="screen">
         <link rel="stylesheet" type="text/css" href="assets/chart.css">
 
 
-		<script src="scripts.js"></script>
-		<script src="assets/animation.js"></script>
-		<script src="assets/masonry.pkgd.min.js"></script>
-		<script src="assets/imagesloaded.pkgd.min.js"></script>
-		<script src="cookies.js"></script>
+        <script src="scripts.js"></script>
+        <script src="assets/animation.js"></script>
+        <script src="assets/masonry.pkgd.min.js"></script>
+        <script src="assets/imagesloaded.pkgd.min.js"></script>
+        <script src="cookies.js"></script>
         <script src="assets/demo.js"></script>
         <script src="assets/mo.min.js"></script>
         <link rel="canonical" href="http://cuecountapp.com/feed.php?id=<?php echo $row_1_id;?>">
 
-		<meta name="viewport" content="width=device-width">
-		<meta name="twitter:card" content="summary_large_image">
-		<meta name="twitter:title" content="Place your vote!">
-		<meta name="twitter:description" content="Cue Count"/>
-		<meta name="twitter:site" content="http://cuecountapp.com/feed.php">
-		<meta name="twitter:creator" content="@CueCount">
-		<meta name="twitter:image" 
+        <meta name="viewport" content="width=device-width">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Place your vote!">
+        <meta name="twitter:description" content="Cue Count"/>
+        <meta name="twitter:site" content="http://cuecountapp.com/feed.php">
+        <meta name="twitter:creator" content="@CueCount">
+        <meta name="twitter:image"
             content="http://cuecountapp.com/<?php echo $row_1_post_image_path;?>"/>
-	</head>
+    </head>
 <body class="fade-in one">
 <?php include_once("analyticstracking.php") ?>
 
@@ -64,13 +64,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 
 <div class="grid" id="load_data_table">
-	<div class="grid-sizer"></div>
-	<header class="item">
-		<img src="assets/mainLogo.png" class="company_logo" alt="Cue Count App"/>
-	    <h1>Choice is a beautiful thing</h1>
-	    <p>Share your daily decisions<br> and vote on others. <a href="http://cuecountapp.com/about.php" target="_blank">Learn more</a></p> 
-	    <a href="home.php"><p class="cc_button" style="float:left;margin-right:20px;">Upload</p></a>
-	    <a href="index.php"><p class="cc_button" style="float:left;">Login</p></a>   
+    <div class="grid-sizer"></div>
+    <header class="item">
+        <img src="assets/mainLogo.png" class="company_logo" alt="Cue Count App"/>
+        <h1>Choice is a beautiful thing</h1>
+        <p>Share your daily decisions<br> and vote on others. <a href="http://cuecountapp.com/about.php" target="_blank">Learn more</a></p>
+        <a href="home.php"><p class="cc_button" style="float:left;margin-right:20px;">Upload</p></a>
+        <a href="index.php"><p class="cc_button" style="float:left;">Login</p></a>
     </header>
 <?php
 //require_once 'cache_head.php';
@@ -181,35 +181,35 @@ require_once 'voting.php';
     </button>
 <script type="text/javascript">
 $(window).load(function() {
-	$('.grid').masonry({
-	itemSelector: '.item',
-	isAnimated: true,
-	isFitWidth: true
-	});
+    $('.grid').masonry({
+    itemSelector: '.item',
+    isAnimated: true,
+    isFitWidth: true
+    });
 });
 $( function() {
-	var $container = $('.grid');
-	$container.masonry({
-	    isFitWidth: true,
-	    itemSelector: '.item'
-	});
-	$('.loadmore').click(function(){
-		var val = $('.final').attr('val');
-		$.post('sql.php',{'to':val},function(data){
-		if(!isFinite(data))
-		{
-			$('.final').remove();
-			$(".grid").append(data).each(function(){
-				$('.grid').masonry('reloadItems');
-				});  
-			$container.masonry();	
-		}
-		else
-		{
-			$('<div class="well">Oh Damn! No more decisions right now. <br> <a href="http://cuecountapp.com/home.php">Post Your Own and Add to the Community :)</a></div>').insertBefore('.loadmore');
-			$('.loadmore').remove();
-		}	
-	});	
+    var $container = $('.grid');
+    $container.masonry({
+        isFitWidth: true,
+        itemSelector: '.item'
+    });
+    $('.loadmore').click(function(){
+        var val = $('.final').attr('val');
+        $.post('sql.php',{'to':val},function(data){
+        if(!isFinite(data))
+        {
+            $('.final').remove();
+            $(".grid").append(data).each(function(){
+                $('.grid').masonry('reloadItems');
+                });
+            $container.masonry();
+        }
+        else
+        {
+            $('<div class="well">Oh Damn! No more decisions right now. <br> <a href="http://cuecountapp.com/home.php">Post Your Own and Add to the Community :)</a></div>').insertBefore('.loadmore');
+            $('.loadmore').remove();
+        }
+    });
 });
 });
 
