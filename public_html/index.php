@@ -5,30 +5,33 @@ $GLOBALS['jdunk_index_loaded'] = true;
 file_put_contents(__DIR__ . '/../index.php.log', $_SERVER['REMOTE_ADDR'] . ' [' . date('c') . '] ' . $_SERVER['REQUEST_METHOD'] . ' ' . $_SERVER['REQUEST_URI'] . "\n", FILE_APPEND);
 
 session_start();
+
 require_once 'class.user.php';
-$user_login = new USER();
+$user_login = new USER;
 
 if (!isset($_SERVER['HTTPS'])) {
-        $_SERVER['HTTP_HTTPS'] = 0;
+    $_SERVER['HTTP_HTTPS'] = 0;
 }
 
-if($user_login->is_logged_in()!="")
+if($user_login->is_logged_in())
 {
-	$user_login->redirect('home.php');
+    header('Location: /home.php');
+    exit;
 }
 
 if(isset($_POST['btn-login']))
 {
-	$email = trim($_POST['txtemail']);
-	$upass = trim($_POST['txtupass']);
-	
-	if($user_login->login($email,$upass))
-	{
-		$user_login->redirect('home.php');
-	}
-}
-?>
+    $email = trim($_POST['txtemail']);
+    $upass = trim($_POST['txtupass']);
 
+    if($user_login->login($email,$upass))
+    {
+        header('Location: /home.php');
+        exit;
+    }
+}
+
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -50,29 +53,29 @@ if(isset($_POST['btn-login']))
   </head>
   <body id="login" class="login_bk">
     <div class="">
-		<?php 
-		if(isset($_GET['inactive']))
-		{
-			?>
+        <?php
+        if(isset($_GET['inactive']))
+        {
+            ?>
             <div class='alert alert-error'>
-				<button class='close' data-dismiss='alert'>&times;</button>
-				<strong>Sorry!</strong> This Account is not Activated Go to your Inbox and Activate it. 
-			</div>
+                <button class='close' data-dismiss='alert'>&times;</button>
+                <strong>Sorry!</strong> This Account is not Activated Go to your Inbox and Activate it.
+            </div>
             <?php
-		}
-		?>
+        }
+        ?>
         <form class="form-signin" method="post">
         <?php
         if(isset($_GET['error']))
-		{
-			?>
+        {
+            ?>
             <div class='alert alert-success'>
-				<button class='close' data-dismiss='alert'>&times;</button>
-				<strong>Wrong Details!</strong> 
-			</div>
+                <button class='close' data-dismiss='alert'>&times;</button>
+                <strong>Wrong Details!</strong>
+            </div>
             <?php
-		}
-		?>
+        }
+        ?>
         <h2 class="form-signin-heading">Sign In</h2><hr />
         <input type="email" class="input-block-level" placeholder="Email address" name="txtemail" required />
         <input type="password" class="input-block-level" placeholder="Password" name="txtupass" required />
