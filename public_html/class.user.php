@@ -20,13 +20,13 @@ class USER
 		return $stmt;
 	}
 	
-	public function lasdID()
+	public function lastID()
 	{
 		$stmt = $this->conn->lastInsertId();
 		return $stmt;
 	}
 	
-	public function register($uname,$email,$upass,$code)
+	public function register($uname, $email, $upass, $code)
 	{
 		try
 		{							
@@ -90,15 +90,13 @@ class USER
 	
 	public function is_logged_in()
 	{
-		if(isset($_SESSION['userSession']))
-		{
-			return true;
-		}
+		return isset($_SESSION['userSession']);
 	}
 	
 	public function redirect($url)
 	{
 		header("Location: $url");
+		exit;
 	}
 	
 	public function logout()
