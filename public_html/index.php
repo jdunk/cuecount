@@ -4,8 +4,6 @@ $GLOBALS['jdunk_index_loaded'] = true;
 
 file_put_contents(__DIR__ . '/../index.php.log', $_SERVER['REMOTE_ADDR'] . ' [' . date('c') . '] ' . $_SERVER['REQUEST_METHOD'] . ' ' . $_SERVER['REQUEST_URI'] . "\n", FILE_APPEND);
 
-session_start();
-
 require_once 'class.user.php';
 $user_login = new USER;
 

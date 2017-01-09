@@ -7,7 +7,7 @@ server {
     access_log /var/log/nginx/cuecountapp.com.access.log;
     error_log /var/log/nginx/cuecountapp.com.error.log;
 
-    root /var/www/cuecountapp.com/www;
+    root /var/www/cuecountapp.com/public;
 
     location / {
         index index.php

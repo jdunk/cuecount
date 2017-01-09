@@ -11,6 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', includeAndReturnOutputFn('index.php'));
+Route::get('/home', includeAndReturnOutputFn('home.php'));
+
+function includeAndReturnOutputFn($filename) {
+    return function() use ($filename) {
+        ob_start();
+        include (__DIR__ . '/../public_html/' . $filename);
+        return ob_get_clean();
+    };
+}
