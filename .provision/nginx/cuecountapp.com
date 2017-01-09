@@ -10,8 +10,8 @@ server {
     root /var/www/cuecountapp.com/public;
 
     location / {
-        index index.php
-        try_files $uri $uri/ /index.php?$query_string;
+        index start.php
+        try_files $uri $uri/ /start.php?$query_string;
     }
 
     location ~ [^/]\.php(/|$) {
@@ -24,7 +24,7 @@ server {
         # but this exploit is not possible here because we are checking that the php file exists
 
         fastcgi_pass unix:/var/run/php/php7.1-fpm.sock;
-        fastcgi_index index.php;
+        fastcgi_index start.php;
         include fastcgi_params;
     }
 
