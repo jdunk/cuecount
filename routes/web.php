@@ -17,7 +17,7 @@ Route::get('/home', includeAndReturnOutputFn('home.php'));
 function includeAndReturnOutputFn($filename) {
     return function() use ($filename) {
         ob_start();
-        include (__DIR__ . '/../public_html/' . $filename);
+        include (__DIR__ . '/../public/' . $filename);
         return ob_get_clean();
     };
 }

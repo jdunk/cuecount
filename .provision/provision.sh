@@ -19,7 +19,7 @@ xdebug.remote_enable=1
 xdebug.remote_host=10.0.2.2
 xdebug.remote_port=9000' > /etc/php/7.1/fpm/conf.d/21-xdebug.ini"
 apt-get --purge -y autoremove
-service php-fpm7.1 restart
+service php7.1-fpm restart
 
 # fix mysql 5.7 config
 grep sql_mode /etc/mysql/my.cnf >/dev/null
