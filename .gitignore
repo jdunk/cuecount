@@ -42,7 +42,7 @@ Thumbs.db
 access-logs
 archived/
 blog.php
-cache/
+public/cache/
 dotfiles/
 etc/
 index.html
