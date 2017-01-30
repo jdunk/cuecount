@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # fix ppa and install xdebug
+# and I would've gotten away with it too! >:D >:D >:D
 rm /etc/apt/sources.list.d/ondrej-php-*
 add-apt-repository ppa:ondrej/php
 add-apt-repository ppa:ondrej/php-qa
