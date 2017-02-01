@@ -7,7 +7,7 @@ $reg_user = new USER();
 
 if($reg_user->is_logged_in()!="")
 {
-	$reg_user->redirect('home.php');
+	$reg_user->redirect('/home');
 }
 
 if(isset($_POST['btn-signup']))

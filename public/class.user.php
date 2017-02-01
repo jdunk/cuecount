@@ -4,7 +4,6 @@ require_once 'dbconfig.php';
 
 class USER
 {	
-
 	private $conn;
 	
 	public function __construct()
@@ -51,8 +50,8 @@ class USER
 		try
 		{
 			$stmt = $this->conn->prepare("SELECT * FROM users WHERE userEmail=:email_id");
-			$stmt->execute(array(":email_id"=>$email));
-			$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
+			$stmt->execute([':email_id' => $email]);
+			$userRow = $stmt->fetch(PDO::FETCH_ASSOC);
 			
 			if($stmt->rowCount() == 1)
 			{
@@ -60,7 +59,7 @@ class USER
 				{
 					if($userRow['userPass']==md5($upass))
 					{
-						$_SESSION['userSession'] = $userRow['userID'];
+						session(['userSession' => $userRow['userID']]);
 						return true;
 					}
 					else
@@ -90,7 +89,7 @@ class USER
 	
 	public function is_logged_in()
 	{
-		return isset($_SESSION['userSession']);
+		return !is_null(session('userSession'));
 	}
 	
 	public function redirect($url)
@@ -102,7 +101,7 @@ class USER
 	public function logout()
 	{
 		session_destroy();
-		$_SESSION['userSession'] = false;
+		session('userSession', false);
 	}
 	
 	function send_mail($email,$message,$subject)

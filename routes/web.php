@@ -12,6 +12,7 @@
 */
 
 Route::get('/', includeAndReturnOutputFn('index.php'));
+Route::post('/', includeAndReturnOutputFn('index.php'));
 Route::get('/home', includeAndReturnOutputFn('home.php'));
 
 function includeAndReturnOutputFn($filename) {

@@ -1,5 +1,7 @@
 <?php
 
+require_once(__DIR__ . '/start.php');
+
 $GLOBALS['jdunk_index_loaded'] = true;
 
 file_put_contents(__DIR__ . '/../index.php.log', $_SERVER['REMOTE_ADDR'] . ' [' . date('c') . '] ' . $_SERVER['REQUEST_METHOD'] . ' ' . $_SERVER['REQUEST_URI'] . "\n", FILE_APPEND);
@@ -13,18 +15,18 @@ if (!isset($_SERVER['HTTPS'])) {
 
 if($user_login->is_logged_in())
 {
-    header('Location: /home.php');
+    header('Location: /home');
     exit;
 }
 
-if(isset($_POST['btn-login']))
+if(isset($_POST['txtupass']))
 {
     $email = trim($_POST['txtemail']);
     $upass = trim($_POST['txtupass']);
 
     if($user_login->login($email,$upass))
     {
-        header('Location: /home.php');
+        header('Location: /home');
         exit;
     }
 }

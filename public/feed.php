@@ -69,7 +69,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <img src="assets/mainLogo.png" class="company_logo" alt="Cue Count App"/>
         <h1>Choice is a beautiful thing</h1>
         <p>Share your daily decisions<br> and vote on others. <a href="http://cuecountapp.com/about.php" target="_blank">Learn more</a></p>
-        <a href="home.php"><p class="cc_button" style="float:left;margin-right:20px;">Upload</p></a>
+        <a href="/home"><p class="cc_button" style="float:left;margin-right:20px;">Upload</p></a>
         <a href="index.php"><p class="cc_button" style="float:left;">Login</p></a>
     </header>
 <?php
@@ -206,7 +206,7 @@ $( function() {
         }
         else
         {
-            $('<div class="well">Oh Damn! No more decisions right now. <br> <a href="http://cuecountapp.com/home.php">Post Your Own and Add to the Community :)</a></div>').insertBefore('.loadmore');
+            $('<div class="well">Oh Damn! No more decisions right now. <br> <a href="http://cuecountapp.com/home">Post Your Own and Add to the Community :)</a></div>').insertBefore('.loadmore');
             $('.loadmore').remove();
         }
     });

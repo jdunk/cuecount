@@ -278,7 +278,7 @@ elseif (isset($_REQUEST['submit_c']))
                 <img src="assets/double_upload.png" alt=""/>
             </p>
         </div>
-        <form action="home.php" method="post" enctype="multipart/form-data">
+        <form action="/home" method="post" enctype="multipart/form-data">
             <input type="hidden" name="post_type" value="post_YN"/><!-- = = = = POST TYPE = = = = -->
             <input type="hidden" name="post_fname" value="<?= $userData['userName'] ?>"/><!-- = = = = FIRST NAME = = = = -->
             <input type="hidden" name="post_email" value="<?= $userData['userEmail'] ?>"/><!-- = = = = ACCOUNT EMAIL = = = = -->
@@ -305,7 +305,7 @@ elseif (isset($_REQUEST['submit_c']))
                 <input type="submit" class="cc_sumbit" name="submit_yn" value="Submit"/>
             </div>
         </form>
-        <form action="home.php" method="post" enctype="multipart/form-data">
+        <form action="/home" method="post" enctype="multipart/form-data">
             <input type="hidden" name="post_type" value="post_C"/><!-- = = = = POST TYPE = = = = -->
             <input type="hidden" name="post_fname" value="<?= $userData['userName'] ?>"/><!-- = = = = FIRST NAME = = = = -->
             <input type="hidden" name="post_email" value="<?= $userData['userEmail'] ?>"/><!-- = = = = ACCOUNT EMAIL = = = = -->
