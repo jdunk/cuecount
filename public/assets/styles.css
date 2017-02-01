@@ -359,19 +359,32 @@ input {
 	height:20px;
 	padding:14px;
 	border-radius: 7px;
-	margin:0 auto;
+	margin:-150px auto 102px;
 	text-align: center;
 	display:block;
 	text-transform: lowercase;
 	background:#BC98D3;
 	color:rgb(10,10,10);
 	font-size: 14px;
+	z-index: 100;
+	position: relative;
 	}.current_resultShow:hover {
 		background:#E5CFF6;
 		cursor: pointer;
 	}.current_resultShow:active {
 		background:#A090AC;
 	}
+
+.vote_result_1,
+.vote_result_3 {
+	position: absolute;
+	bottom:45px;
+	text-align: center;
+}.vote_result_3 {
+	right:25px;
+}.vote_result_1 {
+	left:25px;
+}
 
 	.endpost {
 		width:100%;
