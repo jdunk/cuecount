@@ -267,6 +267,7 @@ elseif (isset($_REQUEST['submit_c']))
         <div class="prof_email"><?= $userData['userEmail'] ?></div>
         <a href="logout.php"><p class="cc_button">Logout</p></a>
     </header>
+	
     <article class="item">
         <div class="upload_choice" id="upload_choice">
             <h3>Upload a Current Decision:</h3>
@@ -346,6 +347,7 @@ elseif (isset($_REQUEST['submit_c']))
         </form>
         
     </article>
+	
 <?php
 
 if (!empty($uploadResultMessage)) {
@@ -367,14 +369,17 @@ while($dPost=mysqli_fetch_assoc($result))
         $vote_3_percent = round($dPost['post_answer3']*100/$count) . "%";
 
         ?>
-        <article class="item">
-            
-            <a class="twitter"
-			href="https://twitter.com/intent/tweet?text=<?= rawurlencode($dPost['post_content']) ?>%20http%3A%2F%2Fcuecountapp.com%2Ffeed.php%3Fid%3D<?= $dPost['id'] ?>" 
-			target="_blank">	
-				<p><img src="assets/social_tweet.png" alt="Tweet This" class="twitter_icon"/></p>
-			</a>
-            
+	
+	<div class="item" id="item">
+
+	<a class="twitter"
+	href="https://twitter.com/intent/tweet?text=<?= rawurlencode($dPost['post_content']) ?>%20http%3A%2F%2Fcuecountapp.com%2Ffeed.php%3Fid%3D<?= $dPost['id'] ?>" 
+	target="_blank">	
+	<p><img src="assets/social_tweet.png" alt="Tweet This" class="twitter_icon"/></p>
+	</a>
+	
+        <article>
+    
             <div class="post_question">
                 <div class="post_content"><?= $dPost['post_content'] ?></div>
                 <?php
@@ -410,13 +415,15 @@ while($dPost=mysqli_fetch_assoc($result))
             <p class="current_resultShow" onclick="results_show(event)">Current Results</p>
 
             <div class="vote_result_1"><?= $vote_1_percent ?></div>
-            <div class="vote_result_2"><?= $vote_2_percent ?></div>
             <div class="vote_result_3"><?= $vote_3_percent ?></div>
 
             <input type="hidden" name="post_answer_text1" value="<?= $dPost['post_answer1'] ?>"/> <!--L-->
-            <input type="hidden" name="post_answer_text2" value="<?= $dPost['post_answer2'] ?>"/> <!--O-->
             <input type="hidden" name="post_answer_text3" value="<?= $dPost['post_answer3'] ?>"/> <!--R-->
-        </article><?php
+        </article>
+	
+	</div> <!-- ITEM END -->
+		
+	<?php
     }
 }
 
