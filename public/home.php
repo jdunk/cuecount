@@ -255,6 +255,8 @@ elseif (isset($_REQUEST['submit_c']))
         <script src="assets/imagesloaded.pkgd.min.js"></script>
     </head>
 <body class="fade-in one">
+<div class="container">
+    
 <div class="grid">
     <div class="grid-sizer"></div>
     <header class="item">
@@ -366,6 +368,13 @@ while($dPost=mysqli_fetch_assoc($result))
 
         ?>
         <article class="item">
+            
+            <a class="twitter"
+			href="https://twitter.com/intent/tweet?text=<?= rawurlencode($dPost['post_content']) ?>%20http%3A%2F%2Fcuecountapp.com%2Ffeed.php%3Fid%3D<?= $dPost['id'] ?>" 
+			target="_blank">	
+				<p><img src="assets/social_tweet.png" alt="Tweet This" class="twitter_icon"/></p>
+			</a>
+            
             <div class="post_question">
                 <div class="post_content"><?= $dPost['post_content'] ?></div>
                 <?php
@@ -374,25 +383,15 @@ while($dPost=mysqli_fetch_assoc($result))
                 {
                     ?>
                     <div class="endpost">
-                        <form action="" method="post">
-                            <input type="hidden" id="" value=" <?= $dPost['id'] ?> " name="endpost_id"/>
-                            <input type="submit" name="post_endpost" class="delete_btn_home" value="End Voting"/>
-                        </form>
-                        <a class="twitter"
-                        href="https://twitter.com/intent/tweet?text=<?= rawurlencode($dPost['post_content']) ?>%20http%3A%2F%2Fcuecountapp.com%2Ffeed.php%3Fid%3D<?= $dPost['id'] ?>"
-                        target="_blank">
-                            <p>Share your choice: <img src="assets/social_tweet.png" alt="Tweet This" class="twitter_icon"/></p>
-                        </a>
-                    </div>
-                    <?php } else { ?>
-                    <div class="endpost">
-                        <div class="post_ended">Vote Ended</div>
-                        <a class="twitter"
-                        href="https://twitter.com/intent/tweet?text=<?= rawurlencode($dPost['post_content']) ?>%20http%3A%2F%2Fcuecountapp.com%2Ffeed.php%3Fid%3D<?= $dPost['id'] ?>"
-                        target="_blank">
-                            <p>Share the results: <img src="assets/social_tweet.png" alt="Tweet This" class="twitter_icon"/></p>
-                        </a>
-                    </div>
+						<form action="" method="post">
+							<input type="hidden" id="" value=" <?= $dPost['id'] ?> " name="endpost_id"/>
+							<input type="submit" name="post_endpost" class="delete_btn_home" value="End Voting"/>
+						</form>
+					</div>
+					<?php } else { ?> 
+					<div class="endpost">
+						<div class="post_ended">Vote Ended</div>
+					</div>
                     <?php
                 }
             ?>
@@ -423,6 +422,8 @@ while($dPost=mysqli_fetch_assoc($result))
 
 ?>
 </div> <!-- = = END OF GRID = = -->
+
+</div> <!-- CONTAINER -->
 
 <script type="text/javascript">
 
