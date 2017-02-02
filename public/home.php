@@ -257,10 +257,10 @@ elseif (isset($_REQUEST['submit_c']))
 <div class="grid">
     <div class="grid-sizer"></div>
     <header class="item">
-        <img src="assets/mainLogo.png" class="company_logo" alt="Cue Count App"/>
+        <img src="/assets/mainLogo.png" class="company_logo" alt="Cue Count App"/>
         <h1>Choice is a beautiful thing</h1>
         <p>Share your daily decisions<br> and vote on others. <a href="/about" target="_blank">Learn more</a></p>
-        <a href="feed.php"><p class="cc_button" style="float:left;">Vote</p></a>
+        <a href="/feed"><p class="cc_button" style="float:left;">Vote</p></a>
         <div class="prof_email"><?= $userData['userName'] ?></div>
         <a href="/logout"><p class="cc_button">Logout</p></a>
     </header>
@@ -275,7 +275,7 @@ elseif (isset($_REQUEST['submit_c']))
             <br>
             <p class="cc_button" onClick="form_show('c_upload','upload_choice'); redo_masonry()">Choose Either <br>(Double Image)
                 <br>
-                <img src="assets/double_upload.png" alt=""/>
+                <img src="/assets/double_upload.png" alt=""/>
             </p>
         </div>
         <form action="/home" method="post" enctype="multipart/form-data">
