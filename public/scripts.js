@@ -48,19 +48,167 @@ function results_show(e) {
     ]);
 }   
 
-/*function changeImg(e) { 
-    var current_image_path = $(e.currentTarget).siblings(".hidden_twitterId").val();
-    var base_url = window.location.origin;
-    var str_change = base_url+'/'+current_image_path;
-    str_change = str_change.replace(/ +/g,"");
-    $('meta[name="twitter:image"]').attr('content',str_change);
+'use strict';
+var COLORS = {
+  RED: '#FD5061',
+  YELLOW: '#FFCEA5',
+  BLACK: '#29363B',
+  WHITE: 'white',
+  VINOUS: '#A50710'
+};
+var DURATION = 500;
+var CNT = 10;
+var PARENT_H = 50;
+var BURST_R = 75;
+var SHIFT = 300;
+var makeDust = function makeDust() {
+  var _ref, _ref2;
+  var dir = arguments.length <= 0 || arguments[0] === undefined ? -1 : arguments[0];
+  var parent = new mojs.Shape({
+    left: 0, top: 0,width: 200,height: 50,radius: 0,x: { 0: dir * SHIFT },duration: 1.2 * DURATION,isShowStart: true,isTimelineLess: true,isForce3d: true
+  });
+  parent.el.style['overflow'] = 'hidden';
+  var burst = new mojs.Burst({
+    parent: parent.el,
+    count: CNT,
+    top: PARENT_H + BURST_R,
+    degree: 90,
+    radius: BURST_R,
+    angle: dir === -1 ? (_ref = {}, _ref[-90] = 40, _ref) : (_ref2 = {}, _ref2[0] = -130, _ref2),
+    children: {
+      fill: '#FD5061',
+      delay: dir === -1 ? 'stagger(' + DURATION + ', -' + DURATION / CNT + ')' : 'stagger(' + DURATION / CNT + ')',
+      radius: 'rand(8, 25)',
+      direction: -1,
+      isSwirl: true,
+      isForce3d: true
+    }
+  });
+
+  var fadeBurst = new mojs.Burst({
+    parent: parent.el,
+    count: 2,
+    degree: 0,
+    angle: -1 * dir * 75,
+    radius: { 0: 100 },
+    top: '90%',
+    timeline: { delay: .8 * DURATION },
+    children: {
+      fill: '#FD5061',
+      pathScale: [.65, 1],
+      radius: 'rand(12, 15)',
+      direction: [dir, -1 * dir],
+      isSwirl: true,
+      isForce3d: true
+    }
+  });
+
+  var timeline = new mojs.Timeline();
+  timeline.add(parent, burst, fadeBurst);
+
+  return { parent: parent, timeline: timeline };
+};
+
+var circle = new mojs.Shape({
+  left: 0, top: 0,
+  strokeWidth: 10,
+  fill: 'none',
+  radius: 150,
+  scale: { 0: 1 },
+  opacity: { 1: 0 },
+  shape: 'circle',
+  stroke: '#FD5061',
+  strokeWidth: 10,
+  fill: 'none',
+  duration: 1.5 * DURATION,
+  isForce3d: true,
+  isTimelineLess: true
+});
+
+var cloud = new mojs.Burst({
+  left: 0, top: 0,
+  radius: { 4: 49 },
+  angle: 45,
+  count: 12,
+  children: {
+    radius: 10,
+    fill: '#FD5061',
+    scale: { 1: 0, easing: 'sin.in' },
+    pathScale: [.7, null],
+    degreeShift: [13, null],
+    duration: [500, 700],
+    isShowEnd: false,
+    isForce3d: true
+  }
+});
+
+var burst = new mojs.Burst({
+  left: 0, top: 0,
+  radius: { 0: 280 },
+  count: 2,
+  angle: 90,
+  children: {
+    shape: 'rect',
+    fill: COLORS.VINOUS,
+    radius: 15,
+    duration: DURATION,
+    isForce3d: true
+  }
+});
+
+var burst2 = new mojs.Burst({
+  left: 0, top: 0,
+  count: 5,
+  radius: { 0: 150 },
+  angle: 90,
+  children: {
+    shape: 'line',
+    stroke: COLORS.VINOUS,
+    strokeWidth: 5,
+    strokeLinecap: 'round',
+    radius: 25,
+    // angle:    {  0: 360  },
+    scale: 1,
+    scaleX: { 1: 0 },
+    duration: DURATION,
+    isForce3d: true
+  }
+});
+
+var timeline = new mojs.Timeline();
+timeline.add(circle, cloud, burst, burst2);
+
+
+var submit_ani = document.getElementsByName('post_answer3');
+
+for (var i=0;i<submit_ani.length; i++) {
+
+    submit_ani[i].addEventListener('click', function (e) {
+      var x = e.pageX,
+          y = e.pageY;
+
+      var coords = { x: x , y: y };
+      circle.tune(coords);cloud.tune(coords);
+      burst.tune(coords);burst2.tune(coords);
+     
+      timeline.replay();
+    });
+
 }
-function tweetCurrentPage(e) { 
-    var twitter_content = $(e.currentTarget).siblings(".hidden_twitterContent").val();
-    var twitter_id = $(e.currentTarget).attr('id');
-    var base_url = window.location.origin;
-    var str = base_url+'/feed.php?id='+twitter_id;
-    str = str.replace(/ +/g,"");    
-    window.open("https://twitter.com/intent/tweet?url="+str+"&text="+twitter_content, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');
-    return false;
-}*/
+
+var submit_ani_2 = document.getElementsByName('post_answer1');
+
+for (var i=0;i<submit_ani_2.length; i++) {
+
+    submit_ani_2[i].addEventListener('click', function (e) {
+      var x = e.pageX,
+          y = e.pageY;
+
+      var coords = { x: x , y: y };
+      circle.tune(coords);cloud.tune(coords);
+      burst.tune(coords);burst2.tune(coords);
+     
+      timeline.replay();
+    });
+
+}

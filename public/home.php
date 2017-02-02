@@ -253,6 +253,8 @@ elseif (isset($_REQUEST['submit_c']))
         <script src="assets/imagesloaded.pkgd.min.js"></script>
     </head>
 <body class="fade-in one">
+<div class="container">
+    
 <div class="grid">
     <div class="grid-sizer"></div>
     <header class="item">
@@ -263,6 +265,7 @@ elseif (isset($_REQUEST['submit_c']))
         <div class="prof_email"><?= $userData['userEmail'] ?></div>
         <a href="/logout"><p class="cc_button">Logout</p></a>
     </header>
+	
     <article class="item">
         <div class="upload_choice" id="upload_choice">
             <h3>Upload a Current Decision:</h3>
@@ -342,6 +345,7 @@ elseif (isset($_REQUEST['submit_c']))
         </form>
         
     </article>
+	
 <?php
 
 if (!empty($uploadResultMessage)) {
@@ -363,7 +367,17 @@ while($dPost=mysqli_fetch_assoc($result))
         $vote_3_percent = round($dPost['post_answer3']*100/$count) . "%";
 
         ?>
-        <article class="item">
+	
+	<div class="item" id="item">
+
+	<a class="twitter"
+	href="https://twitter.com/intent/tweet?text=<?= rawurlencode($dPost['post_content']) ?>%20http%3A%2F%2Fcuecountapp.com%2Ffeed.php%3Fid%3D<?= $dPost['id'] ?>" 
+	target="_blank">	
+	<p><img src="assets/social_tweet.png" alt="Tweet This" class="twitter_icon"/></p>
+	</a>
+	
+        <article>
+    
             <div class="post_question">
                 <div class="post_content"><?= $dPost['post_content'] ?></div>
                 <?php
@@ -372,25 +386,15 @@ while($dPost=mysqli_fetch_assoc($result))
                 {
                     ?>
                     <div class="endpost">
-                        <form action="" method="post">
-                            <input type="hidden" id="" value=" <?= $dPost['id'] ?> " name="endpost_id"/>
-                            <input type="submit" name="post_endpost" class="delete_btn_home" value="End Voting"/>
-                        </form>
-                        <a class="twitter"
-                        href="https://twitter.com/intent/tweet?text=<?= rawurlencode($dPost['post_content']) ?>%20http%3A%2F%2Fcuecountapp.com%2Ffeed.php%3Fid%3D<?= $dPost['id'] ?>"
-                        target="_blank">
-                            <p>Share your choice: <img src="assets/social_tweet.png" alt="Tweet This" class="twitter_icon"/></p>
-                        </a>
-                    </div>
-                    <?php } else { ?>
-                    <div class="endpost">
-                        <div class="post_ended">Vote Ended</div>
-                        <a class="twitter"
-                        href="https://twitter.com/intent/tweet?text=<?= rawurlencode($dPost['post_content']) ?>%20http%3A%2F%2Fcuecountapp.com%2Ffeed.php%3Fid%3D<?= $dPost['id'] ?>"
-                        target="_blank">
-                            <p>Share the results: <img src="assets/social_tweet.png" alt="Tweet This" class="twitter_icon"/></p>
-                        </a>
-                    </div>
+						<form action="" method="post">
+							<input type="hidden" id="" value=" <?= $dPost['id'] ?> " name="endpost_id"/>
+							<input type="submit" name="post_endpost" class="delete_btn_home" value="End Voting"/>
+						</form>
+					</div>
+					<?php } else { ?> 
+					<div class="endpost">
+						<div class="post_ended">Vote Ended</div>
+					</div>
                     <?php
                 }
             ?>
@@ -409,18 +413,22 @@ while($dPost=mysqli_fetch_assoc($result))
             <p class="current_resultShow" onclick="results_show(event)">Current Results</p>
 
             <div class="vote_result_1"><?= $vote_1_percent ?></div>
-            <div class="vote_result_2"><?= $vote_2_percent ?></div>
             <div class="vote_result_3"><?= $vote_3_percent ?></div>
 
             <input type="hidden" name="post_answer_text1" value="<?= $dPost['post_answer1'] ?>"/> <!--L-->
-            <input type="hidden" name="post_answer_text2" value="<?= $dPost['post_answer2'] ?>"/> <!--O-->
             <input type="hidden" name="post_answer_text3" value="<?= $dPost['post_answer3'] ?>"/> <!--R-->
-        </article><?php
+        </article>
+	
+	</div> <!-- ITEM END -->
+		
+	<?php
     }
 }
 
 ?>
 </div> <!-- = = END OF GRID = = -->
+
+</div> <!-- CONTAINER -->
 
 <script type="text/javascript">
 
