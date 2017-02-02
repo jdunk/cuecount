@@ -400,9 +400,9 @@ while($dPost=mysqli_fetch_assoc($result))
             </div>
 
             <div class="post_imageO">
-                <object data="<?= urlencode($dPost['post_imageO_path']) ?>" type='image/jpg'></object>
-                <object data="<?= urlencode($dPost['post_imageL_path']) ?>" class='feed_img_L' type='image/jpg'></object>
-                <object data="<?= urlencode($dPost['post_imageR_path']) ?>" class='feed_img_R' type='image/jpg'></object>
+                <object data="<?= htmlspecialchars($dPost['post_imageO_path']) ?>" type='image/jpg'></object>
+                <object data="<?= htmlspecialchars($dPost['post_imageL_path']) ?>" class='feed_img_L' type='image/jpg'></object>
+                <object data="<?= htmlspecialchars($dPost['post_imageR_path']) ?>" class='feed_img_R' type='image/jpg'></object>
 
                 <div id="vote_result_animation" class="fade-in one">
                     <div id="doughnutChart" class="chart"></div>
