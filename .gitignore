@@ -42,7 +42,7 @@ Thumbs.db
 access-logs
 archived/
 blog.php
-cache/
+public/cache/
 dotfiles/
 etc/
 index.html
@@ -56,3 +56,12 @@ public_ftp/
 public_html/uploads/*.jpg
 public_html/uploads/*.png
 tmp/
+
+# from default laravel project .gitignore
+/node_modules
+/public/storage
+/vendor
+/.idea
+Homestead.json
+Homestead.yaml
+.env
