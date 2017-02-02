@@ -1,11 +1,10 @@
 <?php
-session_start();
 require_once 'class.user.php';
 $user = new USER();
 
-if($user->is_logged_in()!="")
+if($user->is_logged_in())
 {
-	$user->redirect('/home');
+	return redirect('home');
 }
 
 if(isset($_POST['btn-submit']))

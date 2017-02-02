@@ -1,13 +1,12 @@
 <?php
 
-session_start();
 require_once 'class.user.php';
 
 $reg_user = new USER();
 
-if($reg_user->is_logged_in()!="")
+if($reg_user->is_logged_in())
 {
-	$reg_user->redirect('/home');
+	return redirect('home');
 }
 
 if(isset($_POST['btn-signup']))

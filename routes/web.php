@@ -13,8 +13,19 @@
 
 Route::get('/', includeAndReturnOutputFn('index.php'));
 Route::post('/', includeAndReturnOutputFn('index.php'));
-Route::get('/home', includeAndReturnOutputFn('home.php'));
-Route::get('/logout', includeAndReturnOutputFn('logout.php'));
+
+$mainPages = [
+    'about',
+    'feed',
+    'home',
+    'logout',
+    'verify',
+    'voting',
+];
+
+foreach ($mainPages as $mainPage) {
+    Route::get("/$mainPage", includeAndReturnOutputFn("$mainPage.php"));
+}
 
 function includeAndReturnOutputFn($filename) {
     return function() use ($filename) {

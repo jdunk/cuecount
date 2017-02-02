@@ -68,7 +68,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <header class="item">
         <img src="assets/mainLogo.png" class="company_logo" alt="Cue Count App"/>
         <h1>Choice is a beautiful thing</h1>
-        <p>Share your daily decisions<br> and vote on others. <a href="http://cuecountapp.com/about.php" target="_blank">Learn more</a></p>
+        <p>Share your daily decisions<br> and vote on others. <a href="/about" target="_blank">Learn more</a></p>
         <a href="#popup1"><p class="cc_button red_flare">Get New Choices Everyday <img src="assets/email.png" class="icon ic_1"/></p></a>
     </header>
 <?php

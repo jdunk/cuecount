@@ -259,7 +259,7 @@ elseif (isset($_REQUEST['submit_c']))
     <header class="item">
         <img src="assets/mainLogo.png" class="company_logo" alt="Cue Count App"/>
         <h1>Choice is a beautiful thing</h1>
-        <p>Share your daily decisions<br> and vote on others. <a href="http://cuecountapp.com/about" target="_blank">Learn more</a></p> 
+        <p>Share your daily decisions<br> and vote on others. <a href="/about" target="_blank">Learn more</a></p>
         <a href="feed.php"><p class="cc_button" style="float:left;">Vote</p></a>
         <div class="prof_email"><?= $userData['userName'] ?></div>
         <a href="/logout"><p class="cc_button">Logout</p></a>
