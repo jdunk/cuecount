@@ -95,7 +95,7 @@ if (isset($_GET['id'])) {
             <?php echo  "<div>- " . $row_1['post_fname'] . "</div>";?>
             </div>
                 <a class="twitter"
-                    href="https://twitter.com/intent/tweet?text=<?php echo rawurlencode($row_1['post_content']);?>%20http%3A%2F%2Fcuecountapp.com%2Ffeed.php%3Fid%3D<?php echo $row_1['id']; ?>" 
+                    href="https://twitter.com/intent/tweet?text=<?php echo rawurlencode($row_1['post_content']);?>%20http%3A%2F%2Fcuecountapp.com%2Ffeed%3Fid%3D<?php echo $row_1['id']; ?>"
                     target="_blank"> 
                     <img src="assets/social_tweet.png" alt="Tweet This" class="twitter_icon"/>
                 </a>
@@ -124,7 +124,7 @@ if (isset($_GET['id'])) {
                     ?>
                     <div id="vote_result_animation" class="fade-in one">
                     <a class="twitter"
-                      href="https://twitter.com/intent/tweet?text=<?php echo rawurlencode($row['post_content']);?>%20http%3A%2F%2Fcuecountapp.com%2Ffeed.php%3Fid%3D<?php echo $row_1['id']; ?>" 
+                      href="https://twitter.com/intent/tweet?text=<?php echo rawurlencode($row['post_content']);?>%20http%3A%2F%2Fcuecountapp.com%2Ffeed%3Fid%3D<?php echo $row_1['id']; ?>"
                       target="_blank"> 
                       <div class="call-to-action">
                           Share this choice
@@ -305,7 +305,7 @@ function vote_1(e) {
     var post_answer1 = $("input[name='post_answer1']").val();
     jQuery.ajax({
         type: 'POST',
-        url: 'feed.php',
+        url: 'feed',
         data: {input_id: input_id, post_answer1: post_answer1},
         cache: false,
         success: function() {}
@@ -333,7 +333,7 @@ function vote_2(e) {
     var post_answer2 = $("input[name='post_answer2']").val();
     jQuery.ajax({
         type: 'POST',
-        url: 'feed.php',
+        url: 'feed',
         data: {input_id:input_id, post_answer2:post_answer2},
         cache: false,
         success: function(){}
@@ -361,7 +361,7 @@ function vote_3(e) {
     var post_answer3 = $("input[name='post_answer3']").val();
     jQuery.ajax({
         type: 'POST',
-        url: 'feed.php',
+        url: 'feed',
         data: {input_id: input_id, post_answer3: post_answer3},
         cache: false,
         success: function(){}
