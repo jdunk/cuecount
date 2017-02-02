@@ -14,11 +14,18 @@
 Route::get('/', includeAndReturnOutputFn('index.php'));
 Route::post('/', includeAndReturnOutputFn('index.php'));
 Route::get('/home', includeAndReturnOutputFn('home.php'));
+Route::get('/logout', includeAndReturnOutputFn('logout.php'));
 
 function includeAndReturnOutputFn($filename) {
     return function() use ($filename) {
         ob_start();
-        include (__DIR__ . '/../public/' . $filename);
-        return ob_get_clean();
+        $ret = include (__DIR__ . '/../public/' . $filename);
+        $output = ob_get_clean();
+
+        if ($ret !== 1) {
+            return $ret;
+        }
+
+        return $output;
     };
 }
