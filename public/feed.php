@@ -1,4 +1,7 @@
 <?php
+
+require_once(__DIR__ . '/start.php');
+
 require 'db_conn3.php';
 jdlog('here');
 if (isset($_GET['id'])) {
@@ -142,7 +145,7 @@ if (isset($_GET['id'])) {
                     <input type="hidden" name="post_answer_text2" value="<?php echo $row_1['post_answer2']; ?>"/> <!--O-->
                     <input type="hidden" name="post_answer_text3" value="<?php echo $row_1['post_answer3']; ?>"/> <!--R--> 
                     <?php } else { ?>
-                    <form action="feed.php" method="post" class="vote_form">
+                    <form action="" method="post" class="vote_form">
                       <input type="hidden" name="input_id" class="input_id" value="<?php echo $row_1['id']; ?>"/> <!--ID-->
                       <input type="hidden" name="post_answer_L" value="<?php echo $vote_1_percent; ?>"/> <!--L-->
                       <input type="hidden" name="post_answer_O" value="<?php echo $vote_2_percent; ?>"/> <!--O-->

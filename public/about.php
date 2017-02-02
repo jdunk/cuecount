@@ -109,7 +109,7 @@
             
             <a href="#subscribe"></a>
             
-            <a href="http://cuecountapp.com/feed.php" class="btn btn-thirdly"><p>Use the App Now!</p></a>
+            <a href="/feed" class="btn btn-thirdly"><p>Use the App Now!</p></a>
                                 
         </div>
     </section>

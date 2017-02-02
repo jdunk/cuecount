@@ -12,6 +12,7 @@
 */
 
 Route::get('/', includeAndReturnOutputFn('index.php'));
+
 Route::post('/', includeAndReturnOutputFn('index.php'));
 
 $mainPages = [
@@ -23,8 +24,16 @@ $mainPages = [
     'voting',
 ];
 
+$postsAllowed = [
+    'home',
+];
+
 foreach ($mainPages as $mainPage) {
     Route::get("/$mainPage", includeAndReturnOutputFn("$mainPage.php"));
+}
+
+foreach ($postsAllowed as $page) {
+    Route::post("/$page", includeAndReturnOutputFn("$page.php"));
 }
 
 function includeAndReturnOutputFn($filename) {
