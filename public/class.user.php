@@ -53,55 +53,37 @@ class USER
 			$stmt->execute([':email_id' => $email]);
 			$userRow = $stmt->fetch(PDO::FETCH_ASSOC);
 			
-			if($stmt->rowCount() == 1)
-			{
-				if($userRow['userStatus']=="Y")
-				{
-					if($userRow['userPass']==md5($upass))
-					{
-						session(['userSession' => $userRow['userID']]);
-						return true;
-					}
-					else
-					{
-						header("Location: index.php?error");
-						exit;
-					}
-				}
-				else
-				{
-					header("Location: index.php?inactive");
-					exit;
-				}	
+			if($stmt->rowCount() != 1) {
+				return 'error';
 			}
-			else
+
+			if($userRow['userStatus'] != "Y") {
+				return 'inactive';
+			}
+
+			if($userRow['userPass'] != md5($upass))
 			{
-				header("Location: index.php?error");
-				exit;
-			}		
+				return 'error';
+			}
+
+			session(['userSession' => $userRow['userID']]);
+			return true;
 		}
 		catch(PDOException $ex)
 		{
 			echo $ex->getMessage();
+			return 'error';
 		}
 	}
-	
-	
+
 	public function is_logged_in()
 	{
-		return !is_null(session('userSession'));
-	}
-	
-	public function redirect($url)
-	{
-		header("Location: $url");
-		exit;
+		return !empty(session('userSession'));
 	}
 	
 	public function logout()
 	{
-		session_destroy();
-		session('userSession', false);
+		session(['userSession' => null]);
 	}
 	
 	function send_mail($email,$message,$subject)
