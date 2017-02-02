@@ -108,7 +108,5 @@ if(isset($_POST['btn-signup']))
       </form>
 
     </div> <!-- /container -->
-    <!--<script src="vendors/jquery-1.9.1.min.js"></script>-->
-    <script src="bootstrap/js/bootstrap.min.js"></script>
   </body>
 </html>
