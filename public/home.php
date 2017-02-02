@@ -269,12 +269,12 @@ elseif (isset($_REQUEST['submit_c']))
     <article class="item">
         <div class="upload_choice" id="upload_choice">
             <h3>Upload a Current Decision:</h3>
-            <p class="cc_button" onClick="form_show('yn_upload','upload_choice')">Yes/No <br>(Single Image)
+            <p class="cc_button" onClick="form_show('yn_upload','upload_choice'); redo_masonry();">Yes/No <br>(Single Image)
                 <br>
                 <img src="assets/single_upload.png" alt=""/>
             </p>
             <br>
-            <p class="cc_button" onClick="form_show('c_upload','upload_choice')">Choose Either <br>(Double Image)
+            <p class="cc_button" onClick="form_show('c_upload','upload_choice'); redo_masonry()">Choose Either <br>(Double Image)
                 <br>
                 <img src="assets/double_upload.png" alt=""/>
             </p>
@@ -359,7 +359,7 @@ $result = mysqli_query($conn3, $sql);
 
 while($dPost=mysqli_fetch_assoc($result))
 {
-    foreach ($result as $dPost)
+    foreach ($result as $postKey => $dPost)
     {
         $count = $dPost['post_answer1']+$dPost['post_answer2']+$dPost['post_answer3'];
         $vote_1_percent = round($dPost['post_answer1']*100/$count) . "%";
@@ -368,7 +368,7 @@ while($dPost=mysqli_fetch_assoc($result))
 
         ?>
 	
-	<div class="item" id="item">
+	<div class="item" id="item<?= $postKey ?>">
 
 	<a class="twitter"
 	href="https://twitter.com/intent/tweet?text=<?= rawurlencode($dPost['post_content']) ?>%20http%3A%2F%2Fcuecountapp.com%2Ffeed.php%3Fid%3D<?= $dPost['id'] ?>" 
@@ -433,12 +433,16 @@ while($dPost=mysqli_fetch_assoc($result))
 <script type="text/javascript">
 
 $(window).load(function() {
+    redo_masonry();
+});
+
+function redo_masonry() {
     $('.grid').masonry({
         itemSelector: '.item',
         isAnimated: true,
         isFitWidth: true
     });
-});
+}
 
 </script>
 
