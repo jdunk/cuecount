@@ -15,8 +15,7 @@ if (!isset($_SERVER['HTTPS'])) {
 
 if($user_login->is_logged_in())
 {
-    header('Location: /home');
-    exit;
+    return redirect('home');
 }
 
 if(isset($_POST['txtupass']))
@@ -24,11 +23,14 @@ if(isset($_POST['txtupass']))
     $email = trim($_POST['txtemail']);
     $upass = trim($_POST['txtupass']);
 
-    if($user_login->login($email,$upass))
+    $loginResult = $user_login->login($email,$upass);
+    
+    if ($loginResult === true)
     {
-        header('Location: /home');
-        exit;
+        return redirect('/home');
     }
+
+    return redirect('/?' . $loginResult);
 }
 
 ?>

@@ -1,6 +1,5 @@
 <?php
-session_start();
-/* = = = = = = = = = = = = = =  
+/* = = = = = = = = = = = = = =
 CONNECT TO USER TBL WITH THIS: 
 = = = = = = = = = = = = = = = */
 require_once 'class.user.php';
@@ -8,12 +7,11 @@ $user = new USER;
 
 if(!$user->is_logged_in())
 {
-    header("Location: /index.php");
-    exit;
+    return redirect('');
 }
 
 $stmt = $user->runQuery("SELECT * FROM users WHERE userID=:uid");
-$stmt->execute(array(":uid"=>$_SESSION['userSession']));
+$stmt->execute([':uid' => session('userSession')]);
 $userData = $stmt->fetch(PDO::FETCH_ASSOC);
 
 /* = = = = = = = = = = = = = =  
@@ -263,7 +261,7 @@ elseif (isset($_REQUEST['submit_c']))
         <p>Share your daily decisions<br> and vote on others. <a href="http://cuecountapp.com/about" target="_blank">Learn more</a></p> 
         <a href="feed.php"><p class="cc_button" style="float:left;">Vote</p></a>
         <div class="prof_email"><?= $userData['userEmail'] ?></div>
-        <a href="logout.php"><p class="cc_button">Logout</p></a>
+        <a href="/logout"><p class="cc_button">Logout</p></a>
     </header>
     <article class="item">
         <div class="upload_choice" id="upload_choice">
