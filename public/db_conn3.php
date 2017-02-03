@@ -12,7 +12,13 @@ if (!function_exists('jdlog')) {
 }
 
 if (empty($GLOBALS['conn3'])) {
-	$GLOBALS['conn3'] = mysqli_connect("localhost","cuecount_db_user","cuecount123$","cuecount") or die('error connecting to database');
+	$GLOBALS['conn3'] = mysqli_connect(
+		env('DB_HOST', 'localhost'),
+		env('DB_USERNAME', 'root'),
+		env('DB_PASSWORD', 'secret'),
+		env('DB_DATABASE', 'app')
+	)
+	or die('error connecting to database');
 }
 
 $conn3 = $GLOBALS['conn3'];
