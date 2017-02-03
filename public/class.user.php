@@ -97,8 +97,8 @@ class USER
 		$mail->Host       = "smtp.gmail.com";      
 		$mail->Port       = 465;             
 		$mail->AddAddress($email);
-		$mail->Username="jamesemocko@gmail.com";  
-		$mail->Password="mgtnfr187230-";
+		$mail->Username=env('SEND_MAIL_USERNAME');
+		$mail->Password=env('SEND_MAIL_PASSWORD');
 		$mail->SetFrom('jamesemocko@gmail.com','Cue Count');
 		$mail->AddReplyTo("jamesemocko@gmail.com","Cue Count");
 		$mail->Subject    = $subject;
