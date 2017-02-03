@@ -879,6 +879,7 @@ animation-delay: 0.4s;
 	top:20%;
 	z-index: 110;
 	color:#000;
+	display: none!important;
 }
 
 .animation-target {
