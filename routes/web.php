@@ -20,6 +20,7 @@ $mainPages = [
     'feed',
     'home',
     'logout',
+    'signup',
     'verify',
     'voting',
 ];

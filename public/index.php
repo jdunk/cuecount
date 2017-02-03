@@ -82,7 +82,7 @@ if(isset($_POST['txtupass']))
         <input type="email" class="input-block-level" placeholder="Email address" name="txtemail" required />
         <input type="password" class="input-block-level" placeholder="Password" name="txtupass" required />
         <button class="cc_button" type="submit" name="btn-login">Sign in</button>
-        <a href="signup.php" style="float:right;" class="cc_button">Sign Up</a>
+        <a href="/signup" style="float:right;" class="cc_button">Sign Up</a>
       <hr/>
         <a href="fpass.php" style="font-size:14px;">Lost your Password ? </a>
       </form>
