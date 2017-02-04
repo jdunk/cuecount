@@ -112,13 +112,13 @@ if (isset($_GET['id'])) {
                     <?php
 
                     if (!empty($row_1['post_imageO_path'])) {
-                        echo  "<object data='" . htmlspecialchars($row_1['post_imageO_path']) . "' type='image/jpg'></object>";
+                        echo  "<img src='" . htmlspecialchars($row_1['post_imageO_path']) . "' />";
                     }
                     else {
                         if (!empty($row_1['post_imageL_path']))
-                            echo  "<object data='" . htmlspecialchars($row_1['post_imageL_path']) . "' class='feed_img_L' type='image/jpg'></object>";
+                            echo  "<img src='" . htmlspecialchars($row_1['post_imageL_path']) . "' class='feed_img_L' />";
                         if (!empty($row_1['post_imageR_path']))
-                            echo  "<object data='" . htmlspecialchars($row_1['post_imageR_path']) . "' class='feed_img_R' type='image/jpg'></object>";
+                            echo  "<img src='" . htmlspecialchars($row_1['post_imageR_path']) . "' class='feed_img_R' />";
                     }
 
                     ?>

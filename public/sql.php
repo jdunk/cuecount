@@ -53,12 +53,12 @@ class Feeds
 
                     if (!empty($row['post_imageO_path']))
                     {
-                        echo  "<object data='" . $row['post_imageO_path'] . "' type='image/jpg'></object>";
+                        echo  "<img src='" . htmlspecialchars($row['post_imageO_path']) . "' />";
                     }
                     else
                     {
-                        echo  "<object data='" . $row['post_imageL_path'] . "' class='feed_img_L' type='image/jpg'></object>";
-                        echo  "<object data='" . $row['post_imageR_path'] . "' class='feed_img_R' type='image/jpg'></object>";
+                        echo  "<img src='" . htmlspecialchars($row['post_imageL_path']) . "' class='feed_img_L' />";
+                        echo  "<img src='" . htmlspecialchars($row['post_imageR_path']) . "' class='feed_img_R' />";
                     }
 
                     ?>
