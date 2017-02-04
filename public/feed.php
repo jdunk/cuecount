@@ -258,7 +258,7 @@ $( function() {
     });
     $('.loadmore').click(function(){
         var val = $('.final').attr('val');
-        $.post('sql.php',{'to':val},function(data){
+        $.post('sql',{'to':val},function(data){
         if(!isFinite(data))
         {
             $('.final').remove();

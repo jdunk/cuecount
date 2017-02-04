@@ -21,6 +21,7 @@ $mainPages = [
     'home',
     'logout',
     'signup',
+    'sql',
     'verify',
     'voting',
 ];
