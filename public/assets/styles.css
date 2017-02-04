@@ -239,12 +239,12 @@ article {
 	position: absolute;
 }
 
-object.feed_img_L, object.feed_img_R {
+img.feed_img_L, img.feed_img_R {
 	width:50%!important;
 	float:left;
 	position: absolute;
 	top:0;
-}object.feed_img_R {right:0;}
+}img.feed_img_R {right:0;}
 
 #vote_result_animation {
 	width:100%;
