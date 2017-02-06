@@ -118,17 +118,7 @@ class Feeds
 
                     <div id="vote_result_animation" class="fade-in one">
 
-                      <div id="object" class="results_message">The Masses Agree with You!</div>
-
                       <div id="doughnutChart" class="chart"></div>
-
-                      <div id="chart">
-                        <ul id="numbers">
-                          <li><span>NO</span></li>
-                          <li><span>NEUTRAL</span></li>
-                          <li><span>YES</span>
-                        </ul>
-                      </div>
 
                       <a href="#" class="show_data" onclick="show_extended_data(event);">
                         <img src="assets/chart.png" alt="Tweet This" class="twitter_icon"/>
