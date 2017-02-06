@@ -224,6 +224,12 @@ article {
 		background: rgb(230,230,230);
 	}.twitter:hover .twitter_icon {
 		opacity: 1.0;
+	}.twitter_vote_center {
+		right:50%!important;
+		margin-right:-17px;
+		margin-top:0px;
+		border: 1px solid #000;
+		background: #F33;
 	}
 
 .post_imageO {
@@ -578,8 +584,8 @@ input {
 	}
 
 	.icon {
-		width:14px;
-		height: auto;
+		width:14px!important;
+		height: auto!important;
 	}
 
 	.ic_1 {
@@ -587,6 +593,10 @@ input {
 	    margin-left: 3px;
 	    display: inline-block;
 	    float: right;
+	}
+
+	.ic_1_inVote {
+		margin:10px;
 	}
 
  /*IMAGE VIEW*/
