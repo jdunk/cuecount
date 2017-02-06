@@ -32,14 +32,12 @@ jdlog('?id is NOT set');
         <script src="assets/jquery-1.11.3-jquery.min.js"></script>
 
         <link href="assets/styles.css" rel="stylesheet" media="screen">
-        <link rel="stylesheet" type="text/css" href="assets/chart.css">
 
         <script src="assets/animation.js"></script>
         <script src="assets/masonry.pkgd.min.js"></script>
         <script src="assets/imagesloaded.pkgd.min.js"></script>
         <script src="cookies.js"></script>
         <script src="assets/demo.js"></script>
-        <script src="assets/mo.min.js"></script>
         <link rel="canonical" href="http://cuecountapp.com/feed.php?id=<?php echo $row_1_id;?>">
 
         <meta name="viewport" content="width=device-width">
