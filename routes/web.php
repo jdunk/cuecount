@@ -14,6 +14,7 @@
 Route::get('/', includeAndReturnOutputFn('index.php'));
 
 Route::post('/', includeAndReturnOutputFn('index.php'));
+Route::post('/sql', includeAndReturnOutputFn('sql.php'));
 
 $mainPages = [
     'about',
