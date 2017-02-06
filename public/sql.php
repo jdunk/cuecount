@@ -118,38 +118,24 @@ class Feeds
 
                     <div id="vote_result_animation" class="fade-in one">
 
-                      <div id="object" class="results_message">The Masses Agree with You!</div>
+                        <div id="doughnutChart" class="chart"></div>
 
-                      <div id="doughnutChart" class="chart"></div>
-
-                      <div id="chart">
-                        <ul id="numbers">
-                          <li><span>NO</span></li>
-                          <li><span>NEUTRAL</span></li>
-                          <li><span>YES</span>
-                        </ul>
-                      </div>
-
-                      <a href="#" class="show_data" onclick="show_extended_data(event);">
-                        <img src="assets/chart.png" alt="Tweet This" class="twitter_icon"/>
-                      </a>
-
-                      <a class="" href="#<?= $id-1 ?>">
-                        <div class="next-button">
-                          <img src="assets/arrow-down.png" alt="Tweet This" class="twitter_icon"/>
-                        </div>
-                      </a>
-
-                      <div id="" class="" style="display:none;">
-                        <div class="vote_result_1"><?= $vote_1_percent ?></div>
-                        <div class="vote_result_2"><?= $vote_2_percent ?></div>
-                        <div class="vote_result_3"><?= $vote_3_percent ?></div>
-                      </div>
+                        <a href="#popup1" class="twitter twitter_vote_center">
+                            <img src="assets/email_white.png" alt="Tweet This" class="icon ic_1_inVote"/>
+                        </a>
+                        
+                          <a class="" href="#<?= $id-1 ?>">
+                            <div class="next-button">
+                              <img src="assets/arrow-down.png" alt="Tweet This" class="twitter_icon"/>
+                            </div>
+                          </a>
 
                     </div> <!-- #vote_result_animation -->
+                        
                     </div> <!-- .post_imageO -->
 
                 </article>
+                
             </div> <!-- #item.item -->
         <?php
 
