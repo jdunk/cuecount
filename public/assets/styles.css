@@ -231,7 +231,7 @@ article {
 	height:290px;
 	overflow: hidden;
 	position: relative;
-}.post_imageO object {
+}.post_imageO img {
 	height:100%;
 	width:100%;
 	object-fit: cover;
