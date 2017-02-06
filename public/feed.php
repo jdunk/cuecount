@@ -151,6 +151,9 @@ if (isset($_GET['id'])) {
                 
                         <div id="vote_result_animation" class="fade-in one">
                           <div id="doughnutChart" class="chart"></div>
+                            <a href="#popup1" class="twitter twitter_vote_center">
+                             <img src="assets/email_white.png" alt="Tweet This" class="icon ic_1_inVote"/>
+                            </a>
                             <a class="twitter" href="#next_post"> 
                                 <div class="next-button">Next
                                     <img src="assets/arrow-down.png" alt="Tweet This" class="twitter_icon"/>
