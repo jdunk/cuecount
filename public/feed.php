@@ -33,7 +33,6 @@ jdlog('?id is NOT set');
 
         <link href="assets/styles.css" rel="stylesheet" media="screen">
 
-        <script src="assets/animation.js"></script>
         <script src="assets/masonry.pkgd.min.js"></script>
         <script src="assets/imagesloaded.pkgd.min.js"></script>
         <script src="cookies.js"></script>
@@ -278,7 +277,6 @@ function show_extended_data(e){
     e.preventDefault();
     $(e.currentTarget).siblings(".chart").css("display","none");
     $(e.currentTarget).siblings(".results_message").css("display","none");
-    $(e.currentTarget).siblings("#chart").css("display","block");
 }
 
 function vote_1(e) {
@@ -309,34 +307,7 @@ function vote_1(e) {
         success: function() {}
     });
 }
-function vote_2(e) {
-    e.preventDefault();
-    $($('#object', $(e.currentTarget).closest("article"))).addClass("expandUp");
-    // == == == SHOW RESULTS
-    $(e.currentTarget).parents('.vote_wrap').css("display","none");
-    $($('#vote_result_animation', $(e.currentTarget).closest("article"))).css("display","block");
-    // == == == PUT INDIVIDUAL RESULTS IN BOTTOM
-    $($('.vote_result_1', $(e.currentTarget).closest("div.vote_wrap"))).text($(e.currentTarget).siblings("input[name='post_answer_L']").val());
-    $($('.vote_result_2', $(e.currentTarget).closest("div.vote_wrap"))).text($(e.currentTarget).siblings("input[name='post_answer_O']").val());
-    $($('.vote_result_3', $(e.currentTarget).closest("div.vote_wrap"))).text($(e.currentTarget).siblings("input[name='post_answer_R']").val());
-    // == == == UPDATE PERCENTAGES
-    $($('#doughnutChart', $(e.currentTarget).closest("article"))).drawDoughnutChart([
-        { title: "", value: Number($(e.currentTarget).siblings("input[name='post_answer_text1']").val()), color: "#BC98D3" },
-        { title: "", value: Number($(e.currentTarget).siblings("input[name='post_answer_text2']").val()), color: "#EADAE5" },
-        { title: "", value: Number($(e.currentTarget).siblings("input[name='post_answer_text3']").val()), color: "#FF4D4D" }
-    ]);
-    // == == == VOTE ANIMATION - BOUNCE
-    $(e.currentTarget).closest("div.item").addClass('animation-target');
-    var input_id = $(e.currentTarget).attr('id');
-    var post_answer2 = $("input[name='post_answer2']").val();
-    jQuery.ajax({
-        type: 'POST',
-        url: 'feed',
-        data: {input_id:input_id, post_answer2:post_answer2},
-        cache: false,
-        success: function(){}
-    });
-}
+
 function vote_3(e) {
     e.preventDefault();
     $($('#object', $(e.currentTarget).closest("article"))).addClass("expandUp");
