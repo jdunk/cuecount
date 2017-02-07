@@ -83,7 +83,7 @@ class Feeds
                     else
                     {
                     ?>
-                      <form action="feed.php" method="post" class="vote_form">
+                      <form action="feed" method="post" class="vote_form">
                         <input type="hidden" name="input_id" class="input_id" value="<?= $id ?>"/> <!--ID-->
                         <input type="hidden" name="post_answer_L" value="<?= $vote_1_percent ?>"/> <!--L-->
                         <input type="hidden" name="post_answer_O" value="<?= $vote_2_percent ?>"/> <!--O-->

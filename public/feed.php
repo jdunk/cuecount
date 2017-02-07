@@ -37,13 +37,13 @@ jdlog('?id is NOT set');
         <script src="assets/imagesloaded.pkgd.min.js"></script>
         <script src="cookies.js"></script>
         <script src="assets/demo.js"></script>
-        <link rel="canonical" href="http://cuecountapp.com/feed.php?id=<?php echo $row_1_id;?>">
+        <link rel="canonical" href="http://cuecountapp.com/feed?id=<?php echo $row_1_id;?>">
 
         <meta name="viewport" content="width=device-width">
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:title" content="Place your vote!">
         <meta name="twitter:description" content="Cue Count"/>
-        <meta name="twitter:site" content="http://cuecountapp.com/feed.php">
+        <meta name="twitter:site" content="http://cuecountapp.com/feed">
         <meta name="twitter:creator" content="@CueCount">
         <meta name="twitter:image"
             content="http://cuecountapp.com/<?php echo $row_1_post_image_path;?>"/>
