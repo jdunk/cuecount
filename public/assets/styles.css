@@ -114,6 +114,7 @@ body {
 	font-size:18px;
 	line-height: 21px;
 	padding:0;
+    	margin: 0;
 	}
 
 .container {
@@ -210,8 +211,8 @@ article {
 	z-index: 1000;
 	right:-15px;
 	}.twitter_icon {
-		width:16px;
-		height:16px;
+		width:16px!important;
+		height:16px!important;
 		display: block;
 		margin-top:10px;
 		margin-left:10px;
@@ -727,6 +728,7 @@ footer {
   bottom: 0;
   left: 0;
   right: 0;
+  height: 100%;
   background: rgba(0, 0, 0, 0.7);
   transition: opacity 500ms;
   visibility: hidden;
@@ -739,14 +741,23 @@ footer {
 }
 
 .popup {
-  margin: 5vh auto 0;
   padding: 20px;
   background: #fff;
   border-radius: 5px;
   width: 90%;
   max-width: 450px;
-  position: relative;
+  min-height:400px;
+  position: absolute;
   transition: all 5s ease-in-out;
+}
+
+@media only screen and (min-width: 480px) {
+
+	.popup {
+		margin: 5vh auto 0;
+		position: relative;
+	}
+
 }
 
 .popup h2 {
