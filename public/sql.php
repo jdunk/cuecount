@@ -31,7 +31,7 @@ class Feeds
             ?>
             <div class="item" id="item">
                 <a class="twitter"
-                    href="https://twitter.com/intent/tweet?text=<?= rawurlencode($row['post_content']) ?>%20http%3A%2F%2Fcuecountapp.com%2Ffeed.php%3Fid%3D<?= $id ?>"
+                    href="https://twitter.com/intent/tweet?text=<?= rawurlencode($row['post_content']) ?>%20http%3A%2F%2Fcuecountapp.com%2Ffeed%3Fid%3D<?= $id ?>"
                     target="_blank">
                     <img src="assets/social_tweet.png" alt="Tweet This" class="twitter_icon"/>
                 </a>
