@@ -265,7 +265,7 @@ elseif (isset($_REQUEST['submit_c']))
         <a href="/logout"><p class="cc_button">Logout</p></a>
     </header>
 	
-    <article class="item">
+    <article class="item upload_item">
         <div class="upload_choice" id="upload_choice">
             <h3>Upload a Current Decision:</h3>
             <p class="cc_button" onClick="form_show('yn_upload','upload_choice'); redo_masonry();">Yes/No <br>(Single Image)
