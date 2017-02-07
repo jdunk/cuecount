@@ -10,6 +10,8 @@ server {
     root /var/www/cuecountapp.com/public;
     index start.php;
 
+    client_max_body_size 500M;
+
     location ~ "\.[a-z]{2,4}$" {
 
         location ~ !\.php(/|$) {
