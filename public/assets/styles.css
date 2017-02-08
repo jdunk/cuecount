@@ -298,15 +298,19 @@ form {
 		width:50px;
 		border-radius: 50%;
 		padding:5px;
-		background: #BC98D3;
+		background: #CB89FF;
 		border:0px;
 		font-size: 14px;
 		font-family: 'Muli', sans-serif;
 		color:rgb(10,10,10);
 	}
 
-input.answer_L {border:1px solid #9F80BC;} 
-input.answer_R {background:#FF7D7D;border:1px solid #FF4D4D;float:right;}
+input.answer_L {border: 2px solid #6C428B;} 
+input.answer_R {
+	background: #FF6262;
+	border: 2px solid #BE2A2A;
+	float:right;
+}
 
 input.answer_L:hover {background:#C9AFDD;} input.answer_R:hover {background:#EF9E9E;}
 input.answer_L:active {background:#977EB7;} input.answer_R:active {background:#FF4A4A;}
