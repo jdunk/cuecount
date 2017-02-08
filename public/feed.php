@@ -80,9 +80,8 @@ if (isset($_GET['id'])) {
     $userquery = "SELECT * FROM decision_post WHERE id=$userpost";
     $result_userpost = mysqli_query($conn3,$userquery) or die ('error with query');
     while($row_1 =mysqli_fetch_assoc($result_userpost)) {
-        $count = $row_1['post_answer1']+$row_1['post_answer2']+$row_1['post_answer3']; 
+        $count = $row_1['post_answer1']+$row_1['post_answer3']; 
         $vote_1_percent = round($row_1['post_answer1']*100/$count) . "%";
-        $vote_2_percent = round($row_1['post_answer2']*100/$count) . "%";
         $vote_3_percent = round($row_1['post_answer3']*100/$count) . "%";
         ?> 
         <input type="hidden" id="featPath" value="<?php echo $row_1['post_imageO_path'] ?>"></input>
@@ -283,12 +282,10 @@ function vote_1(e) {
     $($('#vote_result_animation', $(e.currentTarget).closest("article"))).css("display","block");
     // == == == PUT INDIVIDUAL RESULTS IN BOTTOM
     $($('.vote_result_1', $(e.currentTarget).closest("div.vote_wrap"))).text($(e.currentTarget).siblings("input[name='post_answer_L']").val());
-    $($('.vote_result_2', $(e.currentTarget).closest("div.vote_wrap"))).text($(e.currentTarget).siblings("input[name='post_answer_O']").val());
     $($('.vote_result_3', $(e.currentTarget).closest("div.vote_wrap"))).text($(e.currentTarget).siblings("input[name='post_answer_R']").val());
     // == == == UPDATE PERCENTAGES
     $($('#doughnutChart', $(e.currentTarget).closest("article"))).drawDoughnutChart([
         { title: "", value: Number($(e.currentTarget).siblings("input[name='post_answer_text1']").val()), color: "#BC98D3" },
-        { title: "", value: Number($(e.currentTarget).siblings("input[name='post_answer_text2']").val()), color: "#EADAE5" },
         { title: "", value: Number($(e.currentTarget).siblings("input[name='post_answer_text3']").val()), color: "#FF4D4D" }
     ]);
     // == == == VOTE ANIMATION - BOUNCE
@@ -312,12 +309,10 @@ function vote_3(e) {
     $($('#vote_result_animation', $(e.currentTarget).closest("article"))).css("display","block");
     // == == == PUT INDIVIDUAL RESULTS IN BOTTOM
     $($('.vote_result_1', $(e.currentTarget).closest("div.vote_wrap"))).text($(e.currentTarget).siblings("input[name='post_answer_L']").val());
-    $($('.vote_result_2', $(e.currentTarget).closest("div.vote_wrap"))).text($(e.currentTarget).siblings("input[name='post_answer_O']").val());
     $($('.vote_result_3', $(e.currentTarget).closest("div.vote_wrap"))).text($(e.currentTarget).siblings("input[name='post_answer_R']").val());
     // == == == UPDATE PERCENTAGES
     $($('#doughnutChart', $(e.currentTarget).closest("article"))).drawDoughnutChart([
         { title: "", value: Number($(e.currentTarget).siblings("input[name='post_answer_text1']").val()), color: "#BC98D3" },
-        { title: "", value: Number($(e.currentTarget).siblings("input[name='post_answer_text2']").val()), color: "#EADAE5" },
         { title: "", value: Number($(e.currentTarget).siblings("input[name='post_answer_text3']").val()), color: "#FF4D4D" }
     ]);
     // == == == VOTE ANIMATION - BOUNCE

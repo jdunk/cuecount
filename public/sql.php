@@ -22,9 +22,8 @@ class Feeds
 
         while($row = mysqli_fetch_assoc($result))
         {
-            $count = $row['post_answer1']+$row['post_answer2']+$row['post_answer3'];
+            $count = $row['post_answer1']+$row['post_answer3'];
             $vote_1_percent = round($row['post_answer1']*100/$count) . "%";
-            $vote_2_percent = round($row['post_answer2']*100/$count) . "%";
             $vote_3_percent = round($row['post_answer3']*100/$count) . "%";
             $id = $row['id'];
 
@@ -97,12 +96,6 @@ class Feeds
                                       ani(event);
                                       SetCookie('<?= $cookie_name ?>','<?= $cookie_value ?>',60);"
                              class="answer_L icobutton" id="<?= $id ?> expandUpBtn" value="<?= $row['post_answerL'] ?>"/>
-
-                        <input type="submit" name="post_answer2"
-                             onclick="vote_2(event);
-                                      ani(event);
-                                      SetCookie('<?= $cookie_name ?>','<?= $cookie_value ?>',60);"
-                             class="answer_O icobutton" id="<?= $id ?> expandUpBtn" value="&#8767;"/>
 
                         <input type="submit" name="post_answer3"
                              onclick="vote_3(event);
