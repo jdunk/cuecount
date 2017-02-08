@@ -19,11 +19,11 @@
       sin = Math.sin,
       PI = Math.PI,
       settings = $.extend({
-        segmentShowStroke : true,
+        segmentShowStroke : false,
         segmentStrokeColor : "#0C1013",
-        segmentStrokeWidth : 1,
+        segmentStrokeWidth : 0,
         baseColor: "rgba(0,0,0,0.5)",
-        baseOffset: 4,
+        baseOffset: 2,
         edgeOffset : 10,//offset from edge of $this
         percentageInnerCutout : 90,
         animation : true,
