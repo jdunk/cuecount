@@ -165,9 +165,11 @@ if (isset($_GET['id'])) {
         <?php
     }
 }
+
 require_once 'sql.php';	
-echo $data;
+require_once 'sql.php';	
 require_once 'voting.php';
+
 ?>	
 </div> <!-- = = END OF GRID = = -->
 
@@ -235,37 +237,46 @@ require_once 'voting.php';
 </div>    
 
 <script type="text/javascript">
+
 $(window).load(function() {
     $('.grid').masonry({
-    itemSelector: '.item',
-    isAnimated: true,
-    isFitWidth: true
+        itemSelector: '.item',
+        isAnimated: true,
+        isFitWidth: true
     });
 });
-$( function() {
+
+$(function() {
     var $container = $('.grid');
     $container.masonry({
         isFitWidth: true,
         itemSelector: '.item'
     });
+
     $('.loadmore').click(function(){
         var val = $('.final').attr('val');
-        $.post('sql',{'to':val},function(data){
-        if(!isFinite(data))
-        {
-            $('.final').remove();
-            $(".grid").append(data).each(function(){
-                $('.grid').masonry('reloadItems');
-                });
-            $container.masonry();
-        }
-        else
-        {
-            $('<div class="well">Oh Damn! No more decisions right now. <br> <a href="http://cuecountapp.com/home">Post Your Own and Add to the Community :)</a></div>').insertBefore('.loadmore');
-            $('.loadmore').remove();
-        }
+        $.post(
+            '/sql',
+            {
+                'to': val-1
+            },
+            function(loadMoreResponse) {
+                if(loadMoreResponse.length)
+                {
+                    $('.final').remove();
+                    $(".grid").append(loadMoreResponse).each(function(){
+                        $('.grid').masonry('reloadItems');
+                    });
+                    $container.masonry();
+                }
+                else
+                {
+                    $('<div class="well">Oh Damn! No more decisions right now. <br> <a href="http://cuecountapp.com/home">Post Your Own and Add to the Community :)</a></div>').insertBefore('.loadmore');
+                    $('.loadmore').remove();
+                }
+            }
+        );
     });
-});
 });
 
 function show_extended_data(e){
