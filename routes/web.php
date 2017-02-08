@@ -38,6 +38,8 @@ foreach ($postsAllowed as $page) {
     Route::post("/$page", includeAndReturnOutputFn("$page.php"));
 }
 
+Route::post("/decision-posts/{decisionPostId}/vote", 'VoteController@store');
+
 function includeAndReturnOutputFn($filename) {
     return function() use ($filename) {
         ob_start();

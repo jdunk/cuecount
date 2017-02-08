@@ -115,14 +115,21 @@ if (isset($_GET['id'])) {
                         ?>
                        
                       <div class="vote_wrap">
-                        <?php $cookie_name = $row_1['id']; $cookie_value = 'true';
-                        if (isset($_COOKIE[$row['id']])) { ?>
+                        <?php
+
+                        $cookie_name = $row_1['id']; $cookie_value = 'true';
+
+                        if (isset($_COOKIE[$row['id']])) {
+                        ?>
                         <p class="current_resultShow" onclick="results_show(event)">Current Results</p>
                         
                         <input type="hidden" name="post_answer_text1" value="<?php echo $row_1['post_answer1']; ?>"/> <!--L-->
                         <input type="hidden" name="post_answer_text2" value="<?php echo $row_1['post_answer2']; ?>"/> <!--O-->
                         <input type="hidden" name="post_answer_text3" value="<?php echo $row_1['post_answer3']; ?>"/> <!--R--> 
-                        <?php } else { ?>
+                        <?php
+                        }
+                        else {
+                        ?>
                         <form action="feed.php" method="post" class="vote_form">
                           <input type="hidden" name="input_id" class="input_id" value="<?php echo $row_1['id']; ?>"/> <!--ID-->
                           <input type="hidden" name="post_answer_L" value="<?php echo $vote_1_percent; ?>"/> <!--L-->
@@ -311,32 +318,45 @@ function vote_1(e) {
     });
 }
 
-function vote_3(e) {
+function castDecisionPostVote(e, decisionPostId, leftOrRight) {
     e.preventDefault();
+
+    // Validation: leftOrRight must be 'l' or 'r'
+    if (leftOrRight !== 'l' && leftOrRight !== 'r') {
+        return;
+    }
+
     $($('#object', $(e.currentTarget).closest("article"))).addClass("expandUp");
+
     // == == == SHOW RESULTS
     $(e.currentTarget).parents('.vote_wrap').css("display","none");
     $($('#vote_result_animation', $(e.currentTarget).closest("article"))).css("display","block");
+
     // == == == PUT INDIVIDUAL RESULTS IN BOTTOM
     $($('.vote_result_1', $(e.currentTarget).closest("div.vote_wrap"))).text($(e.currentTarget).siblings("input[name='post_answer_L']").val());
     $($('.vote_result_3', $(e.currentTarget).closest("div.vote_wrap"))).text($(e.currentTarget).siblings("input[name='post_answer_R']").val());
+
     // == == == UPDATE PERCENTAGES
     $($('#doughnutChart', $(e.currentTarget).closest("article"))).drawDoughnutChart([
         { title: "", value: Number($(e.currentTarget).siblings("input[name='post_answer_text1']").val()), color: "#BC98D3" },
         { title: "", value: Number($(e.currentTarget).siblings("input[name='post_answer_text3']").val()), color: "#FF4D4D" }
     ]);
+
     // == == == VOTE ANIMATION - BOUNCE
     $(e.currentTarget).closest("div.item").addClass('animation-target');
-    var input_id = $(e.currentTarget).attr('id');
-    var post_answer3 = $("input[name='post_answer3']").val();
-    jQuery.ajax({
-        type: 'POST',
-        url: 'feed',
-        data: {input_id: input_id, post_answer3: post_answer3},
-        cache: false,
-        success: function(){}
+
+    jQuery.post(
+        '/decision-posts/' + decisionPostId + '/vote',
+        {
+            value: leftOrRight
+        }
+    ).fail(function() {
+        // Action to handle failed vote request here
     });
-}  
+}
+
+function vote_3(e) {
+}
 </script>
 <script src='https://cdn.jsdelivr.net/mojs/0.265.6/mo.min.js'></script>
 <script src='https://cdn.jsdelivr.net/mojs-player/0.43.15/mojs-player.min.js'></script>

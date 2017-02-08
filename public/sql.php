@@ -72,27 +72,24 @@ function echo_up_to_5_decision_posts($max_id = null)
                             <?php
                         } else {
                             ?>
-                            <form action="feed" method="post" class="vote_form">
+                            <form action="/decision-posts/<?= $id ?>/vote" method="post" class="vote_form">
                                 <input type="hidden" name="input_id" class="input_id" value="<?= $id ?>"/> <!--ID-->
                                 <input type="hidden" name="post_answer_L" value="<?= $vote_1_percent ?>"/> <!--L-->
-                                <input type="hidden" name="post_answer_O" value="<?= $vote_2_percent ?>"/> <!--O-->
                                 <input type="hidden" name="post_answer_R" value="<?= $vote_3_percent ?>"/> <!--R-->
                                 <input type="hidden" name="post_answer_text1" value="<?= $row['post_answer1'] ?>"/>
                                 <!--L-->
-                                <input type="hidden" name="post_answer_text2" value="<?= $row['post_answer2'] ?>"/>
-                                <!--O-->
                                 <input type="hidden" name="post_answer_text3" value="<?= $row['post_answer3'] ?>"/>
                                 <!--R-->
 
                                 <input type="submit" name="post_answer1"
-                                       onclick="vote_1(event);
+                                       onclick="castDecisionPostVote(event, <?= $id ?>, 'l');
                                            ani(event);
                                            SetCookie('<?= $cookie_name ?>','<?= $cookie_value ?>',60);"
                                        class="answer_L icobutton" id="<?= $id ?> expandUpBtn"
                                        value="<?= $row['post_answerL'] ?>"/>
 
                                 <input type="submit" name="post_answer3"
-                                       onclick="vote_3(event);
+                                       onclick="castDecisionPostVote(event, <?= $id ?>, 'r');
                                            ani(event);
                                            SetCookie('<?= $cookie_name ?>','<?= $cookie_value ?>',60);"
                                        class="answer_R icobutton" id="<?= $id ?> expandUpBtn"
