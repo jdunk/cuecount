@@ -174,7 +174,6 @@ if (isset($_GET['id'])) {
 }
 
 require_once 'sql.php';	
-require_once 'voting.php';
 
 ?>	
 </div> <!-- = = END OF GRID = = -->
