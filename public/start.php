@@ -1,10 +1,15 @@
 <?php
-/**
- * Laravel - A PHP Framework For Web Artisans
- *
- * @package  Laravel
- * @author   Taylor Otwell <taylor@laravel.com>
- */
+/** cuecount legacy dependencies... */
+
+require_once __DIR__ . '/class.user.php';
+require_once __DIR__ . '/sql.php';
+$user_login = new USER;
+
+if (!isset($_SERVER['HTTPS'])) {
+    $_SERVER['HTTP_HTTPS'] = 0;
+}
+
+/** And now Laravel... */
 
 /*
 |--------------------------------------------------------------------------

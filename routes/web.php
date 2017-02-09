@@ -14,11 +14,11 @@
 Route::get('/', includeAndReturnOutputFn('index.php'));
 
 Route::post('/', includeAndReturnOutputFn('index.php'));
-Route::post('/sql', includeAndReturnOutputFn('sql.php'));
 
 $mainPages = [
     'about',
     'feed',
+    'fpass',
     'home',
     'logout',
     'signup',
@@ -39,6 +39,7 @@ foreach ($postsAllowed as $page) {
 }
 
 Route::post("/decision-posts/{decisionPostId}/vote", 'VoteController@store');
+Route::get("/feed/more/{maxDecisionPostId}", 'FeedController@more');
 
 function includeAndReturnOutputFn($filename) {
     return function() use ($filename) {

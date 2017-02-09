@@ -1,0 +1,79 @@
+<div class="item">
+    <a class="twitter"
+       href="https://twitter.com/intent/tweet?text={{ dPost.post_content|url_encode }}%20http%3A%2F%2Fcuecountapp.com%2Ffeed%3Fid%3D{{ id }}"
+       target="_blank">
+        <img src="/assets/social_tweet.png" alt="Tweet This" class="twitter_icon"/>
+    </a>
+
+    <article>
+
+        <a name="dp{{ id }}"></a>
+
+        <div class="post_question">
+            <div class="post_content">
+                {{ dPost.post_content }}
+                <div class="post_fname">-{{ dPost.post_fname }}</div>
+            </div>
+        </div>
+
+        <div class="post_imageO">
+
+        {% if dPost.post_imageO_path %}
+            <img src="{{ dPost.post_imageO_path|e('html_attr') }}" />
+        {% else %}
+            <img src="{{ dPost.post_imageL_path|e('html_attr') }}" class="feed_img_L" />
+            <img src="{{ dPost.post_imageR_path|e('html_attr') }}" class="feed_img_R" />
+        {% endif %}
+
+            <div class="vote_wrap">
+            {% if dPost.has_voted_already %}
+                <p class="current_resultShow" onclick="results_show(event)" id="expandUpBtn">Current Results</p>
+
+                <input type="hidden" name="post_answer_text1" value="{{ dPost.post_answer1 }}"/> <!--L-->
+                <input type="hidden" name="post_answer_text3" value="{{ dPost.post_answer3 }}"/> <!--R-->
+
+            {% else %}
+                <form class="vote_form">
+                    <input type="hidden" name="post_answer_L" value="{{ dPost.post_answer1 * 100 / dPost.total_votes }}"/> <!--L-->
+                    <input type="hidden" name="post_answer_R" value="{{ dPost.post_answer3 * 100 / dPost.total_votes }}"/> <!--R-->
+
+                    <input type="hidden" name="post_answer_text1" value="{{ dPost.post_answer1 }}"/><!--L-->
+                    <input type="hidden" name="post_answer_text3" value="{{ dPost.post_answer3 }}"/><!--R-->
+
+                    <input type="submit" name="post_answer1"
+                           onclick="castDecisionPostVote(event, {{ id }}, 'l');
+                                           // ani(event);
+                                           SetCookie('dp{{ id }}', '1', 60); return false"
+                           class="answer_L icobutton"
+                           value="{{ dPost.post_answerL }}"/>
+
+                    <input type="submit" name="post_answer3"
+                           onclick="castDecisionPostVote(event, {{ id }}, 'r');
+                                           // ani(event);
+                                           SetCookie('dp{{ id }}', '1', 60); return false"
+                           class="answer_R icobutton"
+                           value="{{ dPost.post_answerR }}"/>
+                </form>
+            {% endif %}
+
+            </div> <!-- .vote_wrap -->
+
+            <div class="vote_result_animation fade-in one">
+
+                <div class="doughnutChart chart"></div>
+
+                <a href="#popup1" class="twitter twitter_vote_center">
+                    <img src="assets/email_white.png" alt="Tweet This" class="icon ic_1_inVote"/>
+                </a>
+
+                <a href="#dp{{ dPost.next_id }}">
+                    <div class="next-button">
+                        <img src="/assets/arrow-down.png" alt="Tweet This" class="twitter_icon"/>
+                    </div>
+                </a>
+
+            </div> <!-- .vote_result_animation -->
+
+        </div> <!-- .post_imageO -->
+    </article>
+</div> <!-- .item -->

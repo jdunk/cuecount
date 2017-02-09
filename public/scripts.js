@@ -34,17 +34,17 @@ var loadFile_R = function(event) {
 };
  
 function results_show(e) {
-    $(e.currentTarget).css("display","none");
-    var changeDisplay = $('#vote_result_animation', $(e.currentTarget).closest("article"));
-    $(changeDisplay).css("display","block");    
+    $(e.currentTarget).hide();
+
+    $('.vote_result_animation', $(e.currentTarget).closest("article")).show();    
+
     var post_answer_text1 = $(e.currentTarget).siblings("input[name='post_answer_text1']").val();
-    var post_answer_text2 = $(e.currentTarget).siblings("input[name='post_answer_text2']").val();
     var post_answer_text3 = $(e.currentTarget).siblings("input[name='post_answer_text3']").val();
-    close_target = $('#doughnutChart', $(e.currentTarget).closest("article"));
-    $(close_target).drawDoughnutChart([
-        { title: "Answer_1", value: Number(post_answer_text1),  color: "#BC98D3" },
-        { title: "Answer_2", value: Number(post_answer_text2),   color: "#EADAE5" },
-        { title: "Answer_3", value: Number(post_answer_text3),   color: "#FF4D4D" }
+
+    $donutChart = $('.doughnutChart', $(e.currentTarget).closest("article"));
+    $donutChart.drawDoughnutChart([
+        { title: "Answer_1", value: Number(post_answer_text1), color: "#BC98D3" },
+        { title: "Answer_3", value: Number(post_answer_text3), color: "#FF4D4D" }
     ]);
 }   
 

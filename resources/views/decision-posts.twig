@@ -1,0 +1,4 @@
+{% for id, dPost in dPosts %}
+    {% include 'decision-post' %}
+{% endfor %}
+<div class="final" val="{{ dPosts|last.id }}"></div>

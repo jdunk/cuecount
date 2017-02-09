@@ -6,13 +6,6 @@ $GLOBALS['jdunk_index_loaded'] = true;
 
 file_put_contents(__DIR__ . '/../index.php.log', $_SERVER['REMOTE_ADDR'] . ' [' . date('c') . '] ' . $_SERVER['REQUEST_METHOD'] . ' ' . $_SERVER['REQUEST_URI'] . "\n", FILE_APPEND);
 
-require_once 'class.user.php';
-$user_login = new USER;
-
-if (!isset($_SERVER['HTTPS'])) {
-    $_SERVER['HTTP_HTTPS'] = 0;
-}
-
 if($user_login->is_logged_in())
 {
     return redirect('home');
@@ -56,6 +49,7 @@ if(isset($_POST['txtupass']))
   <body id="login" class="login_bk">
     <div class="">
         <?php
+
         if(isset($_GET['inactive']))
         {
             ?>
@@ -65,9 +59,11 @@ if(isset($_POST['txtupass']))
             </div>
             <?php
         }
+
         ?>
         <form class="form-signin" method="post">
         <?php
+
         if(isset($_GET['error']))
         {
             ?>
@@ -77,6 +73,7 @@ if(isset($_POST['txtupass']))
             </div>
             <?php
         }
+
         ?>
         <h2 class="form-signin-heading">Sign In</h2><hr />
         <input type="email" class="input-block-level" placeholder="Email address" name="txtemail" required />
@@ -84,7 +81,7 @@ if(isset($_POST['txtupass']))
         <button class="cc_button" type="submit" name="btn-login">Sign in</button>
         <a href="/signup" style="float:right;" class="cc_button">Sign Up</a>
       <hr/>
-        <a href="fpass.php" style="font-size:14px;">Lost your Password ? </a>
+        <a href="/fpass" style="font-size:14px;">Lost your Password ? </a>
       </form>
 
     </div> <!-- /container -->
