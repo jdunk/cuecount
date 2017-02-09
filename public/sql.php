@@ -86,14 +86,14 @@ function echo_up_to_5_decision_posts($max_id = null)
 
                                 <input type="submit" name="post_answer1"
                                        onclick="vote_1(event);
-                                           ani(event);
+                                           // ani(event);
                                            SetCookie('<?= $cookie_name ?>','<?= $cookie_value ?>',60);"
                                        class="answer_L icobutton" id="<?= $id ?> expandUpBtn"
                                        value="<?= $row['post_answerL'] ?>"/>
 
                                 <input type="submit" name="post_answer3"
                                        onclick="vote_3(event);
-                                           ani(event);
+                                           // ani(event);
                                            SetCookie('<?= $cookie_name ?>','<?= $cookie_value ?>',60);"
                                        class="answer_R icobutton" id="<?= $id ?> expandUpBtn"
                                        value=" <?= $row['post_answerR'] ?> "/>

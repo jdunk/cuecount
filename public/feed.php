@@ -135,13 +135,13 @@ if (isset($_GET['id'])) {
                         
                             <input type="submit" name="post_answer1" 
                                   onclick="vote_1(event);
-                                          ani(event);
+                                          // ani(event);
                                           SetCookie('<?php echo $row_1['id']; ?>','true',60);"
                                   class="answer_L icobutton" id="<?php echo $row_1['id']; ?> expandUpBtn" value="<?php echo $row_1['post_answerL']; ?>"/>
 
                             <input type="submit" name="post_answer3" 
                                   onclick="vote_3(event);
-                                          ani(event);
+                                          // ani(event);
                                           SetCookie('<?php echo $row_1['id']; ?>','true',60);"
                                  class="answer_R icobutton" id="<?php echo $row_1['id']; ?> expandUpBtn" value=" <?php echo $row_1['post_answerR']; ?> "/>
                         </form>
