@@ -1,6 +1,7 @@
 <?php
 
 require_once(__DIR__ . '/start.php');
+global $user_login;
 
 $GLOBALS['jdunk_index_loaded'] = true;
 
