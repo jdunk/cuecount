@@ -232,6 +232,5 @@ function castDecisionPostVote(e, decisionPostId, leftOrRight) {
 <script src="/scripts.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
 <script src="/assets/animation.js"></script>
-<?php // require_once 'cache_footer.php'; ?>
 </body>
 </html>
