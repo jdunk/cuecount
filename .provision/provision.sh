@@ -50,6 +50,7 @@ sudo mkdir /etc/nginx/sites-enabled 2>/dev/null
 sudo cp /vagrant/.provision/nginx/cuecountapp.com /etc/nginx/sites-available/cuecountapp.com
 sudo chmod 644 /etc/nginx/sites-available/cuecountapp.com
 sudo ln -s /etc/nginx/sites-available/cuecountapp.com /etc/nginx/sites-enabled/cuecountapp.com 2>/dev/null
+## TODO: Add line to s/sendfile on/sendfile off/ in nginx.conf
 sudo service nginx restart
 
 # clean /var/www

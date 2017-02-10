@@ -29,15 +29,15 @@ jdlog('?id is NOT set');
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Cue Count: Feed</title>
-        <script src="assets/jquery-1.11.3-jquery.min.js"></script>
+        <script src="/assets/jquery-1.11.3-jquery.min.js"></script>
 
-        <link href="assets/styles.css" rel="stylesheet" media="screen">
+        <link href="/assets/styles.css" rel="stylesheet" media="screen">
 
-        <script src="assets/masonry.pkgd.min.js"></script>
-        <script src="assets/imagesloaded.pkgd.min.js"></script>
-        <script src="cookies.js"></script>
-        <script src="assets/demo.js"></script>
-        <link rel="canonical" href="http://cuecountapp.com/feed?id=<?php echo $row_1_id;?>">
+        <script src="/assets/masonry.pkgd.min.js"></script>
+        <script src="/assets/imagesloaded.pkgd.min.js"></script>
+        <script src="/cookies.js"></script>
+        <script src="/assets/demo.js"></script>
+        <link rel="canonical" href="http://cuecountapp.com/feed?id=<?= $row_1_id;?>">
 
         <meta name="viewport" content="width=device-width">
         <meta name="twitter:card" content="summary_large_image">
@@ -46,7 +46,7 @@ jdlog('?id is NOT set');
         <meta name="twitter:site" content="http://cuecountapp.com/feed">
         <meta name="twitter:creator" content="@CueCount">
         <meta name="twitter:image"
-            content="http://cuecountapp.com/<?php echo $row_1_post_image_path;?>"/>
+            content="http://cuecountapp.com/<?= $row_1_post_image_path;?>"/>
     </head>
 <body class="fade-in one">
 <?php include_once("analyticstracking.php") ?>
@@ -66,114 +66,22 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <div class="grid" id="load_data_table">
     <div class="grid-sizer"></div>
     <header class="item">
-        <img src="assets/mainLogo.png" class="company_logo" alt="Cue Count App"/>
+        <img src="/assets/mainLogo.png" class="company_logo" alt="Cue Count App"/>
         <h1>Choice is a beautiful thing</h1>
         <p>Share your daily decisions<br> and vote on others. <a href="/about" target="_blank">Learn more</a></p>
-        <a href="#popup1"><p class="cc_button red_flare">Get New Choices Everyday <img src="assets/email.png" class="icon ic_1"/></p></a>
+        <a href="#popup1"><p class="cc_button red_flare">Get New Choices Everyday <img src="/assets/email.png" class="icon ic_1"/></p></a>
     </header>
 <?php
-    
-//require_once 'cache_head.php';
-require_once 'class.user.php';
-if (isset($_GET['id'])) {
-    $userpost = htmlspecialchars($_GET['id']);
-    $userquery = "SELECT * FROM decision_post WHERE id=$userpost";
-    $result_userpost = mysqli_query($conn3,$userquery) or die ('error with query');
-    while($row_1 =mysqli_fetch_assoc($result_userpost)) {
-        $count = $row_1['post_answer1']+$row_1['post_answer3']; 
-        $vote_1_percent = round($row_1['post_answer1']*100/$count) . "%";
-        $vote_3_percent = round($row_1['post_answer3']*100/$count) . "%";
-        ?> 
-        <input type="hidden" id="featPath" value="<?php echo $row_1['post_imageO_path'] ?>"></input>
-        
-        <div class="item">
-            
-            <a class="twitter"
-               href="https://twitter.com/intent/tweet?text=<?php echo rawurlencode($row_1['post_content']);?>%20http%3A%2F%2Fcuecountapp.com%2Ffeed%3Fid%3D<?php echo $row_1['id']; ?>"
-               target="_blank"> 
-               <img src="assets/social_tweet.png" alt="Tweet This" class="twitter_icon"/>
-             </a>
-            
-            <article>
-              <div class="post_question">
-                   <?php echo  "<div class='post_content'>" . $row_1['post_content'] . " <div class='post_fname'>-" . $row_1['post_fname'] . "</div></div>";?>
-              </div>
-                
-                      <div class="post_imageO jared">
-                        <?php jdlog([
-                        'row_1' => $row_1
-                        ]); ?>
-                        <?php
 
-                        if (!empty($row_1['post_imageO_path']))
-                        echo  "<img src='" . $row_1['post_imageO_path'] . "' />";
-                        else {
-                            echo  "<img src='" . $row_1['post_imageL_path'] . "' class='feed_img_L' />";
-                            echo  "<img src='" . $row_1['post_imageR_path'] . "' class='feed_img_R' />";
-                        }
+$dPosts = get_up_to_5_decision_posts(null, empty($_GET['id']) ? null : $_GET['id']);
 
-                        ?>
-                       
-                      <div class="vote_wrap">
-                        <?php $cookie_name = $row_1['id']; $cookie_value = 'true';
-                        if (isset($_COOKIE[$row['id']])) { ?>
-                        <p class="current_resultShow" onclick="results_show(event)">Current Results</p>
-                        
-                        <input type="hidden" name="post_answer_text1" value="<?php echo $row_1['post_answer1']; ?>"/> <!--L-->
-                        <input type="hidden" name="post_answer_text2" value="<?php echo $row_1['post_answer2']; ?>"/> <!--O-->
-                        <input type="hidden" name="post_answer_text3" value="<?php echo $row_1['post_answer3']; ?>"/> <!--R--> 
-                        <?php } else { ?>
-                        <form action="feed.php" method="post" class="vote_form">
-                          <input type="hidden" name="input_id" class="input_id" value="<?php echo $row_1['id']; ?>"/> <!--ID-->
-                          <input type="hidden" name="post_answer_L" value="<?php echo $vote_1_percent; ?>"/> <!--L-->
-                          <input type="hidden" name="post_answer_O" value="<?php echo $vote_2_percent; ?>"/> <!--O-->
-                          <input type="hidden" name="post_answer_R" value="<?php echo $vote_3_percent; ?>"/> <!--R--> 
-
-                          <input type="hidden" name="post_answer_text1" value="<?php echo $row_1['post_answer1']; ?>"/> <!--L-->
-                          <input type="hidden" name="post_answer_text2" value="<?php echo $row_1['post_answer2']; ?>"/> <!--O-->
-                          <input type="hidden" name="post_answer_text3" value="<?php echo $row_1['post_answer3']; ?>"/> <!--R--> 
-                        
-                            <input type="submit" name="post_answer1" 
-                                  onclick="vote_1(event);
-                                          // ani(event);
-                                          SetCookie('<?php echo $row_1['id']; ?>','true',60);"
-                                  class="answer_L icobutton" id="<?php echo $row_1['id']; ?> expandUpBtn" value="<?php echo $row_1['post_answerL']; ?>"/>
-
-                            <input type="submit" name="post_answer3" 
-                                  onclick="vote_3(event);
-                                          // ani(event);
-                                          SetCookie('<?php echo $row_1['id']; ?>','true',60);"
-                                 class="answer_R icobutton" id="<?php echo $row_1['id']; ?> expandUpBtn" value=" <?php echo $row_1['post_answerR']; ?> "/>
-                        </form>
-                            <?php } ?>
-                        </div>
-                
-                        <div id="vote_result_animation" class="fade-in one">
-                          <div id="doughnutChart" class="chart"></div>
-                            <a href="#popup1" class="twitter twitter_vote_center">
-                             <img src="assets/email_white.png" alt="Tweet This" class="icon ic_1_inVote"/>
-                            </a>
-                            <a class="twitter" href="#next_post"> 
-                                <div class="next-button">Next
-                                    <img src="assets/arrow-down.png" alt="Tweet This" class="twitter_icon"/>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-            </article> 
-        </div>
-        <?php
-    }
-}
-
-require_once 'sql.php';	
-require_once 'voting.php';
+echo Twig::render('decision-posts', ['dPosts' => $dPosts]);
 
 ?>	
 </div> <!-- = = END OF GRID = = -->
 
 <button class="section_loadmore loadmore">
-    <p>Loadmore <img src="assets/refresh-round-symbol.png" class="icon"/></p> <!--ITEM LOADMORE-->
+    <p>Loadmore <img src="/assets/refresh-round-symbol.png" class="icon"/></p> <!--ITEM LOADMORE-->
 </button>
 
 <a href="#popup1" class="bottom_subscribe red_flare">
@@ -184,7 +92,7 @@ require_once 'voting.php';
 
 <div id="popup1" class="overlay">
     <div class="popup">
-        <a class="close" href="#"><img src="assets/cancel.png"></a>
+        <a class="close" href="#"><img src="/assets/cancel.png"></a>
         <!-- Begin MailChimp Signup Form -->
         <link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
         <style type="text/css">
@@ -254,11 +162,8 @@ $(function() {
 
     $('.loadmore').click(function(){
         var val = $('.final').attr('val');
-        $.post(
-            '/sql',
-            {
-                'to': val-1
-            },
+        $.get(
+            '/feed/more/' + (val-1),
             function(loadMoreResponse) {
                 if(loadMoreResponse.length)
                 {
@@ -284,65 +189,48 @@ function show_extended_data(e){
     $(e.currentTarget).siblings(".results_message").css("display","none");
 }
 
-function vote_1(e) {
+function castDecisionPostVote(e, decisionPostId, leftOrRight) {
     e.preventDefault();
+
+    // Validation: leftOrRight must be 'l' or 'r'
+    if (leftOrRight !== 'l' && leftOrRight !== 'r') {
+        return;
+    }
+
     $($('#object', $(e.currentTarget).closest("article"))).addClass("expandUp");
+
     // == == == SHOW RESULTS
-    $(e.currentTarget).parents('.vote_wrap').css("display","none");
-    $($('#vote_result_animation', $(e.currentTarget).closest("article"))).css("display","block");
+    $(e.currentTarget).parents('.vote_wrap').hide();
+    $('.vote_result_animation', $(e.currentTarget).closest("article")).show();
+
     // == == == PUT INDIVIDUAL RESULTS IN BOTTOM
-    $($('.vote_result_1', $(e.currentTarget).closest("div.vote_wrap"))).text($(e.currentTarget).siblings("input[name='post_answer_L']").val());
-    $($('.vote_result_3', $(e.currentTarget).closest("div.vote_wrap"))).text($(e.currentTarget).siblings("input[name='post_answer_R']").val());
+    $('.vote_result_1', $(e.currentTarget).closest("div.vote_wrap")).text($(e.currentTarget).siblings("input[name='post_answer_L']").val());
+    $('.vote_result_3', $(e.currentTarget).closest("div.vote_wrap")).text($(e.currentTarget).siblings("input[name='post_answer_R']").val());
+
     // == == == UPDATE PERCENTAGES
-    $($('#doughnutChart', $(e.currentTarget).closest("article"))).drawDoughnutChart([
+    $('.doughnutChart', $(e.currentTarget).closest("article")).drawDoughnutChart([
         { title: "", value: Number($(e.currentTarget).siblings("input[name='post_answer_text1']").val()), color: "#BC98D3" },
         { title: "", value: Number($(e.currentTarget).siblings("input[name='post_answer_text3']").val()), color: "#FF4D4D" }
     ]);
+
     // == == == VOTE ANIMATION - BOUNCE
     $(e.currentTarget).closest("div.item").addClass('animation-target');
-    var input_id = $(e.currentTarget).attr('id');
-    var post_answer1 = $("input[name='post_answer1']").val();
-    jQuery.ajax({
-        type: 'POST',
-        url: 'feed',
-        data: {input_id: input_id, post_answer1: post_answer1},
-        cache: false,
-        success: function() {}
+
+    jQuery.post(
+        '/decision-posts/' + decisionPostId + '/vote',
+        {
+            value: leftOrRight
+        }
+    ).fail(function() {
+        // Action to handle failed vote request here
     });
 }
 
-function vote_3(e) {
-    e.preventDefault();
-    $($('#object', $(e.currentTarget).closest("article"))).addClass("expandUp");
-    // == == == SHOW RESULTS
-    $(e.currentTarget).parents('.vote_wrap').css("display","none");
-    $($('#vote_result_animation', $(e.currentTarget).closest("article"))).css("display","block");
-    // == == == PUT INDIVIDUAL RESULTS IN BOTTOM
-    $($('.vote_result_1', $(e.currentTarget).closest("div.vote_wrap"))).text($(e.currentTarget).siblings("input[name='post_answer_L']").val());
-    $($('.vote_result_3', $(e.currentTarget).closest("div.vote_wrap"))).text($(e.currentTarget).siblings("input[name='post_answer_R']").val());
-    // == == == UPDATE PERCENTAGES
-    $($('#doughnutChart', $(e.currentTarget).closest("article"))).drawDoughnutChart([
-        { title: "", value: Number($(e.currentTarget).siblings("input[name='post_answer_text1']").val()), color: "#BC98D3" },
-        { title: "", value: Number($(e.currentTarget).siblings("input[name='post_answer_text3']").val()), color: "#FF4D4D" }
-    ]);
-    // == == == VOTE ANIMATION - BOUNCE
-    $(e.currentTarget).closest("div.item").addClass('animation-target');
-    var input_id = $(e.currentTarget).attr('id');
-    var post_answer3 = $("input[name='post_answer3']").val();
-    jQuery.ajax({
-        type: 'POST',
-        url: 'feed',
-        data: {input_id: input_id, post_answer3: post_answer3},
-        cache: false,
-        success: function(){}
-    });
-}  
 </script>
 <script src='https://cdn.jsdelivr.net/mojs/0.265.6/mo.min.js'></script>
 <script src='https://cdn.jsdelivr.net/mojs-player/0.43.15/mojs-player.min.js'></script>
-<script src="scripts.js"></script>
+<script src="/scripts.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
-<script src="assets/animation.js"></script>
-<?php // require_once 'cache_footer.php'; ?>
+<script src="/assets/animation.js"></script>
 </body>
 </html>

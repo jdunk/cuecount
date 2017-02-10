@@ -254,9 +254,10 @@ img.feed_img_L, img.feed_img_R {
 	float:left;
 	position: absolute;
 	top:0;
-}img.feed_img_R {right:0;}
+}
+img.feed_img_R {right:0;}
 
-#vote_result_animation {
+.vote_result_animation {
 	width:100%;
 	position: absolute;
 	top:0;
@@ -375,7 +376,7 @@ input {
 	height:20px;
 	padding:14px;
 	border-radius: 7px;
-	margin:-150px auto 102px;
+	margin: 0px auto;
 	text-align: center;
 	display:block;
 	text-transform: lowercase;
@@ -383,7 +384,6 @@ input {
 	color:rgb(10,10,10);
 	font-size: 14px;
 	z-index: 100;
-	position: relative;
 	}.current_resultShow:hover {
 		background:#E5CFF6;
 		cursor: pointer;
