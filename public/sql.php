@@ -20,7 +20,7 @@ function get_up_to_5_decision_posts($max_id = null, $selected_post_id = null)
         }
     }
 
-    $query = "SELECT * FROM decision_post WHERE id <= $max_id AND post_endpost='' ORDER BY id DESC LIMIT 3";
+    $query = "SELECT * FROM decision_post WHERE id <= $max_id AND post_endpost='' ORDER BY id DESC LIMIT 5";
     $result = mysqli_query($conn3, $query);
 
     while ($row = mysqli_fetch_assoc($result)) {
