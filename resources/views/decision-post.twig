@@ -12,8 +12,23 @@
         <div class="post_question">
             <div class="post_content">
                 {{ dPost.post_content }}
+                {% if not hideAuthorName %}
                 <div class="post_fname">-{{ dPost.post_fname }}</div>
+                {% endif %}
             </div>
+
+            {% if editMode %}
+                <div class="endpost">
+                {% if not dPost.post_endpost %}
+                    <form action="" method="post">
+                        <input type="hidden" name="endpost_id" value="{{ id }}" />
+                        <input type="submit" name="post_endpost" class="delete_btn_home" value="End Voting"/>
+                    </form>
+                {% else %}
+                    <div class="post_ended">Voting Ended</div>
+                {% endif %}
+                </div>
+            {% endif %}
         </div>
 
         <div class="post_imageO">
@@ -26,16 +41,21 @@
         {% endif %}
 
             <div class="vote_wrap">
-            {% if dPost.has_voted_already %}
+            {% if editMode or dPost.has_voted_already %}
                 <p class="current_resultShow" onclick="results_show(event)" id="expandUpBtn">Current Results</p>
+
+                {% if editMode %}
+                <div class="vote_result_1">{{ dPost.vote_1_percent|round(1) }}</div>
+                <div class="vote_result_3">{{ dPost.vote_3_percent|round(1) }}</div>
+                {% endif %}
 
                 <input type="hidden" name="post_answer_text1" value="{{ dPost.post_answer1 }}"/> <!--L-->
                 <input type="hidden" name="post_answer_text3" value="{{ dPost.post_answer3 }}"/> <!--R-->
 
             {% else %}
                 <form class="vote_form">
-                    <input type="hidden" name="post_answer_L" value="{{ dPost.post_answer1 * 100 / dPost.total_votes }}"/> <!--L-->
-                    <input type="hidden" name="post_answer_R" value="{{ dPost.post_answer3 * 100 / dPost.total_votes }}"/> <!--R-->
+                    <input type="hidden" name="post_answer_L" value="{{ dPost.vote_1_percent }}"/> <!--L-->
+                    <input type="hidden" name="post_answer_R" value="{{ dPost.vote_3_percent }}"/> <!--R-->
 
                     <input type="hidden" name="post_answer_text1" value="{{ dPost.post_answer1 }}"/><!--L-->
                     <input type="hidden" name="post_answer_text3" value="{{ dPost.post_answer3 }}"/><!--R-->
@@ -62,6 +82,7 @@
 
                 <div class="doughnutChart chart"></div>
 
+                {% if not editMode %}
                 <a href="#popup1" class="twitter twitter_vote_center">
                     <img src="assets/email_white.png" alt="Tweet This" class="icon ic_1_inVote"/>
                 </a>
@@ -71,6 +92,7 @@
                         <img src="/assets/arrow-down.png" alt="Tweet This" class="twitter_icon"/>
                     </div>
                 </a>
+                {% endif %}
 
             </div> <!-- .vote_result_animation -->
 

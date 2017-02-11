@@ -284,7 +284,6 @@ elseif (isset($_REQUEST['submit_c']))
             <input type="hidden" name="post_answerR" value="&#10003;"/><!-- = = = = "YES" = = = = -->
             <input type="hidden" name="post_answerL" value="&#215;"/><!-- = = = = "NO" = = = = -->
             <input type="hidden" name="post_answer1" value="1"/><!-- = = = = "1" = = = = -->
-            <input type="hidden" name="post_answer2" value="1"/><!-- = = = = "1" = = = = -->
             <input type="hidden" name="post_answer3" value="1"/><!-- = = = = "1" = = = = -->
             <div id="yn_upload">
                 <section class="upload_question">
@@ -352,76 +351,12 @@ if (!empty($uploadResultMessage)) {
 
 // Show decision_posts...
 
-$sql="SELECT * FROM decision_post WHERE post_email='".$userData['userEmail']."' ORDER BY id DESC";
-$result = mysqli_query($conn3, $sql);
-
-while($dPost=mysqli_fetch_assoc($result))
-{
-    foreach ($result as $postKey => $dPost)
-    {
-        $count = $dPost['post_answer1']+$dPost['post_answer2']+$dPost['post_answer3'];
-        $vote_1_percent = round($dPost['post_answer1']*100/$count) . "%";
-        $vote_2_percent = round($dPost['post_answer2']*100/$count) . "%";
-        $vote_3_percent = round($dPost['post_answer3']*100/$count) . "%";
-
-        ?>
-	
-	<div class="item" id="item<?= $postKey ?>">
-
-	<a class="twitter"
-	href="https://twitter.com/intent/tweet?text=<?= rawurlencode($dPost['post_content']) ?>%20http%3A%2F%2Fcuecountapp.com%2Ffeed.php%3Fid%3D<?= $dPost['id'] ?>" 
-	target="_blank">	
-	<p><img src="assets/social_tweet.png" alt="Tweet This" class="twitter_icon"/></p>
-	</a>
-	
-        <article>
-    
-            <div class="post_question">
-                <div class="post_content"><?= $dPost['post_content'] ?></div>
-                <?php
-
-                if(empty($dPost['post_endpost']))
-                {
-                    ?>
-                    <div class="endpost">
-						<form action="" method="post">
-							<input type="hidden" id="" value=" <?= $dPost['id'] ?> " name="endpost_id"/>
-							<input type="submit" name="post_endpost" class="delete_btn_home" value="End Voting"/>
-						</form>
-					</div>
-					<?php } else { ?> 
-					<div class="endpost">
-						<div class="post_ended">Vote Ended</div>
-					</div>
-                    <?php
-                }
-            ?>
-            </div>
-
-            <div class="post_imageO">
-                <img src="<?= htmlspecialchars($dPost['post_imageO_path']) ?>" />
-                <img src="<?= htmlspecialchars($dPost['post_imageL_path']) ?>" class="feed_img_L" />
-                <img src="<?= htmlspecialchars($dPost['post_imageR_path']) ?>" class="feed_img_R" />
-
-                <div class="vote_result_animation fade-in one">
-                    <div class="doughnutChart chart"></div>
-                </div>
-            </div>
-
-            <p class="current_resultShow" onclick="results_show(event)">Current Results</p>
-
-            <div class="vote_result_1"><?= $vote_1_percent ?></div>
-            <div class="vote_result_3"><?= $vote_3_percent ?></div>
-
-            <input type="hidden" name="post_answer_text1" value="<?= $dPost['post_answer1'] ?>"/> <!--L-->
-            <input type="hidden" name="post_answer_text3" value="<?= $dPost['post_answer3'] ?>"/> <!--R-->
-        </article>
-	
-	</div> <!-- ITEM END -->
-		
-	<?php
-    }
-}
+$dPosts = get_decision_posts(null, null, $userData['userID']);
+echo Twig::render('decision-posts', [
+    'dPosts' => $dPosts,
+    'hideAuthorName' => true,
+    'editMode' => true,
+]);
 
 ?>
 </div> <!-- = = END OF GRID = = -->

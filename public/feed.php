@@ -73,7 +73,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </header>
 <?php
 
-$dPosts = get_up_to_5_decision_posts(null, empty($_GET['id']) ? null : $_GET['id']);
+$dPosts = get_decision_posts(null, empty($_GET['id']) ? null : $_GET['id']);
 
 echo Twig::render('decision-posts', ['dPosts' => $dPosts]);
 
