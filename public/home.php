@@ -247,7 +247,6 @@ elseif (isset($_REQUEST['submit_c']))
         <meta name="twitter:card" content="summary_large_image">
         <meta name="twitter:image" content="<?= $current_image_path ?>" />
         <script src="scripts.js"></script>
-        <script src="assets/scripts.js"></script>
         <script src="assets/masonry.pkgd.min.js"></script>
         <script src="assets/imagesloaded.pkgd.min.js"></script>
     </head>

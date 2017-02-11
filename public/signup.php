@@ -75,7 +75,6 @@ if(isset($_POST['btn-signup']))
 	<meta name="viewport" content="width=device-width">
 	<script src="assets/jquery-1.11.3-jquery.min.js"></script>
 	<script src="assets/styles.js"></script>
-	<script src="assets/scripts.js"></script>
 	<script src="assets/animation.js"></script>
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
