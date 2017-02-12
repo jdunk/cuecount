@@ -104,7 +104,7 @@ if (isset($_REQUEST['submit_yn']))
 
         // ---------- Convert JPG --------
         $kaboom = explode(".", $image_name);
-        $fileExt = $kaboom[1];
+        $fileExt = array_pop($kaboom);
         if (strtolower($fileExt) != "jpg") {
             $target_file = $image_path;
             $new_jpg = "uploads/".$kaboom[0].".jpg";
@@ -204,7 +204,7 @@ elseif (isset($_REQUEST['submit_c']))
         include_once("img_resize.php");
         // ---------- Convert LEFT JPG --------
         $kaboom = explode(".", $image_nameL);
-        $fileExt = $kaboom[1];
+        $fileExt = array_pop($kaboom);
         if (strtolower($fileExt) != "jpg") {
             $target_fileL = $image_pathL;
             $new_jpg = "uploads/".$kaboom[0].".jpg";
@@ -212,7 +212,7 @@ elseif (isset($_REQUEST['submit_c']))
         }
         // ---------- Convert RIGHT JPG --------
         $kaboom = explode(".", $image_nameR);
-        $fileExt = $kaboom[1];
+        $fileExt = array_pop($kaboom);
         if (strtolower($fileExt) != "jpg") {
             $target_fileR = $image_pathR;
             $new_jpg = "uploads/".$kaboom[0].".jpg";
