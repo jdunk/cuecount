@@ -9,10 +9,15 @@ apt-get install -y software-properties-common
 apt-get update
 apt-get purge -y hhvm
 rm -rf /etc/php/7.0/
-apt-get purge -y php7.0-fpm
+
+apt-get purge -y 'php7*'
+#apt-get purge -y php7.0-fpm
+apt-get purge -y php-xdebug
 apt-get install -y php7.1-fpm
-apt-get install -y php7.1-pdo-mysql
 apt-get install -y php7.1-gd
+apt-get install -y php7.1-mbstring
+apt-get install -y php7.1-mysql
+apt-get install -y php7.1-xml
 apt-get install -y php-xdebug
 bash -c "echo 'xdebug.remote_autostart=1
 xdebug.remote_enable=1
@@ -50,8 +55,10 @@ sudo mkdir /etc/nginx/sites-enabled 2>/dev/null
 sudo cp /vagrant/.provision/nginx/cuecountapp.com /etc/nginx/sites-available/cuecountapp.com
 sudo chmod 644 /etc/nginx/sites-available/cuecountapp.com
 sudo ln -s /etc/nginx/sites-available/cuecountapp.com /etc/nginx/sites-enabled/cuecountapp.com 2>/dev/null
-## TODO: Add line to s/sendfile on/sendfile off/ in nginx.conf
-sudo service nginx restart
+
+# s/sendfile on/sendfile off/ in nginx.conf
+sed -i "s/sendfile on;/sendfile off;\n\tclient_max_body_size 500m;/" /etc/nginx/nginx.conf
+service nginx restart
 
 # clean /var/www
 sudo rm -Rf /var/www/*
@@ -59,5 +66,12 @@ sudo rm -Rf /var/www/*
 # symlink /var/www/cuecountapp.com => /vagrant
 ln -s /vagrant /var/www/cuecountapp.com
 
+# run composer
+cd /vagrant
+composer install
+
 # set up MySQL
 echo 'GRANT ALL ON *.* TO cuecount_db_user@`%` IDENTIFIED BY '\''cuecount123$'\''; FLUSH PRIVILEGES; CREATE DATABASE cuecount;' |mysql -uroot -psecret 2>/dev/null
+
+# create initial db schema
+php artisan migrate
