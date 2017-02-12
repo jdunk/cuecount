@@ -64,7 +64,6 @@ if (isset($_REQUEST['submit_yn']))
                                                         `post_answerL`,
                                                         `post_answerR`,
                                                         `post_answer1`,
-                                                        `post_answer2`,
                                                         `post_answer3`
                                                         ) 
                                             VALUES (
@@ -78,10 +77,9 @@ if (isset($_REQUEST['submit_yn']))
                                                     ?, 
                                                     ?, 
                                                     ?, 
-                                                    ?, 
                                                     ? 
                                                      )");
-        $stmt_uploadyn->bind_param("sssssssssiii",
+        $stmt_uploadyn->bind_param("sssssssssii",
             $post_type,
             $post_fname,
             $post_email,
@@ -92,10 +90,9 @@ if (isset($_REQUEST['submit_yn']))
             $post_answerL,
             $post_answerR,
             $post_answer1,
-            $post_answer2,
             $post_answer3
         );
-        $stmt_uploadyn->execute();
+        $stmt_result = $stmt_uploadyn->execute();
         $stmt_uploadyn->close();
 
         move_uploaded_file($imgtmp, __DIR__ . '/' . $image_path);
