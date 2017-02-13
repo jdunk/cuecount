@@ -28,6 +28,7 @@ $mainPages = [
 
 $postsAllowed = [
     'home',
+    'signup',
 ];
 
 foreach ($mainPages as $mainPage) {
