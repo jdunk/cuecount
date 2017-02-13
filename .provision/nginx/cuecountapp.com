@@ -5,7 +5,7 @@ server {
     server_name cuecount.vcap.me *.cuecount.vcap.me cc.vcap.me *.cc.vcap.me;
 
     access_log /var/log/nginx/cuecountapp.com.access.log;
-    error_log /var/log/nginx/cuecountapp.com.error.log debug;
+    error_log /var/log/nginx/cuecountapp.com.error.log;
 
     root /var/www/cuecountapp.com/public;
     index start.php;
