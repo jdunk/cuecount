@@ -1,5 +1,22 @@
 <?php
 
+if (!function_exists('includeAndReturnOutputFn')) {
+
+    function includeAndReturnOutputFn($filename) {
+        return function() use ($filename) {
+            ob_start();
+            $ret = include (__DIR__ . '/../public/' . $filename);
+            $output = ob_get_clean();
+
+            if ($ret !== 1) {
+                return $ret;
+            }
+
+            return $output;
+        };
+    }
+}
+
 /*
 |--------------------------------------------------------------------------
 | Create The Application
@@ -14,6 +31,10 @@
 $app = new Illuminate\Foundation\Application(
     realpath(__DIR__.'/../')
 );
+
+$app->detectEnvironment(function(){
+    (new Dotenv\Dotenv(__DIR__ . '/..'))->load();
+});
 
 /*
 |--------------------------------------------------------------------------

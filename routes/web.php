@@ -41,17 +41,3 @@ foreach ($postsAllowed as $page) {
 
 Route::post("/decision-posts/{decisionPostId}/vote", 'VoteController@store');
 Route::get("/feed/more/{maxDecisionPostId}", 'FeedController@more');
-
-function includeAndReturnOutputFn($filename) {
-    return function() use ($filename) {
-        ob_start();
-        $ret = include (__DIR__ . '/../public/' . $filename);
-        $output = ob_get_clean();
-
-        if ($ret !== 1) {
-            return $ret;
-        }
-
-        return $output;
-    };
-}

@@ -66,8 +66,11 @@ sudo rm -Rf /var/www/*
 # symlink /var/www/cuecountapp.com => /vagrant
 ln -s /vagrant /var/www/cuecountapp.com
 
-# run composer
+# set up 'local' env
 cd /vagrant
+echo "APP_ENV=local" > .env
+
+# run composer
 composer install
 
 # set up MySQL
