@@ -1,6 +1,16 @@
 server {
     listen 80;
-    listen [::]:80;
+    listen [::]:80 ipv6only=on;
+
+    server_name cuecount.vcap.me *.cuecount.vcap.me cc.vcap.me *.cc.vcap.me;
+
+    return 301 https://$host$request_uri;
+}
+
+server {
+    listen 443 ssl;
+    ssl_certificate /etc/nginx/ssl/cert.pem;
+    ssl_certificate_key /etc/nginx/ssl/key.pem;
 
     server_name cuecount.vcap.me *.cuecount.vcap.me cc.vcap.me *.cc.vcap.me;
 

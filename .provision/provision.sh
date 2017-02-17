@@ -58,6 +58,7 @@ sudo ln -s /etc/nginx/sites-available/cuecountapp.com /etc/nginx/sites-enabled/c
 
 # s/sendfile on/sendfile off/ in nginx.conf
 sed -i "s/sendfile on;/sendfile off;\n\tclient_max_body_size 500m;/" /etc/nginx/nginx.conf
+cp -a /vagrant/.provision/nginx/ssl /etc/nginx/
 service nginx restart
 
 # clean /var/www
